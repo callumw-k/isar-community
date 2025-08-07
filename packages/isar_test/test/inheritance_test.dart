@@ -18,7 +18,7 @@ abstract class BaseModel {
   final String nickname;
 
   @Index()
-  late final int nameHash = name.hashCode;
+  int get nameHash => name.hashCode;
 
   // ignore:unused_field
   final float _privateProperty = 0;
