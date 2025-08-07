@@ -105,9 +105,8 @@ class PackageManager {
         .filter()
         .isLatestEqualTo(true)
         .findFirst();
-    final newLatestVersion = newPackageVersions
-        .firstWhere((e) => e.isLatest)
-        .version;
+    final newLatestVersion =
+        newPackageVersions.firstWhere((e) => e.isLatest).version;
     if (currentLatest != null && currentLatest.version != newLatestVersion) {
       versionsToAdd.add(currentLatest.copyWith(isLatest: false));
     }
@@ -129,14 +128,14 @@ class PackageManager {
     String name,
     String version,
   ) async* {
-    final query = isar.assets
-        .where()
-        .packageVersionEqualToAnyKind(name, version)
-        .build();
+    final query =
+        isar.assets.where().packageVersionEqualToAnyKind(name, version).build();
 
     final existing = await query.findAll();
     if (existing.isNotEmpty) {
-      yield {for (final asset in existing) asset.kind: asset.content};
+      yield {
+        for (final asset in existing) asset.kind: asset.content,
+      };
     } else {
       final existingAnyVersion = await isar.assets
           .where()
@@ -156,7 +155,9 @@ class PackageManager {
 
     await for (final results in query.watch()) {
       if (results.isNotEmpty) {
-        yield {for (final asset in results) asset.kind: asset.content};
+        yield {
+          for (final asset in results) asset.kind: asset.content,
+        };
       }
     }
   }

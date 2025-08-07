@@ -27,17 +27,13 @@ extension ClassElementX on ClassElement2 {
         collectionAnnotation?.ignore ?? embeddedAnnotation!.ignore;
     final accessors = [...setters2, ...getters2];
     return [
-          ...accessors.mapNotNull((e) => e.variable3),
-          if (collectionAnnotation?.inheritance ??
-              embeddedAnnotation!.inheritance)
-            for (final InterfaceType supertype in allSupertypes) ...[
-              if (!supertype.isDartCoreObject)
-                ...[
-                  ...supertype.getters,
-                  ...supertype.setters,
-                ].mapNotNull((e) => e.variable3),
-            ],
-        ]
+      ...accessors.mapNotNull((e) => e.variable3),
+      if (collectionAnnotation?.inheritance ?? embeddedAnnotation!.inheritance)
+        for (final InterfaceType supertype in allSupertypes) ...[
+          if (!supertype.isDartCoreObject)
+            ...[...supertype.getters, ...supertype.setters].mapNotNull((e) => e.variable3),
+        ],
+    ]
         .where(
           (PropertyInducingElement2 e) =>
               e.isPublic &&
@@ -50,11 +46,7 @@ extension ClassElementX on ClassElement2 {
   }
 
   List<String> get enumConsts {
-    return fields2
-        .where((e) => e.isEnumConstant)
-        .filter((e) => e.name3 != null)
-        .map((e) => e.name3!)
-        .toList();
+    return fields2.where((e) => e.isEnumConstant).filter((e) => e.name3 != null).map((e) => e.name3!).toList();
   }
 }
 
@@ -144,12 +136,11 @@ extension ElementX on Element2 {
     return Collection(
       inheritance: ann.getField('inheritance')!.toBoolValue()!,
       accessor: ann.getField('accessor')!.toStringValue(),
-      ignore:
-          ann
-              .getField('ignore')!
-              .toSetValue()!
-              .map((e) => e.toStringValue()!)
-              .toSet(),
+      ignore: ann
+          .getField('ignore')!
+          .toSetValue()!
+          .map((e) => e.toStringValue()!)
+          .toSet(),
     );
   }
 
@@ -174,12 +165,11 @@ extension ElementX on Element2 {
     }
     return Embedded(
       inheritance: ann.getField('inheritance')!.toBoolValue()!,
-      ignore:
-          ann
-              .getField('ignore')!
-              .toSetValue()!
-              .map((e) => e.toStringValue()!)
-              .toSet(),
+      ignore: ann
+          .getField('ignore')!
+          .toSetValue()!
+          .map((e) => e.toStringValue()!)
+          .toSet(),
     );
   }
 }

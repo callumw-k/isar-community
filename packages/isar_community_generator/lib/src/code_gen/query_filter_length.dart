@@ -8,8 +8,7 @@ String generateLength(
     String includeLower,
     String upper,
     String includeUpper,
-  )
-  codeGen,
+  ) codeGen,
 ) {
   return '''
       QueryBuilder<$objectName, $objectName, QAfterFilterCondition> ${propertyName.decapitalize()}LengthEqualTo(int length) {

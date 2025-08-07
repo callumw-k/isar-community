@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 
 DateTime? convertTwitterDateTime(String? twitterDateString) {
@@ -8,18 +7,12 @@ DateTime? convertTwitterDateTime(String? twitterDateString) {
 
   try {
     return DateTime.parse(twitterDateString);
-  } on Exception catch (e) {
-    if (kDebugMode) {
-      print(e);
-    }
+  } catch (e) {
     try {
       final dateString = formatTwitterDateString(twitterDateString);
       return DateFormat('E MMM dd HH:mm:ss yyyy', 'en_US')
           .parse(dateString, true);
-    } on Exception catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+    } catch (e) {
       return null;
     }
   }

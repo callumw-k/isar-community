@@ -9,4 +9,6 @@ class Model {
   late MyEnum? prop;
 }
 
-enum MyEnum { a }
+enum MyEnum {
+  a;
+}

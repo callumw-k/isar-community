@@ -76,16 +76,14 @@ String _generatePropertySchema(ObjectInfo object, int index) {
 }
 
 String _generateIndexSchema(ObjectIndex index) {
-  final properties = index.properties
-      .map((e) {
-        return '''
+  final properties = index.properties.map((e) {
+    return '''
       IndexPropertySchema(
         name: r'${e.property.isarName}',
         type: IndexType.${e.type.name},
         caseSensitive: ${e.caseSensitive},
       )''';
-      })
-      .join(',');
+  }).join(',');
 
   return '''
     IndexSchema(

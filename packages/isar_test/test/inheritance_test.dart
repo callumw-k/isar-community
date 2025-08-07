@@ -12,6 +12,7 @@ abstract class BaseModel {
 
   Id identifier = Isar.autoIncrement;
 
+
   final String name;
 
   final String nickname;
@@ -35,6 +36,7 @@ class InheritingModel extends BaseModel {
     required super.nickname,
     required this.age,
   });
+
 
   final int age;
 

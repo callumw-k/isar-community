@@ -14,8 +14,7 @@ Future<void> init() async {
             : 'libisar.so';
     try {
       await Isar.initializeIsarCore();
-    } on Exception catch (e) {
-      print(e);
+    } catch (e) {
       await Isar.initializeIsarCore(
         libraries: {
           Abi.macosArm64: path.join(

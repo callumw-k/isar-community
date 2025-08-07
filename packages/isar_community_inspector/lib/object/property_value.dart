@@ -5,9 +5,9 @@ import 'package:isar_community/isar.dart';
 class PropertyValue extends StatelessWidget {
   const PropertyValue(
     this.value, {
+    super.key,
     required this.enumMap,
     required this.type,
-    super.key,
     this.onUpdate,
   });
 

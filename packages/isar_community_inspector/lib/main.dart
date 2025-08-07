@@ -109,9 +109,9 @@ class App extends StatelessWidget {
 
 class DarkMode extends InheritedNotifier<DarkModeNotifier> {
   const DarkMode({
-    required super.child,
     super.key,
     super.notifier,
+    required super.child,
   });
 
   static DarkModeNotifier of(BuildContext context) {

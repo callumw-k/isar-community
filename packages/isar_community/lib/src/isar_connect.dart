@@ -46,7 +46,7 @@ abstract class _IsarConnect {
               : <String, dynamic>{};
           final result = <String, dynamic>{'result': await handler.value(args)};
           return ServiceExtensionResponse.result(jsonEncode(result));
-        } on Exception catch (e) {
+        } catch (e) {
           return ServiceExtensionResponse.error(
             ServiceExtensionResponse.extensionError,
             e.toString(),
@@ -256,7 +256,7 @@ abstract class _IsarConnect {
         await isar.writeTxn(() async {
           await collection.importJson(objects);
         });
-      } on Exception catch (e) {
+      } catch (e) {
         print(e);
       }
     }

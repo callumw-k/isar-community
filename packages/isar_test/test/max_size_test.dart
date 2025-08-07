@@ -8,7 +8,7 @@ part 'max_size_test.g.dart';
 class Model {
   final Id id = Isar.autoIncrement;
 
-  final String value = '123456789' * 1000;
+  final value = '123456789' * 1000;
 }
 
 void main() {

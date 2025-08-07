@@ -96,7 +96,7 @@ class IndexPropertySchema {
     };
   }
 
-  static const Map<IndexType, String> _typeName = {
+  static const _typeName = {
     IndexType.value: 'Value',
     IndexType.hash: 'Hash',
     IndexType.hashElements: 'HashElements',

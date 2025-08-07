@@ -46,7 +46,7 @@ void main() {
   });
 }
 
-const Map<String, Object?> tweetJson = {
+const tweetJson = {
   'coordinates': {
     'coordinates': [14.48532271, 40.63070878],
     'type': 'Point',
