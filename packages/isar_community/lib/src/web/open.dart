@@ -40,10 +40,10 @@ void doNotInitializeIsarWeb() {
 
 Future<Isar> openIsar({
   required List<CollectionSchema<dynamic>> schemas,
-  String? directory,
   required String name,
   required int maxSizeMiB,
   required bool relaxedDurability,
+  String? directory,
   CompactCondition? compactOnLaunch,
 }) async {
   throw IsarError('Please use Isar 2.5.0 if you need web support. '
@@ -73,10 +73,10 @@ Future<Isar> openIsar({
 
 Isar openIsarSync({
   required List<CollectionSchema<dynamic>> schemas,
-  String? directory,
   required String name,
   required int maxSizeMiB,
   required bool relaxedDurability,
+  String? directory,
   CompactCondition? compactOnLaunch,
 }) =>
     unsupportedOnWeb();

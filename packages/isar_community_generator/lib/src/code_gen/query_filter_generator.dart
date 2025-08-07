@@ -261,8 +261,12 @@ class FilterGenerator {
   }
 
   String generateListLength(ObjectProperty p) {
-    return generateLength(objName, p.dartName,
-        (lower, includeLower, upper, includeUpper) {
+    return generateLength(objName, p.dartName, (
+      lower,
+      includeLower,
+      upper,
+      includeUpper,
+    ) {
       return '''
         QueryBuilder.apply(this, (query) {
           return query.listLength(

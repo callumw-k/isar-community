@@ -4,10 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:markdown/markdown.dart' as md;
 
 final _markdownHtmlPod = Provider.family<String, String>((ref, source) {
-  return md.markdownToHtml(
-    source,
-    extensionSet: md.ExtensionSet.gitHubWeb,
-  );
+  return md.markdownToHtml(source, extensionSet: md.ExtensionSet.gitHubWeb);
 });
 
 class MarkdownViewer extends ConsumerWidget {
@@ -18,9 +15,6 @@ class MarkdownViewer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final html = ref.read(_markdownHtmlPod(markdown));
-    return Html(
-      data: html,
-      onLinkTap: null,
-    );
+    return Html(data: html, onLinkTap: null);
   }
 }
