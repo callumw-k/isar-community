@@ -26,16 +26,16 @@ const int maxLong = 9223372036854775807;
 const double minDouble = double.nan;
 const double maxDouble = double.infinity;
 
-const nullByte = IsarObject_NULL_BYTE;
-const nullInt = IsarObject_NULL_INT;
-const nullLong = IsarObject_NULL_LONG;
-const nullFloat = double.nan;
-const nullDouble = double.nan;
+const int nullByte = IsarObject_NULL_BYTE;
+const int nullInt = IsarObject_NULL_INT;
+const int nullLong = IsarObject_NULL_LONG;
+const double nullFloat = double.nan;
+const double nullDouble = double.nan;
 final nullDate = DateTime.fromMillisecondsSinceEpoch(0);
 
-const nullBool = IsarObject_NULL_BOOL;
-const falseBool = IsarObject_FALSE_BOOL;
-const trueBool = IsarObject_TRUE_BOOL;
+const int nullBool = IsarObject_NULL_BOOL;
+const int falseBool = IsarObject_FALSE_BOOL;
+const int trueBool = IsarObject_TRUE_BOOL;
 
 const String binariesUrl = 'https://binaries.isar-community.dev';
 

@@ -9,7 +9,7 @@ import 'package:isar_community/src/native/encode_string.dart';
 import 'package:isar_community/src/native/isar_core.dart';
 import 'package:isar_community/src/native/isar_writer_impl.dart';
 
-final _keyPtrPtr = malloc<Pointer<CIndexKey>>();
+final Pointer<Pointer<CIndexKey>> _keyPtrPtr = malloc<Pointer<CIndexKey>>();
 
 Pointer<CIndexKey> buildIndexKey(
   CollectionSchema<dynamic> schema,

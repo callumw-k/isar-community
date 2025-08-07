@@ -16,10 +16,7 @@ class Asset {
   @Index(
     unique: true,
     replace: true,
-    composite: [
-      CompositeIndex('version'),
-      CompositeIndex('kind'),
-    ],
+    composite: [CompositeIndex('version'), CompositeIndex('kind')],
   )
   final String package;
 

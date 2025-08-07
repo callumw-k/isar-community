@@ -4,15 +4,16 @@ import 'package:isar_community_generator/src/object_info.dart';
 
 class WhereGenerator {
   WhereGenerator(this.object)
-      : objName = object.dartName,
-        id = object.idProperty;
+    : objName = object.dartName,
+      id = object.idProperty;
   final ObjectInfo object;
   final String objName;
   final ObjectProperty id;
   final existing = <String>{};
 
   String generate() {
-    var code = 'extension ${objName}QueryWhereSort on QueryBuilder<$objName, '
+    var code =
+        'extension ${objName}QueryWhereSort on QueryBuilder<$objName, '
         '$objName, QWhere> {';
 
     code += generateAnyId();
@@ -79,8 +80,10 @@ class WhereGenerator {
     }
 
     var name = '';
-    final eqProperties =
-        index.properties.sublist(0, propertyCount - (method != null ? 1 : 0));
+    final eqProperties = index.properties.sublist(
+      0,
+      propertyCount - (method != null ? 1 : 0),
+    );
     if (eqProperties.isNotEmpty) {
       name += eqProperties.map(propertyName).join();
       name += 'EqualTo';
@@ -91,9 +94,10 @@ class WhereGenerator {
       name += method;
     }
 
-    final remainingProperties = propertyCount < index.properties.length
-        ? index.properties.sublist(propertyCount)
-        : null;
+    final remainingProperties =
+        propertyCount < index.properties.length
+            ? index.properties.sublist(propertyCount)
+            : null;
 
     if (remainingProperties != null) {
       name += 'Any';
@@ -126,13 +130,15 @@ class WhereGenerator {
   }
 
   String joinToValues(List<ObjectIndexProperty> properties) {
-    return properties.map((it) {
-      if (it.property.isarType.isList && it.type != IndexType.hash) {
-        return '${it.property.dartName}Element';
-      } else {
-        return paramName(it);
-      }
-    }).join(', ');
+    return properties
+        .map((it) {
+          if (it.property.isarType.isList && it.type != IndexType.hash) {
+            return '${it.property.dartName}Element';
+          } else {
+            return paramName(it);
+          }
+        })
+        .join(', ');
   }
 
   String generateAnyId() {

@@ -122,8 +122,8 @@ class IndexWhereClause extends WhereClause {
   const IndexWhereClause.between({
     required this.indexName,
     required IndexKey this.lower,
-    this.includeLower = true,
     required IndexKey this.upper,
+    this.includeLower = true,
     this.includeUpper = true,
     this.epsilon = Query.epsilon,
   }) : super._();
@@ -223,11 +223,11 @@ class FilterCondition extends FilterOperation {
   const FilterCondition({
     required this.type,
     required this.property,
-    this.value1,
-    this.value2,
     required this.include1,
     required this.include2,
     required this.caseSensitive,
+    this.value1,
+    this.value2,
     this.epsilon = Query.epsilon,
   }) : super._();
 

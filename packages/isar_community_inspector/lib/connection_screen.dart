@@ -8,9 +8,9 @@ import 'package:isar_community_inspector/error_screen.dart';
 
 class ConnectionScreen extends StatefulWidget {
   const ConnectionScreen({
-    super.key,
     required this.port,
     required this.secret,
+    super.key,
   });
 
   final String port;
