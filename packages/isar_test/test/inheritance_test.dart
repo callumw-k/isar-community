@@ -12,12 +12,13 @@ abstract class BaseModel {
 
   Id identifier = Isar.autoIncrement;
 
-  @Index()
-  int get nameHash => name.hashCode;
 
   final String name;
 
   final String nickname;
+
+  @Index()
+  late final int nameHash = name.hashCode;
 
   // ignore:unused_field
   final float _privateProperty = 0;
@@ -35,6 +36,7 @@ class InheritingModel extends BaseModel {
     required super.nickname,
     required this.age,
   });
+
 
   final int age;
 
@@ -248,42 +250,42 @@ void main() {
     });
 
     // //TODO: This needs to be fixed
-    // isarTest('Query model with inherited index', () async {
-    //   await qEqualSet(
-    //     isar.inheritingModels
-    //         .where()
-    //         .nameHashEqualTo(inheritingObj1.name.hashCode)
-    //         .or()
-    //         .nameHashEqualTo(inheritingObj0.name.hashCode),
-    //     {inheritingObj1, inheritingObj0},
-    //   );
-    //
-    //   await qEqualSet(
-    //     isar.inheritingModels
-    //         .where()
-    //         .nameHashNotEqualTo(inheritingObj1.nameHash)
-    //         .nameHashProperty(),
-    //     {
-    //       inheritingObj0.nameHash,
-    //       inheritingObj2.nameHash,
-    //       inheritingObj3.nameHash,
-    //       inheritingObj4.nameHash,
-    //       inheritingObj5.nameHash,
-    //     },
-    //   );
-    //
-    //   await qEqualSet(
-    //     isar.inheritingModels.where().anyNameHash(),
-    //     {
-    //       inheritingObj0,
-    //       inheritingObj1,
-    //       inheritingObj2,
-    //       inheritingObj3,
-    //       inheritingObj4,
-    //       inheritingObj5,
-    //     },
-    //   );
-    // });
+    isarTest('Query model with inherited index', () async {
+      await qEqualSet(
+        isar.inheritingModels
+            .where()
+            .nameHashEqualTo(inheritingObj1.name.hashCode)
+            .or()
+            .nameHashEqualTo(inheritingObj0.name.hashCode),
+        {inheritingObj1, inheritingObj0},
+      );
+
+      await qEqualSet(
+        isar.inheritingModels
+            .where()
+            .nameHashNotEqualTo(inheritingObj1.nameHash)
+            .nameHashProperty(),
+        {
+          inheritingObj0.nameHash,
+          inheritingObj2.nameHash,
+          inheritingObj3.nameHash,
+          inheritingObj4.nameHash,
+          inheritingObj5.nameHash,
+        },
+      );
+
+      await qEqualSet(
+        isar.inheritingModels.where().anyNameHash(),
+        {
+          inheritingObj0,
+          inheritingObj1,
+          inheritingObj2,
+          inheritingObj3,
+          inheritingObj4,
+          inheritingObj5,
+        },
+      );
+    });
 
     isarTest('Query model without inheritance', () async {
       await qEqualSet(
