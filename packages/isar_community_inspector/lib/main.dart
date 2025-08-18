@@ -7,7 +7,8 @@ import 'package:go_router/go_router.dart';
 import 'package:isar_community_inspector/connection_screen.dart';
 
 void main() async {
-  if (window.navigator.userAgent.toLowerCase().contains('chrome')) {
+  if (['chrome', 'firefox'].any((userAgent) =>
+      window.navigator.userAgent.toLowerCase().contains(userAgent))) {
     runApp(
       DarkMode(
         notifier: DarkModeNotifier(),
