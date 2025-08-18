@@ -8,8 +8,8 @@
 </p>
 
 <p align="center">
-  <a href="https://pub.dev/packages/isar-community">
-    <img src="https://img.shields.io/pub/v/isar-community?label=pub.dev&labelColor=333940&logo=dart">
+  <a href="https://pub.dev/packages/isar_community">
+    <img src="https://img.shields.io/pub/v/isar_community?label=pub.dev&labelColor=333940&logo=dart">
   </a>
   <a href="https://github.com/isar-community/isar-community/actions/workflows/test.yaml">
     <img src="https://img.shields.io/github/actions/workflow/status/isar-community/isar-community/test.yaml?branch=v3&label=tests&labelColor=333940&logo=github">
@@ -27,7 +27,7 @@
   <a href="https://isar-community.dev/schema">Documentation</a> •
   <a href="https://github.com/isar-community/isar-community/tree/v3/examples/">Sample Apps</a> •
   <a href="https://github.com/isar-community/isar-community/discussions">Support & Ideas</a> •
-  <a href="https://pub.dev/packages/isar-community">Pub.dev</a>
+  <a href="https://pub.dev/packages/isar_community">Pub.dev</a>
 </p>
 
 > #### Isar [ee-zahr]:
