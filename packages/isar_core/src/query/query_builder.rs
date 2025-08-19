@@ -20,7 +20,7 @@ pub struct QueryBuilder<'a> {
 }
 
 impl<'a> QueryBuilder<'a> {
-    pub(crate) fn new(collection: &'a IsarCollection) -> QueryBuilder {
+    pub(crate) fn new(collection: &'a IsarCollection) -> QueryBuilder<'a> {
         QueryBuilder {
             collection,
             where_clauses: None,

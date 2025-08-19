@@ -106,6 +106,15 @@ void _initializePath(String? libraryPath) {
   }
 
   IC = bindings;
+  // Print libmdbx version information when available.
+  try {
+    final mdbxVersion = IC.isar_mdbx_version().cast<Utf8>().toDartString();
+    // Visible in dev logs alongside inspector banner
+    // ignore: avoid_print
+    print('IsarCore using libmdbx: $mdbxVersion');
+  } catch (_) {
+    // Older cores may not have this symbol, ignore.
+  }
   isarClose = dylib.lookup('isar_instance_close');
   isarQueryFree = dylib.lookup('isar_q_free');
   _isarInitialized = true;

@@ -4,7 +4,6 @@ use crate::mdbx::cursor::Cursor;
 use crate::mdbx::db::Db;
 use crate::object::id::{BytesToId, IdToBytes};
 use crate::object::isar_object::IsarObject;
-use std::ops::Deref;
 use xxhash_rust::xxh3::xxh3_64_with_seed;
 
 #[derive(Clone)]
@@ -62,7 +61,7 @@ impl IsarLink {
         let mut target_cursor = cursors.get_cursor(self.target_db)?;
         self.iter_ids(cursors, id, |_, link_target_key| {
             if let Some((id_bytes, object)) = target_cursor.move_to(&link_target_key)? {
-                callback(id_bytes.deref().to_id(), IsarObject::from_bytes(&object))
+                callback(id_bytes.to_id(), IsarObject::from_bytes(&object))
             } else {
                 Err(IsarError::DbCorrupted {
                     message: "Target object does not exist".to_string(),

@@ -1,3 +1,24 @@
+## 3.2.0-dev.2
+
+### Fixes
+
+- Fixed iOS targeting
+
+## 3.2.0-dev.1
+
+### Features  
+- Added Android Namespaces support.  
+- Added support for Android 16KB page size issue. ([#120](https://github.com/isar-community/isar/issues/120))
+
+### Updates  
+- Fixed Rust toolchain to version `1.88`
+- Upgraded Gradle dependencies
+- Updated package `source_gen` to `^2.0.0` ([#118](https://github.com/isar-community/isar/issues/118), [#122](https://github.com/isar-community/isar/pull/122))
+- Updated `libmdbx` to `0.13.7`. ([#1](https://github.com/isar-community/isar-community/issues/1), [#123](https://github.com/isar-community/isar/issues/123))
+
+### Breaking
+- Renamed the package to `isar_community`
+
 ## 3.1.8
 
 ### Fixes

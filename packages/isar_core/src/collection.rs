@@ -17,7 +17,6 @@ use intmap::IntMap;
 use itertools::Itertools;
 use serde_json::Value;
 use std::cell::Cell;
-use std::ops::Deref;
 use xxhash_rust::xxh3::xxh3_64;
 
 pub struct IsarCollection {
@@ -78,7 +77,7 @@ impl IsarCollection {
     pub(crate) fn init_auto_increment(&self, cursors: &IsarCursors) -> Result<()> {
         let mut cursor = cursors.get_cursor(self.db)?;
         if let Some((key, _)) = cursor.move_to_last()? {
-            let id = key.deref().to_id();
+            let id = key.to_id();
             self.update_auto_increment(id);
         }
         Ok(())

@@ -72,51 +72,39 @@ impl<'txn> Cursor<'txn> {
     }
 
     pub fn move_to<K: Key>(&mut self, key: &K) -> Result<Option<KeyVal<'txn>>> {
-        self.op_get(
-            ffi::MDBX_cursor_op::MDBX_SET_KEY,
-            Some(&key.as_bytes()),
-            None,
-        )
+        self.op_get(ffi::MDBX_SET_KEY, Some(&key.as_bytes()), None)
     }
 
     pub fn move_to_key_val<K: Key>(&mut self, key: &K, val: &[u8]) -> Result<Option<KeyVal<'txn>>> {
-        self.op_get(
-            ffi::MDBX_cursor_op::MDBX_GET_BOTH,
-            Some(&key.as_bytes()),
-            Some(val),
-        )
+        self.op_get(ffi::MDBX_GET_BOTH, Some(&key.as_bytes()), Some(val))
     }
 
     fn move_to_gte<K: Key>(&mut self, key: &K) -> Result<Option<KeyVal<'txn>>> {
-        self.op_get(
-            ffi::MDBX_cursor_op::MDBX_SET_RANGE,
-            Some(&key.as_bytes()),
-            None,
-        )
+        self.op_get(ffi::MDBX_SET_RANGE, Some(&key.as_bytes()), None)
     }
 
     fn move_to_next_dup(&mut self) -> Result<Option<KeyVal<'txn>>> {
-        self.op_get(ffi::MDBX_cursor_op::MDBX_NEXT_DUP, None, None)
+        self.op_get(ffi::MDBX_NEXT_DUP, None, None)
     }
 
     fn move_to_last_dup(&mut self) -> Result<Option<KeyVal<'txn>>> {
-        self.op_get(ffi::MDBX_cursor_op::MDBX_LAST_DUP, None, None)
+        self.op_get(ffi::MDBX_LAST_DUP, None, None)
     }
 
     fn move_to_prev_no_dup(&mut self) -> Result<Option<KeyVal<'txn>>> {
-        self.op_get(ffi::MDBX_cursor_op::MDBX_PREV_NODUP, None, None)
+        self.op_get(ffi::MDBX_PREV_NODUP, None, None)
     }
 
     pub fn move_to_next(&mut self) -> Result<Option<KeyVal<'txn>>> {
-        self.op_get(ffi::MDBX_cursor_op::MDBX_NEXT, None, None)
+        self.op_get(ffi::MDBX_NEXT, None, None)
     }
 
     pub fn move_to_first(&mut self) -> Result<Option<KeyVal<'txn>>> {
-        self.op_get(ffi::MDBX_cursor_op::MDBX_FIRST, None, None)
+        self.op_get(ffi::MDBX_FIRST, None, None)
     }
 
     pub fn move_to_last(&mut self) -> Result<Option<KeyVal<'txn>>> {
-        self.op_get(ffi::MDBX_cursor_op::MDBX_LAST, None, None)
+        self.op_get(ffi::MDBX_LAST, None, None)
     }
 
     pub fn put<K: Key>(&mut self, key: &K, data: &[u8]) -> Result<()> {
@@ -143,11 +131,11 @@ impl<'txn> Cursor<'txn> {
         ascending: bool,
         mut callback: impl FnMut(&mut Self, &'txn [u8], &'txn [u8]) -> Result<bool>,
     ) -> Result<bool> {
-        let next = match (ascending, skip_duplicates) {
-            (true, true) => ffi::MDBX_cursor_op::MDBX_NEXT_NODUP,
-            (true, false) => ffi::MDBX_cursor_op::MDBX_NEXT,
-            (false, true) => ffi::MDBX_cursor_op::MDBX_PREV_NODUP,
-            (false, false) => ffi::MDBX_cursor_op::MDBX_PREV,
+        let next: ffi::MDBX_cursor_op = match (ascending, skip_duplicates) {
+            (true, true) => ffi::MDBX_NEXT_NODUP,
+            (true, false) => ffi::MDBX_NEXT,
+            (false, true) => ffi::MDBX_PREV_NODUP,
+            (false, false) => ffi::MDBX_PREV,
         };
         loop {
             if let Some((key, val)) = self.op_get(next, None, None)? {

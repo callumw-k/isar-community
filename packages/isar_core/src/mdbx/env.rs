@@ -24,10 +24,11 @@ impl Env {
         let mut env: *mut ffi::MDBX_env = ptr::null_mut();
         unsafe {
             mdbx_result(ffi::mdbx_env_create(&mut env))?;
+            // Set maximum number of DBs via options API (stable across 0.12/0.13)
             mdbx_result(ffi::mdbx_env_set_option(
                 env,
-                ffi::MDBX_option_t::MDBX_opt_max_db,
-                max_dbs,
+                ffi::MDBX_opt_max_db,
+                max_dbs as u64,
             ))?;
 
             let mut flags = ffi::MDBX_NOTLS | ffi::MDBX_COALESCE | ffi::MDBX_NOSUBDIR;

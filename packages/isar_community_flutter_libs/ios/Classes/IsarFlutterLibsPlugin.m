@@ -1,5 +1,5 @@
 #import "IsarFlutterLibsPlugin.h"
-#if __has_include(<isar_community_flutter_libs/isar_flutter_libs-Swift.h>)
+#if __has_include(<isar_community_flutter_libs/isar_community_flutter_libs-Swift.h>)
 #import <isar_community_flutter_libs/isar_community_flutter_libs-Swift.h>
 #else
 // Support project import fallback if the generated compatibility header

@@ -140,7 +140,7 @@ impl<'a> IsarObject<'a> {
         Some(str)
     }
 
-    pub fn read_object(&'a self, offset: usize) -> Option<IsarObject> {
+    pub fn read_object(&'a self, offset: usize) -> Option<IsarObject<'a>> {
         let bytes = self.read_byte_list(offset)?;
         Some(IsarObject::from_bytes(bytes))
     }

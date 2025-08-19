@@ -1280,6 +1280,16 @@ class IsarCoreBindings {
   late final _isar_version =
       _isar_versionPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
 
+  ffi.Pointer<ffi.Char> isar_mdbx_version() {
+    return _isar_mdbx_version();
+  }
+
+  late final _isar_mdbx_versionPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
+          'isar_mdbx_version');
+  late final _isar_mdbx_version =
+      _isar_mdbx_versionPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+
   int isar_instance_create(
     ffi.Pointer<ffi.Pointer<CIsarInstance>> isar,
     ffi.Pointer<ffi.Char> name,

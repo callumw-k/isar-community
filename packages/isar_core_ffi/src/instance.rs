@@ -24,6 +24,11 @@ pub unsafe extern "C" fn isar_version() -> *const c_char {
 }
 
 #[no_mangle]
+pub unsafe extern "C" fn isar_mdbx_version() -> *const c_char {
+    MDBX_VERSION.as_ptr() as *const c_char
+}
+
+#[no_mangle]
 pub unsafe extern "C" fn isar_instance_create(
     isar: *mut *const IsarInstance,
     name: *const c_char,
