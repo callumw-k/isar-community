@@ -174,101 +174,82 @@ class _$PackageCWProxyImpl implements _$PackageCWProxy {
     Object? platforms = const $CopyWithPlaceholder(),
   }) {
     return Package(
-      name:
-          name == const $CopyWithPlaceholder()
-              ? _value.name
-              // ignore: cast_nullable_to_non_nullable
-              : name as String,
-      version:
-          version == const $CopyWithPlaceholder()
-              ? _value.version
-              // ignore: cast_nullable_to_non_nullable
-              : version as String,
-      isLatest:
-          isLatest == const $CopyWithPlaceholder()
-              ? _value.isLatest
-              // ignore: cast_nullable_to_non_nullable
-              : isLatest as bool,
-      homepage:
-          homepage == const $CopyWithPlaceholder()
-              ? _value.homepage
-              // ignore: cast_nullable_to_non_nullable
-              : homepage as String?,
-      documentation:
-          documentation == const $CopyWithPlaceholder()
-              ? _value.documentation
-              // ignore: cast_nullable_to_non_nullable
-              : documentation as String?,
-      description:
-          description == const $CopyWithPlaceholder()
-              ? _value.description
-              // ignore: cast_nullable_to_non_nullable
-              : description as String?,
-      dependencies:
-          dependencies == const $CopyWithPlaceholder()
-              ? _value.dependencies
-              // ignore: cast_nullable_to_non_nullable
-              : dependencies as List<Dependency>,
-      devDependencies:
-          devDependencies == const $CopyWithPlaceholder()
-              ? _value.devDependencies
-              // ignore: cast_nullable_to_non_nullable
-              : devDependencies as List<Dependency>,
-      published:
-          published == const $CopyWithPlaceholder()
-              ? _value.published
-              // ignore: cast_nullable_to_non_nullable
-              : published as DateTime,
-      points:
-          points == const $CopyWithPlaceholder()
-              ? _value.points
-              // ignore: cast_nullable_to_non_nullable
-              : points as int?,
-      likes:
-          likes == const $CopyWithPlaceholder()
-              ? _value.likes
-              // ignore: cast_nullable_to_non_nullable
-              : likes as int?,
-      popularity:
-          popularity == const $CopyWithPlaceholder()
-              ? _value.popularity
-              // ignore: cast_nullable_to_non_nullable
-              : popularity as double?,
-      publisher:
-          publisher == const $CopyWithPlaceholder()
-              ? _value.publisher
-              // ignore: cast_nullable_to_non_nullable
-              : publisher as String?,
-      dart:
-          dart == const $CopyWithPlaceholder()
-              ? _value.dart
-              // ignore: cast_nullable_to_non_nullable
-              : dart as bool?,
-      flutter:
-          flutter == const $CopyWithPlaceholder()
-              ? _value.flutter
-              // ignore: cast_nullable_to_non_nullable
-              : flutter as bool?,
-      flutterFavorite:
-          flutterFavorite == const $CopyWithPlaceholder()
-              ? _value.flutterFavorite
-              // ignore: cast_nullable_to_non_nullable
-              : flutterFavorite as bool?,
-      license:
-          license == const $CopyWithPlaceholder()
-              ? _value.license
-              // ignore: cast_nullable_to_non_nullable
-              : license as String?,
-      osiLicense:
-          osiLicense == const $CopyWithPlaceholder()
-              ? _value.osiLicense
-              // ignore: cast_nullable_to_non_nullable
-              : osiLicense as bool?,
-      platforms:
-          platforms == const $CopyWithPlaceholder()
-              ? _value.platforms
-              // ignore: cast_nullable_to_non_nullable
-              : platforms as List<SupportedPlatform>?,
+      name: name == const $CopyWithPlaceholder()
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String,
+      version: version == const $CopyWithPlaceholder()
+          ? _value.version
+          // ignore: cast_nullable_to_non_nullable
+          : version as String,
+      isLatest: isLatest == const $CopyWithPlaceholder()
+          ? _value.isLatest
+          // ignore: cast_nullable_to_non_nullable
+          : isLatest as bool,
+      homepage: homepage == const $CopyWithPlaceholder()
+          ? _value.homepage
+          // ignore: cast_nullable_to_non_nullable
+          : homepage as String?,
+      documentation: documentation == const $CopyWithPlaceholder()
+          ? _value.documentation
+          // ignore: cast_nullable_to_non_nullable
+          : documentation as String?,
+      description: description == const $CopyWithPlaceholder()
+          ? _value.description
+          // ignore: cast_nullable_to_non_nullable
+          : description as String?,
+      dependencies: dependencies == const $CopyWithPlaceholder()
+          ? _value.dependencies
+          // ignore: cast_nullable_to_non_nullable
+          : dependencies as List<Dependency>,
+      devDependencies: devDependencies == const $CopyWithPlaceholder()
+          ? _value.devDependencies
+          // ignore: cast_nullable_to_non_nullable
+          : devDependencies as List<Dependency>,
+      published: published == const $CopyWithPlaceholder()
+          ? _value.published
+          // ignore: cast_nullable_to_non_nullable
+          : published as DateTime,
+      points: points == const $CopyWithPlaceholder()
+          ? _value.points
+          // ignore: cast_nullable_to_non_nullable
+          : points as int?,
+      likes: likes == const $CopyWithPlaceholder()
+          ? _value.likes
+          // ignore: cast_nullable_to_non_nullable
+          : likes as int?,
+      popularity: popularity == const $CopyWithPlaceholder()
+          ? _value.popularity
+          // ignore: cast_nullable_to_non_nullable
+          : popularity as double?,
+      publisher: publisher == const $CopyWithPlaceholder()
+          ? _value.publisher
+          // ignore: cast_nullable_to_non_nullable
+          : publisher as String?,
+      dart: dart == const $CopyWithPlaceholder()
+          ? _value.dart
+          // ignore: cast_nullable_to_non_nullable
+          : dart as bool?,
+      flutter: flutter == const $CopyWithPlaceholder()
+          ? _value.flutter
+          // ignore: cast_nullable_to_non_nullable
+          : flutter as bool?,
+      flutterFavorite: flutterFavorite == const $CopyWithPlaceholder()
+          ? _value.flutterFavorite
+          // ignore: cast_nullable_to_non_nullable
+          : flutterFavorite as bool?,
+      license: license == const $CopyWithPlaceholder()
+          ? _value.license
+          // ignore: cast_nullable_to_non_nullable
+          : license as String?,
+      osiLicense: osiLicense == const $CopyWithPlaceholder()
+          ? _value.osiLicense
+          // ignore: cast_nullable_to_non_nullable
+          : osiLicense as bool?,
+      platforms: platforms == const $CopyWithPlaceholder()
+          ? _value.platforms
+          // ignore: cast_nullable_to_non_nullable
+          : platforms as List<SupportedPlatform>?,
     );
   }
 }
@@ -536,14 +517,12 @@ Package _packageDeserialize(
     likes: reader.readIntOrNull(offsets[10]),
     name: reader.readString(offsets[11]),
     osiLicense: reader.readBoolOrNull(offsets[12]),
-    platforms:
-        reader
-            .readByteList(offsets[13])
-            ?.map(
-              (e) =>
-                  _PackageplatformsValueEnumMap[e] ?? SupportedPlatform.android,
-            )
-            .toList(),
+    platforms: reader
+        .readByteList(offsets[13])
+        ?.map(
+          (e) => _PackageplatformsValueEnumMap[e] ?? SupportedPlatform.android,
+        )
+        .toList(),
     points: reader.readIntOrNull(offsets[14]),
     popularity: reader.readFloatOrNull(offsets[15]),
     published: reader.readDateTime(offsets[16]),

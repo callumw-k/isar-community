@@ -32,8 +32,8 @@ class IsarCollectionImpl<OBJ> extends IsarCollection<OBJ> {
   @override
   final CollectionSchema<OBJ> schema;
 
-  late final _offsets = isar.offsets[OBJ]!;
-  late final _staticSize = _offsets.last;
+  late final List<int> _offsets = isar.offsets[OBJ]!;
+  late final int _staticSize = _offsets.last;
 
   @pragma('vm:prefer-inline')
   OBJ deserializeObject(CObject cObj) {
@@ -247,8 +247,8 @@ class IsarCollectionImpl<OBJ> extends IsarCollection<OBJ> {
 
   int putByIndexSyncInternal({
     required Txn txn,
-    int? indexId,
     required OBJ object,
+    int? indexId,
     bool saveLinks = true,
   }) {
     final cObjPtr = txn.getCObject();

@@ -117,8 +117,9 @@ class IsarAnalyzer {
       err('Class must be public.', modelClass);
     }
 
-    final constructor = modelClass.constructors2
-        .firstOrNullWhere((ConstructorElement2 c) => null == c.firstFragment.periodOffset);
+    final constructor = modelClass.constructors2.firstOrNullWhere(
+      (ConstructorElement2 c) => null == c.firstFragment.periodOffset,
+    );
     if (constructor == null) {
       err('Class needs an unnamed constructor.', modelClass);
     }
@@ -150,9 +151,10 @@ class IsarAnalyzer {
       );
     }
 
-    final unknownConstructorParameter = constructor.formalParameters.firstOrNullWhere(
-      (p) => p.isRequired && properties.none((e) => e.dartName == p.name3),
-    );
+    final unknownConstructorParameter = constructor.formalParameters
+        .firstOrNullWhere(
+          (p) => p.isRequired && properties.none((e) => e.dartName == p.name3),
+        );
     if (unknownConstructorParameter != null) {
       err(
         'Constructor parameter does not match a property.',
@@ -205,14 +207,16 @@ class IsarAnalyzer {
       if (enumeratedAnn.type == EnumType.ordinal) {
         isarType = dartType.isDartCoreList ? IsarType.byteList : IsarType.byte;
         enumMap = {
-          for (var i = 0; i < enumElements.length; i++) enumElements[i].name3!: i,
+          for (var i = 0; i < enumElements.length; i++)
+            enumElements[i].name3!: i,
         };
         enumPropertyName = 'index';
       } else if (enumeratedAnn.type == EnumType.ordinal32) {
         isarType = dartType.isDartCoreList ? IsarType.intList : IsarType.int;
 
         enumMap = {
-          for (var i = 0; i < enumElements.length; i++) enumElements[i].name3!: i,
+          for (var i = 0; i < enumElements.length; i++)
+            enumElements[i].name3!: i,
         };
         enumPropertyName = 'index';
       } else if (enumeratedAnn.type == EnumType.name) {
@@ -252,7 +256,8 @@ class IsarAnalyzer {
         for (final element in enumElements) {
           final property =
               element.computeConstantValue()!.getField(enumPropertyName)!;
-          final propertyValue = property.toBoolValue() ??
+          final propertyValue =
+              property.toBoolValue() ??
               property.toIntValue() ??
               property.toDoubleValue() ??
               property.toStringValue();
@@ -284,7 +289,8 @@ class IsarAnalyzer {
     }
 
     final nullable = dartType.nullabilitySuffix != NullabilitySuffix.none;
-    final elementNullable = isarType.isList &&
+    final elementNullable =
+        isarType.isList &&
         dartType.scalarType.nullabilitySuffix != NullabilitySuffix.none;
 
     if ((isarType == IsarType.byte && nullable) ||
@@ -292,8 +298,9 @@ class IsarAnalyzer {
       err('Bytes must not be nullable.', property);
     }
 
-    final constructorParameter =
-        constructor.formalParameters.firstOrNullWhere((p) => p.name3 == property.name3);
+    final constructorParameter = constructor.formalParameters.firstOrNullWhere(
+      (p) => p.name3 == property.name3,
+    );
     int? constructorPosition;
     late PropertyDeser deserialize;
     if (constructorParameter != null) {
@@ -303,11 +310,13 @@ class IsarAnalyzer {
           constructorParameter,
         );
       }
-      deserialize = constructorParameter.isNamed
-          ? PropertyDeser.namedParam
-          : PropertyDeser.positionalParam;
-      constructorPosition =
-          constructor.formalParameters.indexOf(constructorParameter);
+      deserialize =
+          constructorParameter.isNamed
+              ? PropertyDeser.namedParam
+              : PropertyDeser.positionalParam;
+      constructorPosition = constructor.formalParameters.indexOf(
+        constructorParameter,
+      );
     } else {
       deserialize =
           property.setter2 == null ? PropertyDeser.none : PropertyDeser.assign;
@@ -316,10 +325,11 @@ class IsarAnalyzer {
     return ObjectProperty(
       dartName: property.displayName,
       isarName: property.isarName,
-      typeClassName: dartType.scalarType.element!.name!,
-      targetIsarName: isarType.containsObject
-          ? dartType.scalarType.element3!.isarName
-          : null,
+      typeClassName: dartType.scalarType.element3!.name3!,
+      targetIsarName:
+          isarType.containsObject
+              ? dartType.scalarType.element3!.isarName
+              : null,
       isarType: isarType,
       isId: dartType.isIsarId,
       enumMap: enumMap,
@@ -355,8 +365,9 @@ class IsarAnalyzer {
     final backlinkAnn = property.backlinkAnnotation;
     String? targetLinkIsarName;
     if (backlinkAnn != null) {
-      final targetProperty = targetCol.allAccessors
-          .firstOrNullWhere((e) => e.displayName == backlinkAnn.to);
+      final targetProperty = targetCol.allAccessors.firstOrNullWhere(
+        (e) => e.displayName == backlinkAnn.to,
+      );
       if (targetProperty == null) {
         err('Target of Backlink does not exist', property);
       } else if (targetProperty.backlinkAnnotation != null) {
@@ -375,7 +386,7 @@ class IsarAnalyzer {
       dartName: property.displayName,
       isarName: property.isarName,
       targetLinkIsarName: targetLinkIsarName,
-      targetCollectionDartName: linkType.element!.name!,
+      targetCollectionDartName: linkType.element3!.name3!,
       targetCollectionIsarName: targetCol.isarName,
       isSingle: property.isLink,
     );
@@ -385,19 +396,22 @@ class IsarAnalyzer {
     List<ObjectProperty> properties,
     PropertyInducingElement2 element,
   ) sync* {
-    final property =
-        properties.firstOrNullWhere((it) => it.dartName == element.name3);
+    final property = properties.firstOrNullWhere(
+      (it) => it.dartName == element.name3,
+    );
     if (property == null || property.isId) {
       return;
     }
 
     for (final index in element.indexAnnotations) {
       final indexProperties = <ObjectIndexProperty>[];
-      final isString = property.isarType == IsarType.string ||
+      final isString =
+          property.isarType == IsarType.string ||
           property.isarType == IsarType.stringList;
-      final defaultType = property.isarType.isList || isString
-          ? IndexType.hash
-          : IndexType.value;
+      final defaultType =
+          property.isarType.isList || isString
+              ? IndexType.hash
+              : IndexType.value;
 
       indexProperties.add(
         ObjectIndexProperty(
@@ -407,18 +421,21 @@ class IsarAnalyzer {
         ),
       );
       for (final c in index.composite) {
-        final compositeProperty =
-            properties.firstOrNullWhere((it) => it.dartName == c.property);
+        final compositeProperty = properties.firstOrNullWhere(
+          (it) => it.dartName == c.property,
+        );
         if (compositeProperty == null) {
           err('Property does not exist: "${c.property}".', element);
         } else if (compositeProperty.isId) {
           err('Ids cannot be indexed', element);
         } else {
-          final isString = compositeProperty.isarType == IsarType.string ||
+          final isString =
+              compositeProperty.isarType == IsarType.string ||
               compositeProperty.isarType == IsarType.stringList;
-          final defaultType = compositeProperty.isarType.isList || isString
-              ? IndexType.hash
-              : IndexType.value;
+          final defaultType =
+              compositeProperty.isarType.isList || isString
+                  ? IndexType.hash
+                  : IndexType.value;
           indexProperties.add(
             ObjectIndexProperty(
               property: compositeProperty,
@@ -429,7 +446,8 @@ class IsarAnalyzer {
         }
       }
 
-      final name = index.name ??
+      final name =
+          index.name ??
           indexProperties.map((e) => e.property.isarName).join('_');
       checkIsarName(name, element);
 

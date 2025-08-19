@@ -151,9 +151,11 @@ String generateSerialize(ObjectInfo object) {
     if (property.isEnum) {
       final nOp = property.nullable ? '?' : '';
       final elNOp = property.elementNullable ? '?' : '';
-      value = property.isarType.isList
-          ? '$value$nOp.map((e) => e$elNOp.${property.enumProperty}).toList()'
-          : '$value$nOp.${property.enumProperty}';
+      value =
+          property.isarType.isList
+              ? '$value$nOp.map('
+              '(e) => e$elNOp.${property.enumProperty}).toList()'
+              : '$value$nOp.${property.enumProperty}';
     }
 
     switch (property.isarType) {
@@ -221,11 +223,13 @@ String generateDeserialize(ObjectInfo object) {
     ) {
       final object = ${object.dartName}(''';
 
-  final propertiesByMode =
-      object.properties.groupBy((ObjectProperty p) => p.deserialize);
+  final propertiesByMode = object.properties.groupBy(
+    (ObjectProperty p) => p.deserialize,
+  );
   final positional = propertiesByMode[PropertyDeser.positionalParam] ?? [];
-  final sortedPositional =
-      positional.sortedBy((ObjectProperty p) => p.constructorPosition!);
+  final sortedPositional = positional.sortedBy(
+    (ObjectProperty p) => p.constructorPosition!,
+  );
   for (final p in sortedPositional) {
     final index = object.objectProperties.indexOf(p);
     final deser = _deserializeProperty(object, p, 'offsets[$index]');

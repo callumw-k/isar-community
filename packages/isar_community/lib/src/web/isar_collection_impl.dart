@@ -32,7 +32,7 @@ class IsarCollectionImpl<OBJ> extends IsarCollection<OBJ> {
   @override
   String get name => schema.name;
 
-  late final _offsets = isar.offsets[OBJ]!;
+  late final List<int> _offsets = isar.offsets[OBJ]!;
 
   @tryInline
   OBJ deserializeObject(Object object) {

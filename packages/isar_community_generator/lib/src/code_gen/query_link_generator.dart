@@ -22,8 +22,12 @@ String generateQueryLinks(ObjectInfo oi) {
           });
         }''';
     } else {
-      code += generateLength(oi.dartName, link.dartName,
-          (lower, includeLower, upper, includeUpper) {
+      code += generateLength(oi.dartName, link.dartName, (
+        lower,
+        includeLower,
+        upper,
+        includeUpper,
+      ) {
         return '''
         QueryBuilder.apply(this, (query) {
           return query.linkLength(r'${link.isarName}', $lower, $includeLower, $upper, $includeUpper);
