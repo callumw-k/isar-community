@@ -12,13 +12,12 @@ abstract class BaseModel {
 
   Id identifier = Isar.autoIncrement;
 
+  @Index()
+  int get nameHash => name.hashCode;
 
   final String name;
 
   final String nickname;
-
-  @Index()
-  int get nameHash => name.hashCode;
 
   // ignore:unused_field
   final float _privateProperty = 0;
@@ -36,7 +35,6 @@ class InheritingModel extends BaseModel {
     required super.nickname,
     required this.age,
   });
-
 
   final int age;
 
