@@ -218,7 +218,7 @@ class IsarAnalyzer {
       } else if (enumeratedAnn.type == EnumType.name) {
         isarType =
             dartType.isDartCoreList ? IsarType.stringList : IsarType.string;
-        enumMap = {for (final value in enumElements) value.name: value.name};
+        enumMap = {for (final value in enumElements) value.name3!: value.name3};
         enumPropertyName = 'name';
       } else {
         enumPropertyName = enumeratedAnn.property;
