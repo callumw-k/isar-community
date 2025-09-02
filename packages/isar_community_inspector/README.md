@@ -1,3 +1,4 @@
 ## Isar Inspector
 
-<img src="https://raw.githubusercontent.com/isar/isar/main/.github/assets/isar-inspector.png?sanitize=true">
+<img src="https://raw.githubusercontent.com/isar-community/isar-community/refs/heads/v3/.github/assets/inspector.gif">
+          
