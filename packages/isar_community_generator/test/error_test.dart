@@ -58,7 +58,6 @@ void main() {
                 await File(
                   '$isarPath/src/annotations/type.dart',
                 ).readAsString(),
-            // Add core type definitions
             'isar_community|lib/src/isar.dart':
                 await File('$isarPath/src/isar.dart').readAsString(),
             'isar_community|lib/src/isar_link.dart':
