@@ -72,10 +72,3 @@ isar-dart.h
 
 # Coverage
 coverage/
-
-# FVM Version Cache
-.fvm/
-.fvmrc
-
-# User defined tooling
-tool/contributor
