@@ -110,8 +110,9 @@ void main() {
 
         final listener = Listener<void>(col.watchLazy());
 
-        await isar
-            .writeTxn(() => col.deleteAllByValue([obj1.value, 'something']));
+        await isar.writeTxn(
+          () => col.deleteAllByValue([obj1.value, 'something']),
+        );
         await listener.next;
 
         await isar.writeTxn(() => col.deleteAllByValue([obj2.value]));
@@ -208,8 +209,9 @@ void main() {
         await isar.writeTxn(() => col.deleteAllByValue(['AAA', obj1.value]));
         await listenerLazy.next;
 
-        await isar
-            .writeTxn(() => col.deleteAllByValue([obj2.value, obj3.value]));
+        await isar.writeTxn(
+          () => col.deleteAllByValue([obj2.value, obj3.value]),
+        );
         expect(await listener.next, null);
 
         await listenerLazy.done();
@@ -219,8 +221,9 @@ void main() {
 
     group('Query', () {
       isarTest('.put()', () async {
-        final listenerLazy =
-            Listener(col.where().valueEqualTo('Hello').watchLazy());
+        final listenerLazy = Listener(
+          col.where().valueEqualTo('Hello').watchLazy(),
+        );
         final listener = Listener(col.where().valueEqualTo('Hi').watch());
 
         await isar.tWriteTxn(() => col.tPut(obj1));
@@ -234,8 +237,9 @@ void main() {
       });
 
       isarTest('.putAll()', () async {
-        final listenerLazy =
-            Listener(col.filter().valueContains('H').watchLazy());
+        final listenerLazy = Listener(
+          col.filter().valueContains('H').watchLazy(),
+        );
         final listener = Listener(col.filter().valueContains('H').watch());
 
         await isar.tWriteTxn(() => col.tPutAll([obj1, obj2]));
@@ -251,8 +255,9 @@ void main() {
       isarTest('.delete()', () async {
         await isar.tWriteTxn(() => col.tPutAll([obj1, obj2, obj3]));
 
-        final listenerLazy =
-            Listener(col.where().valueEqualTo('Hello').watchLazy());
+        final listenerLazy = Listener(
+          col.where().valueEqualTo('Hello').watchLazy(),
+        );
         final listener = Listener(col.where().valueEqualTo('Hi').watch());
 
         await isar.tWriteTxn(() => col.tDelete(1));
@@ -274,8 +279,9 @@ void main() {
       isarTest('.deleteAll()', () async {
         await isar.tWriteTxn(() => col.tPutAll([obj1, obj2, obj3]));
 
-        final listenerLazy =
-            Listener(col.filter().valueContains('H').watchLazy());
+        final listenerLazy = Listener(
+          col.filter().valueContains('H').watchLazy(),
+        );
         final listener = Listener(col.filter().valueContains('H').watch());
 
         await isar.tWriteTxn(() => col.tDeleteAll([1, 2]));
@@ -295,8 +301,9 @@ void main() {
       isarTest('.deleteBy()', () async {
         await isar.writeTxn(() => col.putAll([obj1, obj2, obj3]));
 
-        final listenerLazy =
-            Listener(col.where().valueEqualTo('Hello').watchLazy());
+        final listenerLazy = Listener(
+          col.where().valueEqualTo('Hello').watchLazy(),
+        );
         final listener = Listener(col.where().valueEqualTo('Hi').watch());
 
         await isar.writeTxn(() => col.deleteByValue(obj1.value));
@@ -318,12 +325,14 @@ void main() {
       isarTest('.deleteAllByValue()', () async {
         await isar.writeTxn(() => col.putAll([obj1, obj2, obj3]));
 
-        final listenerLazy =
-            Listener(col.filter().valueContains('H').watchLazy());
+        final listenerLazy = Listener(
+          col.filter().valueContains('H').watchLazy(),
+        );
         final listener = Listener(col.filter().valueContains('H').watch());
 
-        await isar
-            .writeTxn(() => col.deleteAllByValue([obj1.value, obj2.value]));
+        await isar.writeTxn(
+          () => col.deleteAllByValue([obj1.value, obj2.value]),
+        );
         await listenerLazy.next;
         expect(await listener.next, <dynamic>[]);
 

@@ -6,9 +6,7 @@ part 'collection_size_test.g.dart';
 
 @collection
 class ModelA {
-  ModelA({
-    required this.name,
-  });
+  ModelA({required this.name});
 
   Id id = Isar.autoIncrement;
 
@@ -118,15 +116,17 @@ void main() {
       await isar.tWriteTxn(() => isar.modelAs.tPutAll([objA0, objA1, objA3]));
 
       final sizeAWithoutIndexes = await isar.modelAs.tGetSize();
-      final sizeAWithIndexes =
-          await isar.modelAs.tGetSize(includeIndexes: true);
+      final sizeAWithIndexes = await isar.modelAs.tGetSize(
+        includeIndexes: true,
+      );
       expect(sizeAWithIndexes, greaterThan(sizeAWithoutIndexes));
 
       await isar.tWriteTxn(() => isar.modelBs.tPutAll([objB0, objB3, objB4]));
 
       final sizeBWithoutIndexes = await isar.modelBs.tGetSize();
-      final sizeBWithIndexes =
-          await isar.modelBs.tGetSize(includeIndexes: true);
+      final sizeBWithIndexes = await isar.modelBs.tGetSize(
+        includeIndexes: true,
+      );
       // ModelB has no indexes, so should stay the same
       expect(sizeBWithIndexes, sizeBWithoutIndexes);
     });

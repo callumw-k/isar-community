@@ -21,16 +21,18 @@ class PropertyValue extends StatelessWidget {
     final value = this.value;
 
     if (enumMap != null) {
-      final enumName = enumMap!.entries.firstWhere(
-        (e) => e.value == value,
-        orElse: () {
-          if (type == IsarType.byte || type == IsarType.byteList) {
-            return enumMap!.entries.first;
-          } else {
-            return const MapEntry('null', null);
-          }
-        },
-      ).key;
+      final enumName = enumMap!.entries
+          .firstWhere(
+            (e) => e.value == value,
+            orElse: () {
+              if (type == IsarType.byte || type == IsarType.byteList) {
+                return enumMap!.entries.first;
+              } else {
+                return const MapEntry('null', null);
+              }
+            },
+          )
+          .key;
       return GestureDetector(
         onTapDown: onUpdate == null
             ? null
@@ -45,9 +47,7 @@ class PropertyValue extends StatelessWidget {
                   ),
                   items: [
                     if (type != IsarType.byte && type != IsarType.byteList)
-                      const PopupMenuItem<dynamic>(
-                        child: Text('null'),
-                      ),
+                      const PopupMenuItem<dynamic>(child: Text('null')),
                     for (final enumName in enumMap!.keys)
                       PopupMenuItem(
                         value: enumMap![enumName],
@@ -83,17 +83,9 @@ class PropertyValue extends StatelessWidget {
                       0,
                     ),
                     items: const [
-                      PopupMenuItem<bool?>(
-                        child: Text('null'),
-                      ),
-                      PopupMenuItem(
-                        value: true,
-                        child: Text('true'),
-                      ),
-                      PopupMenuItem(
-                        value: false,
-                        child: Text('false'),
-                      ),
+                      PopupMenuItem<bool?>(child: Text('null')),
+                      PopupMenuItem(value: true, child: Text('true')),
+                      PopupMenuItem(value: false, child: Text('false')),
                     ],
                   );
                   onUpdate?.call(newValue);
@@ -120,8 +112,8 @@ class PropertyValue extends StatelessWidget {
           text: value == null
               ? null
               : value == null
-                  ? null
-                  : '$value',
+              ? null
+              : '$value',
         );
         final numFocus = FocusNode();
         numFocus.addListener(() {
@@ -195,8 +187,9 @@ class PropertyValue extends StatelessWidget {
             final value = strController.text;
             String? strOrNull;
             if (value.startsWith('"') && value.endsWith('"')) {
-              strOrNull =
-                  value.substring(1, value.length - 1).replaceAll('⤵', '\n');
+              strOrNull = value
+                  .substring(1, value.length - 1)
+                  .replaceAll('⤵', '\n');
             }
             onUpdate?.call(strOrNull);
           }

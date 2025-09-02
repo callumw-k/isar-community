@@ -46,12 +46,7 @@ class Media {
 
 @embedded
 class Sizes {
-  Sizes({
-    this.thumb,
-    this.medium,
-    this.small,
-    this.large,
-  });
+  Sizes({this.thumb, this.medium, this.small, this.large});
 
   Size? thumb;
 
@@ -64,11 +59,7 @@ class Sizes {
 
 @embedded
 class Size {
-  Size({
-    this.w,
-    this.h,
-    this.resize,
-  });
+  Size({this.w, this.h, this.resize});
 
   int? w;
 
@@ -97,11 +88,7 @@ class AdditionalMediaInfo {
 
 @embedded
 class VideoInfo {
-  VideoInfo({
-    this.aspectRatio,
-    this.durationMillis,
-    this.variants,
-  });
+  VideoInfo({this.aspectRatio, this.durationMillis, this.variants});
 
   List<int>? aspectRatio;
 
@@ -112,11 +99,7 @@ class VideoInfo {
 
 @embedded
 class Variant {
-  Variant({
-    this.bitrate,
-    this.contentType,
-    this.url,
-  });
+  Variant({this.bitrate, this.contentType, this.url});
 
   int? bitrate;
 

@@ -58,10 +58,11 @@ void main() {
     });
 
     isarTest('.elementIsNotNull()', () async {
-      await qEqual(
-        col.where().filter().listElementIsNotNull(),
-        [obj1, obj2, obj3],
-      );
+      await qEqual(col.where().filter().listElementIsNotNull(), [
+        obj1,
+        obj2,
+        obj3,
+      ]);
     });
 
     isarTest('.isNull()', () async {
@@ -69,10 +70,13 @@ void main() {
     });
 
     isarTest('.isNotNull()', () async {
-      await qEqual(
-        col.where().filter().listIsNotNull(),
-        [objEmpty, obj1, obj2, obj3, obj4],
-      );
+      await qEqual(col.where().filter().listIsNotNull(), [
+        objEmpty,
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+      ]);
     });
   });
 }

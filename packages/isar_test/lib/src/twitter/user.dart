@@ -74,10 +74,7 @@ class User {
 
 @embedded
 class UserEntities {
-  UserEntities({
-    this.url,
-    this.description,
-  });
+  UserEntities({this.url, this.description});
 
   UserEntityUrl? url;
 
@@ -86,9 +83,7 @@ class UserEntities {
 
 @embedded
 class UserEntityUrl {
-  UserEntityUrl({
-    this.urls,
-  });
+  UserEntityUrl({this.urls});
 
   List<Url>? urls;
 }

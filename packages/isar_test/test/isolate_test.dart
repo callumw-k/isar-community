@@ -1,5 +1,4 @@
 @TestOn('vm')
-
 import 'dart:isolate';
 
 import 'package:isar_community/isar.dart';
@@ -60,11 +59,7 @@ void main() {
     });
 
     final port = ReceivePort();
-    await Isolate.spawn(
-      _isolateFunc,
-      port.sendPort,
-      onError: port.sendPort,
-    );
+    await Isolate.spawn(_isolateFunc, port.sendPort, onError: port.sendPort);
     final result = await port.first;
     expect(result, true);
 

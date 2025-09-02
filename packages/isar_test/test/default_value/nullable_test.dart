@@ -160,8 +160,9 @@ void main() {
       final isarName = isar1.name;
       await isar1.close();
 
-      final isar2 =
-          await openTempIsar([NullableListModelSchema], name: isarName);
+      final isar2 = await openTempIsar([
+        NullableListModelSchema,
+      ], name: isarName);
       final obj = (await isar2.nullableListModels.tGet(0))!;
       expect(obj.boolValue, null);
       expect(obj.shortValue, null);
@@ -181,8 +182,9 @@ void main() {
       final isarName = isar1.name;
       await isar1.close();
 
-      final isar2 =
-          await openTempIsar([NullableListModelSchema], name: isarName);
+      final isar2 = await openTempIsar([
+        NullableListModelSchema,
+      ], name: isarName);
       expect(
         await isar2.nullableListModels.where().boolValueProperty().tFindFirst(),
         null,

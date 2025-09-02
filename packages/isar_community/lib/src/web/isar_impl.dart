@@ -41,9 +41,7 @@ class IsarImpl extends Isar {
 
     final txn = instance.beginTxn(write);
 
-    final zone = Zone.current.fork(
-      zoneValues: {_zoneTxn: txn},
-    );
+    final zone = Zone.current.fork(zoneValues: {_zoneTxn: txn});
 
     T result;
     try {
@@ -111,10 +109,7 @@ class IsarImpl extends Isar {
       unsupportedOnWeb();
 
   @override
-  int getSizeSync({
-    bool includeIndexes = false,
-    bool includeLinks = false,
-  }) =>
+  int getSizeSync({bool includeIndexes = false, bool includeLinks = false}) =>
       unsupportedOnWeb();
 
   @override

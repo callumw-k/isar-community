@@ -180,10 +180,7 @@ class IsarCollectionImpl<OBJ> extends IsarCollection<OBJ> {
       unsupportedOnWeb();
 
   @override
-  int getSizeSync({
-    bool includeIndexes = false,
-    bool includeLinks = false,
-  }) =>
+  int getSizeSync({bool includeIndexes = false, bool includeLinks = false}) =>
       unsupportedOnWeb();
 
   @override

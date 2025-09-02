@@ -14,8 +14,11 @@ List<String> isarSplitWords(String input) {
   final byteCount = encodeString(input, bytes, 0);
 
   final wordCountPtr = malloc<Uint32>();
-  final boundariesPtr =
-      IC.isar_find_word_boundaries(bytesPtr.cast(), byteCount, wordCountPtr);
+  final boundariesPtr = IC.isar_find_word_boundaries(
+    bytesPtr.cast(),
+    byteCount,
+    wordCountPtr,
+  );
   final wordCount = wordCountPtr.value;
   final boundaries = boundariesPtr.asTypedList(wordCount * 2);
 

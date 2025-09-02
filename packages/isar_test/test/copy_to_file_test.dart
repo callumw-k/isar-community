@@ -67,10 +67,7 @@ void main() {
       );
 
       final originalObjs = await isar.models.where().tFindAll();
-      await qEqual(
-        copiedIsar.models.where(),
-        originalObjs,
-      );
+      await qEqual(copiedIsar.models.where(), originalObjs);
     });
 
     isarTestVm('.copyToFile() should compact copied file', () async {
@@ -78,10 +75,7 @@ void main() {
 
       final copiedDbFilename1 = getRandomName();
       final copiedDbFile1 = File(
-        path.join(
-          isar.directory!,
-          '$copiedDbFilename1.isar',
-        ),
+        path.join(isar.directory!, '$copiedDbFilename1.isar'),
       );
 
       await isar.copyToFile(copiedDbFile1.path);
@@ -105,36 +99,24 @@ void main() {
 
       final copiedDbFilename2 = getRandomName();
       final copiedDbFile2 = File(
-        path.join(
-          isar.directory!,
-          '$copiedDbFilename2.isar',
-        ),
+        path.join(isar.directory!, '$copiedDbFilename2.isar'),
       );
       await isarCopy1.copyToFile(copiedDbFile2.path);
 
       expect(copiedDbFile2.lengthSync(), greaterThan(0));
-      expect(
-        copiedDbFile2.lengthSync(),
-        lessThan(copiedDbFile1.lengthSync()),
-      );
+      expect(copiedDbFile2.lengthSync(), lessThan(copiedDbFile1.lengthSync()));
       await copiedDbFile2.delete();
     });
 
     isarTestVm('Copies should be the same size', () async {
       final copiedDbFilename1 = getRandomName();
       final copiedDbFile1 = File(
-        path.join(
-          isar.directory!,
-          '$copiedDbFilename1.isar',
-        ),
+        path.join(isar.directory!, '$copiedDbFilename1.isar'),
       );
 
       final copiedDbFilename2 = getRandomName();
       final copiedDbFile2 = File(
-        path.join(
-          isar.directory!,
-          '$copiedDbFilename2.isar',
-        ),
+        path.join(isar.directory!, '$copiedDbFilename2.isar'),
       );
 
       await isar.copyToFile(copiedDbFile1.path);
@@ -152,10 +134,7 @@ void main() {
 
       final copiedDbFilename3 = getRandomName();
       final copiedDbFile3 = File(
-        path.join(
-          isar.directory!,
-          '$copiedDbFilename3.isar',
-        ),
+        path.join(isar.directory!, '$copiedDbFilename3.isar'),
       );
 
       await isarCopy.copyToFile(copiedDbFile3.path);

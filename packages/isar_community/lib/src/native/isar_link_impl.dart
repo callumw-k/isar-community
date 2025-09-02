@@ -89,13 +89,7 @@ mixin IsarLinkBaseMixin<OBJ> on IsarLinkBaseImpl<OBJ> {
         }
 
         nCall(
-          IC.isar_link(
-            sourceCollection.ptr,
-            txn.ptr,
-            linkId,
-            containingId,
-            id,
-          ),
+          IC.isar_link(sourceCollection.ptr, txn.ptr, linkId, containingId, id),
         );
       }
       for (final object in unlink) {

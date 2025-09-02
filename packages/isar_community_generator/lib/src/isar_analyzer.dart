@@ -218,9 +218,7 @@ class IsarAnalyzer {
       } else if (enumeratedAnn.type == EnumType.name) {
         isarType =
             dartType.isDartCoreList ? IsarType.stringList : IsarType.string;
-        enumMap = {
-          for (final value in enumElements) value.name3!: value.name3,
-        };
+        enumMap = {for (final value in enumElements) value.name: value.name};
         enumPropertyName = 'name';
       } else {
         enumPropertyName = enumeratedAnn.property;
@@ -250,8 +248,9 @@ class IsarAnalyzer {
             dartType.isDartCoreList ? enumIsarType!.listType : enumIsarType!;
         enumMap = {};
         for (final element in enumElements) {
-          final property =
-              element.computeConstantValue()!.getField(enumPropertyName)!;
+          final property = element.computeConstantValue()!.getField(
+                enumPropertyName,
+              )!;
           final propertyValue = property.toBoolValue() ??
               property.toIntValue() ??
               property.toDoubleValue() ??
@@ -264,10 +263,7 @@ class IsarAnalyzer {
           }
 
           if (enumMap.values.contains(propertyValue)) {
-            err(
-              'Enum property has duplicate values.',
-              enumProperty,
-            );
+            err('Enum property has duplicate values.', enumProperty);
           }
           enumMap[element.name3!] = propertyValue;
         }
@@ -355,8 +351,9 @@ class IsarAnalyzer {
     final backlinkAnn = property.backlinkAnnotation;
     String? targetLinkIsarName;
     if (backlinkAnn != null) {
-      final targetProperty = targetCol.allAccessors
-          .firstOrNullWhere((e) => e.displayName == backlinkAnn.to);
+      final targetProperty = targetCol.allAccessors.firstOrNullWhere(
+        (e) => e.displayName == backlinkAnn.to,
+      );
       if (targetProperty == null) {
         err('Target of Backlink does not exist', property);
       } else if (targetProperty.backlinkAnnotation != null) {
@@ -407,8 +404,9 @@ class IsarAnalyzer {
         ),
       );
       for (final c in index.composite) {
-        final compositeProperty =
-            properties.firstOrNullWhere((it) => it.dartName == c.property);
+        final compositeProperty = properties.firstOrNullWhere(
+          (it) => it.dartName == c.property,
+        );
         if (compositeProperty == null) {
           err('Property does not exist: "${c.property}".', element);
         } else if (compositeProperty.isId) {
@@ -477,10 +475,7 @@ class IsarAnalyzer {
         }
       }
       if (property.isarType.containsObject) {
-        err(
-          'Embedded objects may not be indexed.',
-          element,
-        );
+        err('Embedded objects may not be indexed.', element);
       }
       if (property.type != IndexType.value) {
         if (!property.isarType.isList && property.isarType != IsarType.string) {

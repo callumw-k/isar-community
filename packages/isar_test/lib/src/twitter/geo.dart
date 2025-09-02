@@ -30,20 +30,11 @@ class Place {
   String? country;
 }
 
-enum PlaceType {
-  admin,
-  country,
-  city,
-  poi,
-  neighborhood;
-}
+enum PlaceType { admin, country, city, poi, neighborhood }
 
 @embedded
 class Coordinates {
-  Coordinates({
-    this.coordinates,
-    this.type,
-  });
+  Coordinates({this.coordinates, this.type});
 
   List<double>? coordinates;
 

@@ -27,17 +27,10 @@ void main() {
 
     isarTest('id property', () async {
       await isar.tWriteTxn(
-        () => isar.boolModels.tPutAll([
-          BoolModel(),
-          BoolModel(),
-          BoolModel(),
-        ]),
+        () => isar.boolModels.tPutAll([BoolModel(), BoolModel(), BoolModel()]),
       );
 
-      await qEqual(
-        isar.boolModels.where().idProperty(),
-        [1, 2, 3],
-      );
+      await qEqual(isar.boolModels.where().idProperty(), [1, 2, 3]);
     });
 
     isarTest('bool property', () async {
@@ -53,15 +46,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.boolModels.where().valueProperty(),
-        [true, false, true],
-      );
+      await qEqual(isar.boolModels.where().valueProperty(), [
+        true,
+        false,
+        true,
+      ]);
 
-      await qEqual(
-        isar.boolModels.where().nValueProperty(),
-        [false, true, null],
-      );
+      await qEqual(isar.boolModels.where().nValueProperty(), [
+        false,
+        true,
+        null,
+      ]);
     });
 
     isarTest('byte property', () async {
@@ -73,10 +68,7 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.byteModels.where().valueProperty(),
-        [5, 123, 0],
-      );
+      await qEqual(isar.byteModels.where().valueProperty(), [5, 123, 0]);
     });
 
     isarTest('short property', () async {
@@ -92,15 +84,13 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.shortModels.where().valueProperty(),
-        [1234, 444, 321321],
-      );
+      await qEqual(isar.shortModels.where().valueProperty(), [
+        1234,
+        444,
+        321321,
+      ]);
 
-      await qEqual(
-        isar.shortModels.where().nValueProperty(),
-        [55, null, 1],
-      );
+      await qEqual(isar.shortModels.where().nValueProperty(), [55, null, 1]);
     });
 
     isarTest('int property', () async {
@@ -116,15 +106,13 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.intModels.where().valueProperty(),
-        [-5, Isar.autoIncrement, 9999],
-      );
+      await qEqual(isar.intModels.where().valueProperty(), [
+        -5,
+        Isar.autoIncrement,
+        9999,
+      ]);
 
-      await qEqual(
-        isar.intModels.where().nValueProperty(),
-        [-99999, 0, null],
-      );
+      await qEqual(isar.intModels.where().nValueProperty(), [-99999, 0, null]);
     });
 
     isarTest('float property', () async {
@@ -140,15 +128,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.floatModels.where().valueProperty(),
-        [-5.5, 70.7, double.nan],
-      );
+      await qEqual(isar.floatModels.where().valueProperty(), [
+        -5.5,
+        70.7,
+        double.nan,
+      ]);
 
-      await qEqual(
-        isar.floatModels.where().nValueProperty(),
-        [double.infinity, null, double.negativeInfinity],
-      );
+      await qEqual(isar.floatModels.where().nValueProperty(), [
+        double.infinity,
+        null,
+        double.negativeInfinity,
+      ]);
     });
 
     isarTest('double property', () async {
@@ -164,15 +154,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.doubleModels.where().valueProperty(),
-        [-5.5, 70.7, double.nan],
-      );
+      await qEqual(isar.doubleModels.where().valueProperty(), [
+        -5.5,
+        70.7,
+        double.nan,
+      ]);
 
-      await qEqual(
-        isar.doubleModels.where().nValueProperty(),
-        [double.infinity, null, double.negativeInfinity],
-      );
+      await qEqual(isar.doubleModels.where().nValueProperty(), [
+        double.infinity,
+        null,
+        double.negativeInfinity,
+      ]);
     });
 
     isarTest('DateTime property', () async {
@@ -186,15 +178,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.dateTimeModels.where().valueProperty(),
-        [DateTime(2022), DateTime(2020), DateTime(1999)],
-      );
+      await qEqual(isar.dateTimeModels.where().valueProperty(), [
+        DateTime(2022),
+        DateTime(2020),
+        DateTime(1999),
+      ]);
 
-      await qEqual(
-        isar.dateTimeModels.where().nValueProperty(),
-        [null, DateTime(2010), null],
-      );
+      await qEqual(isar.dateTimeModels.where().nValueProperty(), [
+        null,
+        DateTime(2010),
+        null,
+      ]);
     });
 
     isarTest('String property', () async {
@@ -210,15 +204,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.stringModels.where().valueProperty(),
-        ['Just', 'a', 'test'],
-      );
+      await qEqual(isar.stringModels.where().valueProperty(), [
+        'Just',
+        'a',
+        'test',
+      ]);
 
-      await qEqual(
-        isar.stringModels.where().nValueProperty(),
-        ['A', null, 'Z'],
-      );
+      await qEqual(isar.stringModels.where().nValueProperty(), [
+        'A',
+        null,
+        'Z',
+      ]);
     });
 
     isarTest('Object property', () async {
@@ -234,15 +230,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.objectModels.where().valueProperty(),
-        [EmbeddedModel('E1'), EmbeddedModel('E2'), EmbeddedModel('E3')],
-      );
+      await qEqual(isar.objectModels.where().valueProperty(), [
+        EmbeddedModel('E1'),
+        EmbeddedModel('E2'),
+        EmbeddedModel('E3'),
+      ]);
 
-      await qEqual(
-        isar.objectModels.where().nValueProperty(),
-        [EmbeddedModel('XXX'), EmbeddedModel('YYY'), null],
-      );
+      await qEqual(isar.objectModels.where().nValueProperty(), [
+        EmbeddedModel('XXX'),
+        EmbeddedModel('YYY'),
+        null,
+      ]);
     });
 
     isarTest('Enum property', () async {
@@ -256,15 +254,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.enumModels.where().valueProperty(),
-        [TestEnum.option2, TestEnum.option3, TestEnum.option2],
-      );
+      await qEqual(isar.enumModels.where().valueProperty(), [
+        TestEnum.option2,
+        TestEnum.option3,
+        TestEnum.option2,
+      ]);
 
-      await qEqual(
-        isar.enumModels.where().nValueProperty(),
-        [null, TestEnum.option3, null],
-      );
+      await qEqual(isar.enumModels.where().nValueProperty(), [
+        null,
+        TestEnum.option3,
+        null,
+      ]);
     });
 
     isarTest('bool list property', () async {
@@ -304,23 +304,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.byteModels.where().listProperty(),
-        [
-          Uint8List.fromList([0, 10, 255]),
-          Uint8List.fromList([]),
-          Uint8List.fromList([3]),
-        ],
-      );
+      await qEqual(isar.byteModels.where().listProperty(), [
+        Uint8List.fromList([0, 10, 255]),
+        Uint8List.fromList([]),
+        Uint8List.fromList([3]),
+      ]);
 
-      await qEqual(
-        isar.byteModels.where().nListProperty(),
-        [
-          null,
-          Uint8List.fromList([1, 2, 3, 4, 5]),
-          null,
-        ],
-      );
+      await qEqual(isar.byteModels.where().nListProperty(), [
+        null,
+        Uint8List.fromList([1, 2, 3, 4, 5]),
+        null,
+      ]);
     });
 
     isarTest('short list property', () async {
@@ -464,23 +458,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.stringModels.where().listProperty(),
-        [
-          ['Just', 'a', 'test'],
-          <String>[],
-          [''],
-        ],
-      );
+      await qEqual(isar.stringModels.where().listProperty(), [
+        ['Just', 'a', 'test'],
+        <String>[],
+        [''],
+      ]);
 
-      await qEqual(
-        isar.stringModels.where().nListProperty(),
-        [
-          null,
-          null,
-          ['HELLO'],
-        ],
-      );
+      await qEqual(isar.stringModels.where().nListProperty(), [
+        null,
+        null,
+        ['HELLO'],
+      ]);
     });
 
     isarTest('Object list property', () async {
@@ -496,23 +484,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.objectModels.where().listProperty(),
-        [
-          <EmbeddedModel>[],
-          [EmbeddedModel('abc'), EmbeddedModel('def')],
-          [EmbeddedModel()],
-        ],
-      );
+      await qEqual(isar.objectModels.where().listProperty(), [
+        <EmbeddedModel>[],
+        [EmbeddedModel('abc'), EmbeddedModel('def')],
+        [EmbeddedModel()],
+      ]);
 
-      await qEqual(
-        isar.objectModels.where().nListProperty(),
-        [
-          [EmbeddedModel('abc'), EmbeddedModel('def')],
-          null,
-          [EmbeddedModel()],
-        ],
-      );
+      await qEqual(isar.objectModels.where().nListProperty(), [
+        [EmbeddedModel('abc'), EmbeddedModel('def')],
+        null,
+        [EmbeddedModel()],
+      ]);
     });
 
     isarTest('Enum list property', () async {
@@ -526,23 +508,17 @@ void main() {
         ]),
       );
 
-      await qEqual(
-        isar.enumModels.where().listProperty(),
-        [
-          [TestEnum.option2],
-          [TestEnum.option1],
-          <TestEnum>[],
-        ],
-      );
+      await qEqual(isar.enumModels.where().listProperty(), [
+        [TestEnum.option2],
+        [TestEnum.option1],
+        <TestEnum>[],
+      ]);
 
-      await qEqual(
-        isar.enumModels.where().nListProperty(),
-        [
-          [TestEnum.option2, TestEnum.option3],
-          null,
-          null,
-        ],
-      );
+      await qEqual(isar.enumModels.where().nListProperty(), [
+        [TestEnum.option2, TestEnum.option3],
+        null,
+        null,
+      ]);
     });
   });
 }

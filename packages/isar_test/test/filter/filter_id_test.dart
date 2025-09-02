@@ -65,14 +65,14 @@ void main() {
 
     isarTest('.between()', () async {
       await qEqual(col.filter().idBetween(1, 3), [obj1, obj2, obj3]);
-      await qEqual(
-        col.filter().idBetween(1, 3, includeLower: false),
-        [obj2, obj3],
-      );
-      await qEqual(
-        col.filter().idBetween(1, 3, includeUpper: false),
-        [obj1, obj2],
-      );
+      await qEqual(col.filter().idBetween(1, 3, includeLower: false), [
+        obj2,
+        obj3,
+      ]);
+      await qEqual(col.filter().idBetween(1, 3, includeUpper: false), [
+        obj1,
+        obj2,
+      ]);
       await qEqual(
         col.filter().idBetween(1, 3, includeLower: false, includeUpper: false),
         [obj2],

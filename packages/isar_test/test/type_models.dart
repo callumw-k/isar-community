@@ -129,11 +129,7 @@ class ObjectModel {
   List<EmbeddedModel>? nList;
 }
 
-enum TestEnum {
-  option1,
-  option2,
-  option3;
-}
+enum TestEnum { option1, option2, option3 }
 
 @collection
 class EnumModel {

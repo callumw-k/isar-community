@@ -3,284 +3,6 @@
 part of 'package.dart';
 
 // **************************************************************************
-// CopyWithGenerator
-// **************************************************************************
-
-abstract class _$PackageCWProxy {
-  Package name(String name);
-
-  Package version(String version);
-
-  Package isLatest(bool isLatest);
-
-  Package homepage(String? homepage);
-
-  Package documentation(String? documentation);
-
-  Package description(String? description);
-
-  Package dependencies(List<Dependency> dependencies);
-
-  Package devDependencies(List<Dependency> devDependencies);
-
-  Package published(DateTime published);
-
-  Package points(int? points);
-
-  Package likes(int? likes);
-
-  Package popularity(double? popularity);
-
-  Package publisher(String? publisher);
-
-  Package dart(bool? dart);
-
-  Package flutter(bool? flutter);
-
-  Package flutterFavorite(bool? flutterFavorite);
-
-  Package license(String? license);
-
-  Package osiLicense(bool? osiLicense);
-
-  Package platforms(List<SupportedPlatform>? platforms);
-
-  /// Creates a new instance with the provided field values.
-  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `Package(...).copyWith.fieldName(value)`.
-  ///
-  /// Example:
-  /// ```dart
-  /// Package(...).copyWith(id: 12, name: "My name")
-  /// ```
-  Package call({
-    String name,
-    String version,
-    bool isLatest,
-    String? homepage,
-    String? documentation,
-    String? description,
-    List<Dependency> dependencies,
-    List<Dependency> devDependencies,
-    DateTime published,
-    int? points,
-    int? likes,
-    double? popularity,
-    String? publisher,
-    bool? dart,
-    bool? flutter,
-    bool? flutterFavorite,
-    String? license,
-    bool? osiLicense,
-    List<SupportedPlatform>? platforms,
-  });
-}
-
-/// Callable proxy for `copyWith` functionality.
-/// Use as `instanceOfPackage.copyWith(...)` or call `instanceOfPackage.copyWith.fieldName(value)` for a single field.
-class _$PackageCWProxyImpl implements _$PackageCWProxy {
-  const _$PackageCWProxyImpl(this._value);
-
-  final Package _value;
-
-  @override
-  Package name(String name) => this(name: name);
-
-  @override
-  Package version(String version) => this(version: version);
-
-  @override
-  Package isLatest(bool isLatest) => this(isLatest: isLatest);
-
-  @override
-  Package homepage(String? homepage) => this(homepage: homepage);
-
-  @override
-  Package documentation(String? documentation) =>
-      this(documentation: documentation);
-
-  @override
-  Package description(String? description) => this(description: description);
-
-  @override
-  Package dependencies(List<Dependency> dependencies) =>
-      this(dependencies: dependencies);
-
-  @override
-  Package devDependencies(List<Dependency> devDependencies) =>
-      this(devDependencies: devDependencies);
-
-  @override
-  Package published(DateTime published) => this(published: published);
-
-  @override
-  Package points(int? points) => this(points: points);
-
-  @override
-  Package likes(int? likes) => this(likes: likes);
-
-  @override
-  Package popularity(double? popularity) => this(popularity: popularity);
-
-  @override
-  Package publisher(String? publisher) => this(publisher: publisher);
-
-  @override
-  Package dart(bool? dart) => this(dart: dart);
-
-  @override
-  Package flutter(bool? flutter) => this(flutter: flutter);
-
-  @override
-  Package flutterFavorite(bool? flutterFavorite) =>
-      this(flutterFavorite: flutterFavorite);
-
-  @override
-  Package license(String? license) => this(license: license);
-
-  @override
-  Package osiLicense(bool? osiLicense) => this(osiLicense: osiLicense);
-
-  @override
-  Package platforms(List<SupportedPlatform>? platforms) =>
-      this(platforms: platforms);
-
-  @override
-  /// Creates a new instance with the provided field values.
-  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `Package(...).copyWith.fieldName(value)`.
-  ///
-  /// Example:
-  /// ```dart
-  /// Package(...).copyWith(id: 12, name: "My name")
-  /// ```
-  Package call({
-    Object? name = const $CopyWithPlaceholder(),
-    Object? version = const $CopyWithPlaceholder(),
-    Object? isLatest = const $CopyWithPlaceholder(),
-    Object? homepage = const $CopyWithPlaceholder(),
-    Object? documentation = const $CopyWithPlaceholder(),
-    Object? description = const $CopyWithPlaceholder(),
-    Object? dependencies = const $CopyWithPlaceholder(),
-    Object? devDependencies = const $CopyWithPlaceholder(),
-    Object? published = const $CopyWithPlaceholder(),
-    Object? points = const $CopyWithPlaceholder(),
-    Object? likes = const $CopyWithPlaceholder(),
-    Object? popularity = const $CopyWithPlaceholder(),
-    Object? publisher = const $CopyWithPlaceholder(),
-    Object? dart = const $CopyWithPlaceholder(),
-    Object? flutter = const $CopyWithPlaceholder(),
-    Object? flutterFavorite = const $CopyWithPlaceholder(),
-    Object? license = const $CopyWithPlaceholder(),
-    Object? osiLicense = const $CopyWithPlaceholder(),
-    Object? platforms = const $CopyWithPlaceholder(),
-  }) {
-    return Package(
-      name:
-          name == const $CopyWithPlaceholder()
-              ? _value.name
-              // ignore: cast_nullable_to_non_nullable
-              : name as String,
-      version:
-          version == const $CopyWithPlaceholder()
-              ? _value.version
-              // ignore: cast_nullable_to_non_nullable
-              : version as String,
-      isLatest:
-          isLatest == const $CopyWithPlaceholder()
-              ? _value.isLatest
-              // ignore: cast_nullable_to_non_nullable
-              : isLatest as bool,
-      homepage:
-          homepage == const $CopyWithPlaceholder()
-              ? _value.homepage
-              // ignore: cast_nullable_to_non_nullable
-              : homepage as String?,
-      documentation:
-          documentation == const $CopyWithPlaceholder()
-              ? _value.documentation
-              // ignore: cast_nullable_to_non_nullable
-              : documentation as String?,
-      description:
-          description == const $CopyWithPlaceholder()
-              ? _value.description
-              // ignore: cast_nullable_to_non_nullable
-              : description as String?,
-      dependencies:
-          dependencies == const $CopyWithPlaceholder()
-              ? _value.dependencies
-              // ignore: cast_nullable_to_non_nullable
-              : dependencies as List<Dependency>,
-      devDependencies:
-          devDependencies == const $CopyWithPlaceholder()
-              ? _value.devDependencies
-              // ignore: cast_nullable_to_non_nullable
-              : devDependencies as List<Dependency>,
-      published:
-          published == const $CopyWithPlaceholder()
-              ? _value.published
-              // ignore: cast_nullable_to_non_nullable
-              : published as DateTime,
-      points:
-          points == const $CopyWithPlaceholder()
-              ? _value.points
-              // ignore: cast_nullable_to_non_nullable
-              : points as int?,
-      likes:
-          likes == const $CopyWithPlaceholder()
-              ? _value.likes
-              // ignore: cast_nullable_to_non_nullable
-              : likes as int?,
-      popularity:
-          popularity == const $CopyWithPlaceholder()
-              ? _value.popularity
-              // ignore: cast_nullable_to_non_nullable
-              : popularity as double?,
-      publisher:
-          publisher == const $CopyWithPlaceholder()
-              ? _value.publisher
-              // ignore: cast_nullable_to_non_nullable
-              : publisher as String?,
-      dart:
-          dart == const $CopyWithPlaceholder()
-              ? _value.dart
-              // ignore: cast_nullable_to_non_nullable
-              : dart as bool?,
-      flutter:
-          flutter == const $CopyWithPlaceholder()
-              ? _value.flutter
-              // ignore: cast_nullable_to_non_nullable
-              : flutter as bool?,
-      flutterFavorite:
-          flutterFavorite == const $CopyWithPlaceholder()
-              ? _value.flutterFavorite
-              // ignore: cast_nullable_to_non_nullable
-              : flutterFavorite as bool?,
-      license:
-          license == const $CopyWithPlaceholder()
-              ? _value.license
-              // ignore: cast_nullable_to_non_nullable
-              : license as String?,
-      osiLicense:
-          osiLicense == const $CopyWithPlaceholder()
-              ? _value.osiLicense
-              // ignore: cast_nullable_to_non_nullable
-              : osiLicense as bool?,
-      platforms:
-          platforms == const $CopyWithPlaceholder()
-              ? _value.platforms
-              // ignore: cast_nullable_to_non_nullable
-              : platforms as List<SupportedPlatform>?,
-    );
-  }
-}
-
-extension $PackageCopyWith on Package {
-  /// Returns a callable class used to build a new instance with modified fields.
-  /// Example: `instanceOfPackage.copyWith(...)` or `instanceOfPackage.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$PackageCWProxy get copyWith => _$PackageCWProxyImpl(this);
-}
-
-// **************************************************************************
 // IsarCollectionGenerator
 // **************************************************************************
 
@@ -300,7 +22,6 @@ const PackageSchema = CollectionSchema(
       id: 1,
       name: r'dependencies',
       type: IsarType.objectList,
-
       target: r'Dependency',
     ),
     r'description': PropertySchema(
@@ -312,7 +33,6 @@ const PackageSchema = CollectionSchema(
       id: 3,
       name: r'devDependencies',
       type: IsarType.objectList,
-
       target: r'Dependency',
     ),
     r'documentation': PropertySchema(
@@ -364,7 +84,6 @@ const PackageSchema = CollectionSchema(
     ),
     r'version': PropertySchema(id: 18, name: r'version', type: IsarType.string),
   },
-
   estimateSize: _packageEstimateSize,
   serialize: _packageSerialize,
   deserialize: _packageDeserialize,
@@ -392,7 +111,6 @@ const PackageSchema = CollectionSchema(
   },
   links: {},
   embeddedSchemas: {r'Dependency': DependencySchema},
-
   getId: _packageGetId,
   getLinks: _packageGetLinks,
   attach: _packageAttach,
@@ -536,14 +254,12 @@ Package _packageDeserialize(
     likes: reader.readIntOrNull(offsets[10]),
     name: reader.readString(offsets[11]),
     osiLicense: reader.readBoolOrNull(offsets[12]),
-    platforms:
-        reader
-            .readByteList(offsets[13])
-            ?.map(
-              (e) =>
-                  _PackageplatformsValueEnumMap[e] ?? SupportedPlatform.android,
-            )
-            .toList(),
+    platforms: reader
+        .readByteList(offsets[13])
+        ?.map(
+          (e) => _PackageplatformsValueEnumMap[e] ?? SupportedPlatform.android,
+        )
+        .toList(),
     points: reader.readIntOrNull(offsets[14]),
     popularity: reader.readFloatOrNull(offsets[15]),
     published: reader.readDateTime(offsets[16]),
@@ -2329,7 +2045,6 @@ extension PackageQueryFilter
         FilterCondition.equalTo(
           property: r'popularity',
           value: value,
-
           epsilon: epsilon,
         ),
       );
@@ -2347,7 +2062,6 @@ extension PackageQueryFilter
           include: include,
           property: r'popularity',
           value: value,
-
           epsilon: epsilon,
         ),
       );
@@ -2365,7 +2079,6 @@ extension PackageQueryFilter
           include: include,
           property: r'popularity',
           value: value,
-
           epsilon: epsilon,
         ),
       );
@@ -2387,7 +2100,6 @@ extension PackageQueryFilter
           includeLower: includeLower,
           upper: upper,
           includeUpper: includeUpper,
-
           epsilon: epsilon,
         ),
       );
@@ -3451,7 +3163,6 @@ const DependencySchema = Schema(
     ),
     r'name': PropertySchema(id: 1, name: r'name', type: IsarType.string),
   },
-
   estimateSize: _dependencyEstimateSize,
   serialize: _dependencySerialize,
   deserialize: _dependencyDeserialize,
@@ -3803,3 +3514,50 @@ extension DependencyQueryFilter
 
 extension DependencyQueryObject
     on QueryBuilder<Dependency, Dependency, QFilterCondition> {}
+
+// Extension to add copyWith method to Package
+extension PackageCopyWith on Package {
+  Package copyWith({
+    String? name,
+    String? version,
+    bool? isLatest,
+    String? homepage,
+    String? documentation,
+    String? description,
+    List<Dependency>? dependencies,
+    List<Dependency>? devDependencies,
+    DateTime? published,
+    short? points,
+    short? likes,
+    float? popularity,
+    String? publisher,
+    bool? dart,
+    bool? flutter,
+    bool? flutterFavorite,
+    String? license,
+    bool? osiLicense,
+    List<SupportedPlatform>? platforms,
+  }) {
+    return Package(
+      name: name ?? this.name,
+      version: version ?? this.version,
+      isLatest: isLatest ?? this.isLatest,
+      homepage: homepage ?? this.homepage,
+      documentation: documentation ?? this.documentation,
+      description: description ?? this.description,
+      dependencies: dependencies ?? this.dependencies,
+      devDependencies: devDependencies ?? this.devDependencies,
+      published: published ?? this.published,
+      points: points ?? this.points,
+      likes: likes ?? this.likes,
+      popularity: popularity ?? this.popularity,
+      publisher: publisher ?? this.publisher,
+      dart: dart ?? this.dart,
+      flutter: flutter ?? this.flutter,
+      flutterFavorite: flutterFavorite ?? this.flutterFavorite,
+      license: license ?? this.license,
+      osiLicense: osiLicense ?? this.osiLicense,
+      platforms: platforms ?? this.platforms,
+    );
+  }
+}

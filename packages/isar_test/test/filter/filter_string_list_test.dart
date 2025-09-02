@@ -159,101 +159,101 @@ void main() {
       );
 
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementEqualTo('nullable strings 1'),
+        isar.stringModels.filter().nullableStringsElementEqualTo(
+          'nullable strings 1',
+        ),
         [obj1],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementEqualTo('nullable strings 2'),
+        isar.stringModels.filter().nullableStringsElementEqualTo(
+          'nullable strings 2',
+        ),
         [obj2, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementEqualTo('nullable strings 3'),
+        isar.stringModels.filter().nullableStringsElementEqualTo(
+          'nullable strings 3',
+        ),
         [obj1, obj2, obj5],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementEqualTo('nullable strings 4'),
+        isar.stringModels.filter().nullableStringsElementEqualTo(
+          'nullable strings 4',
+        ),
         [obj4, obj5],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementEqualTo('nullable strings 5'),
+        isar.stringModels.filter().nullableStringsElementEqualTo(
+          'nullable strings 5',
+        ),
         [obj4, obj5, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementEqualTo('nullable strings 6'),
+        isar.stringModels.filter().nullableStringsElementEqualTo(
+          'nullable strings 6',
+        ),
         [obj5, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementEqualTo('non existing'),
+        isar.stringModels.filter().nullableStringsElementEqualTo(
+          'non existing',
+        ),
         [],
       );
 
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementEqualTo('strings nullable 1'),
+        isar.stringModels.filter().stringsNullableElementEqualTo(
+          'strings nullable 1',
+        ),
         [obj1, obj5],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementEqualTo('strings nullable 4'),
+        isar.stringModels.filter().stringsNullableElementEqualTo(
+          'strings nullable 4',
+        ),
         [obj4, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementEqualTo('strings nullable 5'),
+        isar.stringModels.filter().stringsNullableElementEqualTo(
+          'strings nullable 5',
+        ),
         [obj4, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementEqualTo('strings nullable 6'),
+        isar.stringModels.filter().stringsNullableElementEqualTo(
+          'strings nullable 6',
+        ),
         [obj4],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementEqualTo('non existing'),
+        isar.stringModels.filter().stringsNullableElementEqualTo(
+          'non existing',
+        ),
         [],
       );
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsNullableElementEqualTo(
-              'nullable strings nullable 1',
-            ),
+          'nullable strings nullable 1',
+        ),
         [obj1],
       );
       await qEqualSet(
         isar.stringModels.filter().nullableStringsNullableElementEqualTo(
-              'nullable strings nullable 3',
-            ),
+          'nullable strings nullable 3',
+        ),
         [obj6],
       );
       await qEqualSet(
         isar.stringModels.filter().nullableStringsNullableElementEqualTo(
-              'nullable strings nullable 5',
-            ),
+          'nullable strings nullable 5',
+        ),
         [obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsNullableElementEqualTo('non existing'),
+        isar.stringModels.filter().nullableStringsNullableElementEqualTo(
+          'non existing',
+        ),
         [],
       );
     });
@@ -273,9 +273,9 @@ void main() {
         [obj1, obj2, obj4, obj5, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementStartsWith('non existing'),
+        isar.stringModels.filter().nullableStringsElementStartsWith(
+          'non existing',
+        ),
         [],
       );
 
@@ -284,55 +284,54 @@ void main() {
         [obj1, obj4, obj5, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementEqualTo('non existing'),
+        isar.stringModels.filter().stringsNullableElementEqualTo(
+          'non existing',
+        ),
         [],
       );
 
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsNullableElementStartsWith('nullable'),
+        isar.stringModels.filter().nullableStringsNullableElementStartsWith(
+          'nullable',
+        ),
         [obj1, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsNullableElementStartsWith('non existing'),
+        isar.stringModels.filter().nullableStringsNullableElementStartsWith(
+          'non existing',
+        ),
         [],
       );
     });
 
     isarTest('.elementEndsWith()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsElementEndsWith('1'),
-        [obj1, obj4],
-      );
-      await qEqualSet(
-        isar.stringModels.filter().stringsElementEndsWith('2'),
-        [obj1, obj2],
-      );
-      await qEqualSet(
-        isar.stringModels.filter().stringsElementEndsWith('3'),
-        [obj1, obj5],
-      );
-      await qEqualSet(
-        isar.stringModels.filter().stringsElementEndsWith('4'),
-        [obj2, obj5],
-      );
-      await qEqualSet(
-        isar.stringModels.filter().stringsElementEndsWith('5'),
-        [obj4, obj5],
-      );
-      await qEqualSet(
-        isar.stringModels.filter().stringsElementEndsWith('6'),
-        [obj4, obj5],
-      );
-      await qEqualSet(
-        isar.stringModels.filter().stringsElementEndsWith('7'),
-        [obj5],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsElementEndsWith('1'), [
+        obj1,
+        obj4,
+      ]);
+      await qEqualSet(isar.stringModels.filter().stringsElementEndsWith('2'), [
+        obj1,
+        obj2,
+      ]);
+      await qEqualSet(isar.stringModels.filter().stringsElementEndsWith('3'), [
+        obj1,
+        obj5,
+      ]);
+      await qEqualSet(isar.stringModels.filter().stringsElementEndsWith('4'), [
+        obj2,
+        obj5,
+      ]);
+      await qEqualSet(isar.stringModels.filter().stringsElementEndsWith('5'), [
+        obj4,
+        obj5,
+      ]);
+      await qEqualSet(isar.stringModels.filter().stringsElementEndsWith('6'), [
+        obj4,
+        obj5,
+      ]);
+      await qEqualSet(isar.stringModels.filter().stringsElementEndsWith('7'), [
+        obj5,
+      ]);
       await qEqualSet(
         isar.stringModels.filter().stringsElementEndsWith('non existing'),
         [],
@@ -363,9 +362,9 @@ void main() {
         [obj5, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementEndsWith('non existing'),
+        isar.stringModels.filter().nullableStringsElementEndsWith(
+          'non existing',
+        ),
         [],
       );
 
@@ -386,9 +385,9 @@ void main() {
         [obj4],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementEndsWith('non existing'),
+        isar.stringModels.filter().stringsNullableElementEndsWith(
+          'non existing',
+        ),
         [],
       );
 
@@ -405,9 +404,9 @@ void main() {
         [obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsNullableElementEndsWith('non existing'),
+        isar.stringModels.filter().nullableStringsNullableElementEndsWith(
+          'non existing',
+        ),
         [],
       );
     });
@@ -427,9 +426,9 @@ void main() {
         [obj1, obj2, obj4, obj5, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementContains('non existing'),
+        isar.stringModels.filter().nullableStringsElementContains(
+          'non existing',
+        ),
         [],
       );
 
@@ -438,22 +437,22 @@ void main() {
         [obj1, obj4, obj5, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementContains('non existing'),
+        isar.stringModels.filter().stringsNullableElementContains(
+          'non existing',
+        ),
         [],
       );
 
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsNullableElementContains('ings'),
+        isar.stringModels.filter().nullableStringsNullableElementContains(
+          'ings',
+        ),
         [obj1, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsNullableElementContains('non existing'),
+        isar.stringModels.filter().nullableStringsNullableElementContains(
+          'non existing',
+        ),
         [],
       );
     });
@@ -469,41 +468,41 @@ void main() {
       );
 
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementMatches('??????????????????'),
+        isar.stringModels.filter().nullableStringsElementMatches(
+          '??????????????????',
+        ),
         [obj1, obj2, obj4, obj5, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementMatches('non existing'),
+        isar.stringModels.filter().nullableStringsElementMatches(
+          'non existing',
+        ),
         [],
       );
 
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementMatches('??????????????????'),
+        isar.stringModels.filter().stringsNullableElementMatches(
+          '??????????????????',
+        ),
         [obj1, obj4, obj5, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementMatches('non existing'),
+        isar.stringModels.filter().stringsNullableElementMatches(
+          'non existing',
+        ),
         [],
       );
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsNullableElementMatches(
-              '???????????????????????????',
-            ),
+          '???????????????????????????',
+        ),
         [obj1, obj6],
       );
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsNullableElementMatches('non existing'),
+        isar.stringModels.filter().nullableStringsNullableElementMatches(
+          'non existing',
+        ),
         [],
       );
     });
@@ -575,23 +574,23 @@ void main() {
       );
 
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .nullableStringsElementGreaterThan('nullable strings 3'),
+        isar.stringModels.filter().nullableStringsElementGreaterThan(
+          'nullable strings 3',
+        ),
         [obj4, obj5, obj6],
       );
 
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsNullableElementGreaterThan('strings nullable 3'),
+        isar.stringModels.filter().stringsNullableElementGreaterThan(
+          'strings nullable 3',
+        ),
         [obj4, obj6],
       );
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsNullableElementGreaterThan(
-              'nullable strings nullable 3',
-            ),
+          'nullable strings nullable 3',
+        ),
         [obj6],
       );
     });
@@ -629,42 +628,42 @@ void main() {
 
     isarTest('.elementBetween()', () async {
       await qEqualSet(
-        isar.stringModels
-            .filter()
-            .stringsElementBetween('strings 2', 'strings 4'),
+        isar.stringModels.filter().stringsElementBetween(
+          'strings 2',
+          'strings 4',
+        ),
         [obj1, obj2, obj5],
       );
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsElementBetween(
-              'nullable strings 2',
-              'nullable strings 4',
-            ),
+          'nullable strings 2',
+          'nullable strings 4',
+        ),
         [obj1, obj2, obj4, obj5, obj6],
       );
 
       await qEqualSet(
         isar.stringModels.filter().stringsNullableElementBetween(
-              'strings nullable 2',
-              'strings nullable 4',
-            ),
+          'strings nullable 2',
+          'strings nullable 4',
+        ),
         [obj4, obj6],
       );
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsNullableElementBetween(
-              'nullable strings nullable 2',
-              'nullable strings nullable 4',
-            ),
+          'nullable strings nullable 2',
+          'nullable strings nullable 4',
+        ),
         [obj6],
       );
     });
 
     isarTest('.elementIsEmpty()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsElementIsEmpty(),
-        [obj6],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsElementIsEmpty(), [
+        obj6,
+      ]);
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsElementIsEmpty(),
@@ -683,10 +682,12 @@ void main() {
     });
 
     isarTest('.elementIsNotEmpty()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsElementIsNotEmpty(),
-        [obj1, obj2, obj4, obj5],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsElementIsNotEmpty(), [
+        obj1,
+        obj2,
+        obj4,
+        obj5,
+      ]);
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsElementIsNotEmpty(),
@@ -705,26 +706,22 @@ void main() {
     });
 
     isarTest('.lengthEqualTo()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsLengthEqualTo(0),
-        [obj3],
-      );
-      await qEqualSet(
-        isar.stringModels.filter().stringsLengthEqualTo(1),
-        [obj6],
-      );
-      await qEqualSet(
-        isar.stringModels.filter().stringsLengthEqualTo(2),
-        [obj2],
-      );
-      await qEqualSet(
-        isar.stringModels.filter().stringsLengthEqualTo(3),
-        [obj1, obj4],
-      );
-      await qEqualSet(
-        isar.stringModels.filter().stringsLengthEqualTo(5),
-        [obj5],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsLengthEqualTo(0), [
+        obj3,
+      ]);
+      await qEqualSet(isar.stringModels.filter().stringsLengthEqualTo(1), [
+        obj6,
+      ]);
+      await qEqualSet(isar.stringModels.filter().stringsLengthEqualTo(2), [
+        obj2,
+      ]);
+      await qEqualSet(isar.stringModels.filter().stringsLengthEqualTo(3), [
+        obj1,
+        obj4,
+      ]);
+      await qEqualSet(isar.stringModels.filter().stringsLengthEqualTo(5), [
+        obj5,
+      ]);
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsLengthEqualTo(0),
@@ -775,10 +772,11 @@ void main() {
     });
 
     isarTest('.lengthGreaterThan()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsLengthGreaterThan(2),
-        [obj1, obj4, obj5],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsLengthGreaterThan(2), [
+        obj1,
+        obj4,
+        obj5,
+      ]);
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsLengthGreaterThan(2),
@@ -797,10 +795,10 @@ void main() {
     });
 
     isarTest('.lengthLessThan()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsLengthLessThan(2),
-        [obj3, obj6],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsLengthLessThan(2), [
+        obj3,
+        obj6,
+      ]);
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsLengthLessThan(2),
@@ -819,10 +817,11 @@ void main() {
     });
 
     isarTest('.lengthBetween()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsLengthBetween(2, 4),
-        [obj1, obj2, obj4],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsLengthBetween(2, 4), [
+        obj1,
+        obj2,
+        obj4,
+      ]);
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsLengthBetween(2, 4),
@@ -841,20 +840,15 @@ void main() {
     });
 
     isarTest('.isEmpty()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsIsEmpty(),
-        [obj3],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsIsEmpty(), [obj3]);
 
-      await qEqualSet(
-        isar.stringModels.filter().nullableStringsIsEmpty(),
-        [obj3],
-      );
+      await qEqualSet(isar.stringModels.filter().nullableStringsIsEmpty(), [
+        obj3,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.filter().stringsNullableIsEmpty(),
-        [obj3],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsNullableIsEmpty(), [
+        obj3,
+      ]);
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsNullableIsEmpty(),
@@ -863,20 +857,28 @@ void main() {
     });
 
     isarTest('.isNotEmpty()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsIsNotEmpty(),
-        [obj1, obj2, obj4, obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsIsNotEmpty(), [
+        obj1,
+        obj2,
+        obj4,
+        obj5,
+        obj6,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.filter().nullableStringsIsNotEmpty(),
-        [obj1, obj2, obj4, obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.filter().nullableStringsIsNotEmpty(), [
+        obj1,
+        obj2,
+        obj4,
+        obj5,
+        obj6,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.filter().stringsNullableIsNotEmpty(),
-        [obj1, obj4, obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsNullableIsNotEmpty(), [
+        obj1,
+        obj4,
+        obj5,
+        obj6,
+      ]);
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsNullableIsNotEmpty(),
@@ -885,10 +887,9 @@ void main() {
     });
 
     isarTest('.isNull()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsNullableIsNull(),
-        [obj2],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsNullableIsNull(), [
+        obj2,
+      ]);
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsNullableIsNull(),
@@ -897,10 +898,13 @@ void main() {
     });
 
     isarTest('.isNotNull()', () async {
-      await qEqualSet(
-        isar.stringModels.filter().stringsNullableIsNotNull(),
-        [obj1, obj3, obj4, obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.filter().stringsNullableIsNotNull(), [
+        obj1,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+      ]);
 
       await qEqualSet(
         isar.stringModels.filter().nullableStringsNullableIsNotNull(),

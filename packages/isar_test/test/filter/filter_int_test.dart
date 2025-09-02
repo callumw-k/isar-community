@@ -53,18 +53,24 @@ void main() {
 
     isarTest('.greaterThan()', () async {
       await qEqual(col.filter().fieldGreaterThan(1), [obj2]);
-      await qEqual(
-        col.filter().fieldGreaterThan(1, include: true),
-        [obj1, obj2, obj3],
-      );
-      await qEqual(
-        col.filter().fieldGreaterThan(null),
-        [obj0, obj1, obj2, obj3],
-      );
-      await qEqual(
-        col.filter().fieldGreaterThan(null, include: true),
-        [obj0, obj1, obj2, obj3, objNull],
-      );
+      await qEqual(col.filter().fieldGreaterThan(1, include: true), [
+        obj1,
+        obj2,
+        obj3,
+      ]);
+      await qEqual(col.filter().fieldGreaterThan(null), [
+        obj0,
+        obj1,
+        obj2,
+        obj3,
+      ]);
+      await qEqual(col.filter().fieldGreaterThan(null, include: true), [
+        obj0,
+        obj1,
+        obj2,
+        obj3,
+        objNull,
+      ]);
       await qEqual(col.filter().fieldGreaterThan(4), []);
     });
 
@@ -76,24 +82,28 @@ void main() {
 
     isarTest('.between()', () async {
       await qEqual(col.filter().fieldBetween(1, 2), [obj1, obj2, obj3]);
+      await qEqual(col.filter().fieldBetween(1, 2, includeLower: false), [
+        obj2,
+      ]);
+      await qEqual(col.filter().fieldBetween(1, 2, includeUpper: false), [
+        obj1,
+        obj3,
+      ]);
       await qEqual(
-        col.filter().fieldBetween(1, 2, includeLower: false),
-        [obj2],
-      );
-      await qEqual(
-        col.filter().fieldBetween(1, 2, includeUpper: false),
-        [obj1, obj3],
-      );
-      await qEqual(
-        col
-            .filter()
-            .fieldBetween(1, 2, includeLower: false, includeUpper: false),
+        col.filter().fieldBetween(
+          1,
+          2,
+          includeLower: false,
+          includeUpper: false,
+        ),
         [],
       );
-      await qEqual(
-        col.filter().fieldBetween(null, 1),
-        [obj0, obj1, obj3, objNull],
-      );
+      await qEqual(col.filter().fieldBetween(null, 1), [
+        obj0,
+        obj1,
+        obj3,
+        objNull,
+      ]);
       await qEqual(col.filter().fieldBetween(5, 6), []);
     });
 

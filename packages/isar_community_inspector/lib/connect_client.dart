@@ -76,9 +76,7 @@ class ConnectClient {
     var responseFuture = vmService.callServiceExtension(
       action.method,
       isolateId: isolateId,
-      args: {
-        if (args != null) 'args': jsonEncode(args),
-      },
+      args: {if (args != null) 'args': jsonEncode(args)},
     );
     if (timeout != null) {
       responseFuture = responseFuture.timeout(timeout);

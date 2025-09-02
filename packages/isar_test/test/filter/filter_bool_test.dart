@@ -45,10 +45,7 @@ void main() {
 
     isarTest('.equalTo()', () async {
       await qEqual(col.filter().fieldEqualTo(true), [objTrue]);
-      await qEqualSet(
-        col.filter().fieldEqualTo(false),
-        [objFalse, objFalse2],
-      );
+      await qEqualSet(col.filter().fieldEqualTo(false), [objFalse, objFalse2]);
       await qEqual(col.filter().fieldEqualTo(null), [objNull]);
     });
 
@@ -57,10 +54,11 @@ void main() {
     });
 
     isarTest('.isNotNull()', () async {
-      await qEqualSet(
-        col.where().filter().fieldIsNotNull(),
-        [objFalse, objTrue, objFalse2],
-      );
+      await qEqualSet(col.where().filter().fieldIsNotNull(), [
+        objFalse,
+        objTrue,
+        objFalse2,
+      ]);
     });
   });
 }

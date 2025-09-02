@@ -37,10 +37,7 @@ void main() {
       expect(await isar.models.tGet(obj1.id!), obj1);
 
       expect(await isar.close(), true);
-      isar = await openTempIsar(
-        [ModelSchema],
-        name: isarName,
-      );
+      isar = await openTempIsar([ModelSchema], name: isarName);
 
       final obj2 = Model()..value = 'M2';
       final obj3 = Model()

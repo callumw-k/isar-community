@@ -32,13 +32,7 @@ Query<T> buildNativeQuery<T>(
     if (wc is IdWhereClause) {
       _addIdWhereClause(qbPtr, wc, whereSort);
     } else if (wc is IndexWhereClause) {
-      _addIndexWhereClause(
-        col.schema,
-        qbPtr,
-        wc,
-        whereDistinct,
-        whereSort,
-      );
+      _addIndexWhereClause(col.schema, qbPtr, wc, whereDistinct, whereSort);
     } else {
       _addLinkWhereClause(col.isar, qbPtr, wc as LinkWhereClause);
     }
@@ -59,11 +53,7 @@ Query<T> buildNativeQuery<T>(
   for (final sortProperty in sortBy) {
     final property = col.schema.property(sortProperty.property);
     nCall(
-      IC.isar_qb_add_sort_by(
-        qbPtr,
-        property.id,
-        sortProperty.sort == Sort.asc,
-      ),
+      IC.isar_qb_add_sort_by(qbPtr, property.id, sortProperty.sort == Sort.asc),
     );
   }
 
@@ -270,10 +260,7 @@ Pointer<CFilter>? _buildFilterGroup(
 
   final filterPtrPtr = alloc<Pointer<CFilter>>();
   if (group.type == FilterGroupType.not) {
-    IC.isar_filter_not(
-      filterPtrPtr,
-      builtConditions.first!,
-    );
+    IC.isar_filter_not(filterPtrPtr, builtConditions.first!);
   } else if (builtConditions.length == 1) {
     return builtConditions[0];
   } else {
@@ -299,8 +286,9 @@ Pointer<CFilter>? _buildLink(
   Allocator alloc,
 ) {
   final linkSchema = col.schema.link(link.linkName);
-  final linkTargetCol =
-      col.isar.getCollectionByNameInternal(linkSchema.target)!;
+  final linkTargetCol = col.isar.getCollectionByNameInternal(
+    linkSchema.target,
+  )!;
   final linkId = col.schema.link(link.linkName).id;
 
   final filterPtrPtr = alloc<Pointer<CFilter>>();
@@ -316,14 +304,7 @@ Pointer<CFilter>? _buildLink(
       return null;
     }
 
-    nCall(
-      IC.isar_filter_link(
-        col.ptr,
-        filterPtrPtr,
-        condition,
-        linkId,
-      ),
-    );
+    nCall(IC.isar_filter_link(col.ptr, filterPtrPtr, condition, linkId));
   } else {
     nCall(
       IC.isar_filter_link_length(
@@ -566,12 +547,7 @@ void _buildConditionIsNull({
 }) {
   if (propertyId != null) {
     nCall(
-      IC.isar_filter_null(
-        colPtr,
-        filterPtr,
-        embeddedColId ?? 0,
-        propertyId,
-      ),
+      IC.isar_filter_null(colPtr, filterPtr, embeddedColId ?? 0, propertyId),
     );
   } else {
     IC.isar_filter_static(filterPtr, false);
@@ -588,12 +564,7 @@ void _buildConditionIsNotNull({
   if (propertyId != null) {
     final conditionPtr = alloc<Pointer<CFilter>>();
     nCall(
-      IC.isar_filter_null(
-        colPtr,
-        conditionPtr,
-        embeddedColId ?? 0,
-        propertyId,
-      ),
+      IC.isar_filter_null(colPtr, conditionPtr, embeddedColId ?? 0, propertyId),
     );
     IC.isar_filter_not(filterPtr, conditionPtr.value);
   } else {

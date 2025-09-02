@@ -144,21 +144,23 @@ void main() {
       await txnFuture;
     });
 
-    isarTest('Sync write txn cannot be opened during async write txn',
-        () async {
-      final c = Completer<void>();
-      final txnFuture = isar.writeTxn(() async {
-        await c.future;
-      });
+    isarTest(
+      'Sync write txn cannot be opened during async write txn',
+      () async {
+        final c = Completer<void>();
+        final txnFuture = isar.writeTxn(() async {
+          await c.future;
+        });
 
-      expect(
-        () => isar.writeTxnSync(() {}),
-        throwsIsarError('write transaction is already in progress'),
-      );
+        expect(
+          () => isar.writeTxnSync(() {}),
+          throwsIsarError('write transaction is already in progress'),
+        );
 
-      c.complete();
-      await txnFuture;
-    });
+        c.complete();
+        await txnFuture;
+      },
+    );
 
     isarTest('Async write txn can be opened during async write txn', () async {
       final c = Completer<void>();

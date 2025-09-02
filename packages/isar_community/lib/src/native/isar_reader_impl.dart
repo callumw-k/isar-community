@@ -261,8 +261,11 @@ class IsarReaderImpl implements IsarReader {
     final length = _readUint24(bytesOffset);
     bytesOffset += 3;
 
-    final buffer =
-        Uint8List.sublistView(_buffer, bytesOffset, bytesOffset + length);
+    final buffer = Uint8List.sublistView(
+      _buffer,
+      bytesOffset,
+      bytesOffset + length,
+    );
     final reader = IsarReaderImpl(buffer);
     final offsets = allOffsets[T]!;
     return deserialize(0, reader, offsets, allOffsets);

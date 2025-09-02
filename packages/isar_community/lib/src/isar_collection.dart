@@ -48,8 +48,9 @@ abstract class IsarCollection<OBJ> {
   /// {@endtemplate}
   @experimental
   Future<OBJ?> getByIndex(String indexName, IndexKey key) {
-    return getAllByIndex(indexName, [key])
-        .then((List<OBJ?> objects) => objects[0]);
+    return getAllByIndex(indexName, [
+      key,
+    ]).then((List<OBJ?> objects) => objects[0]);
   }
 
   /// {@macro col_get_by_index}

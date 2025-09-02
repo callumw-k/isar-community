@@ -21,12 +21,8 @@ class ObjectsListSliver extends StatelessWidget {
   final String collection;
   final Map<String, Schema<dynamic>> schemas;
   final List<IsarObject> objects;
-  final void Function(
-    String collection,
-    int id,
-    String path,
-    dynamic value,
-  ) onUpdate;
+  final void Function(String collection, int id, String path, dynamic value)
+  onUpdate;
   final void Function(int id) onDelete;
 
   @override
@@ -34,63 +30,63 @@ class ObjectsListSliver extends StatelessWidget {
     final theme = Theme.of(context);
     final collectionSchema = schemas[collection]! as CollectionSchema;
     return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        childCount: objects.length,
-        (BuildContext context, int index) {
-          final object = objects[index];
-          return Card(
-            key: Key('object ${object.getValue(collectionSchema.idName)}'),
-            child: Padding(
-              padding: const EdgeInsets.all(5),
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    child: ObjectView(
-                      schemaName: collection,
-                      schemas: schemas,
-                      object: object,
-                      root: true,
-                      onUpdate: (collection, id, path, value) {
-                        onUpdate(collection, id!, path, value);
-                      },
-                    ),
+      delegate: SliverChildBuilderDelegate(childCount: objects.length, (
+        BuildContext context,
+        int index,
+      ) {
+        final object = objects[index];
+        return Card(
+          key: Key('object ${object.getValue(collectionSchema.idName)}'),
+          child: Padding(
+            padding: const EdgeInsets.all(5),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  child: ObjectView(
+                    schemaName: collection,
+                    schemas: schemas,
+                    object: object,
+                    root: true,
+                    onUpdate: (collection, id, path, value) {
+                      onUpdate(collection, id!, path, value);
+                    },
                   ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.copy_rounded,
-                            color: theme.colorScheme.onPrimaryContainer,
-                          ),
-                          tooltip: 'Copy as JSON',
-                          visualDensity: VisualDensity.standard,
-                          onPressed: () => _copyObject(object),
+                ),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.copy_rounded,
+                          color: theme.colorScheme.onPrimaryContainer,
                         ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.delete_rounded,
-                            color: theme.colorScheme.onPrimaryContainer,
-                          ),
-                          tooltip: 'Delete',
-                          visualDensity: VisualDensity.standard,
-                          onPressed: () {
-                            final id = object.getValue(collectionSchema.idName);
-                            onDelete(id as int);
-                          },
+                        tooltip: 'Copy as JSON',
+                        visualDensity: VisualDensity.standard,
+                        onPressed: () => _copyObject(object),
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.delete_rounded,
+                          color: theme.colorScheme.onPrimaryContainer,
                         ),
-                      ],
-                    ),
+                        tooltip: 'Delete',
+                        visualDensity: VisualDensity.standard,
+                        onPressed: () {
+                          final id = object.getValue(collectionSchema.idName);
+                          onDelete(id as int);
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      }),
     );
   }
 

@@ -56,10 +56,17 @@ void main() {
         );
         expect(ids, [4, 5, 6, 7, 8, 9]);
 
-        await qEqual(
-          isar.implicitNullableIdModels.where().idProperty(),
-          [1, 2, 3, 4, 5, 6, 7, 8, 9],
-        );
+        await qEqual(isar.implicitNullableIdModels.where().idProperty(), [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+        ]);
       });
 
       isarTest('Auto increment should reset', () async {
@@ -75,9 +82,7 @@ void main() {
         );
         expect(id11, 11);
 
-        await isar.tWriteTxn(
-          () => isar.implicitNullableIdModels.tClear(),
-        );
+        await isar.tWriteTxn(() => isar.implicitNullableIdModels.tClear());
 
         final id1 = await isar.tWriteTxn(
           () => isar.implicitNullableIdModels.tPut(ImplicitNullableIdModel()),
@@ -91,10 +96,14 @@ void main() {
         );
         expect(newIds, [2, 3, 4, 5, 6]);
 
-        await qEqual(
-          isar.implicitNullableIdModels.where().idProperty(),
-          [1, 2, 3, 4, 5, 6],
-        );
+        await qEqual(isar.implicitNullableIdModels.where().idProperty(), [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+        ]);
       });
 
       isarTest('Negative id', () async {
@@ -175,10 +184,16 @@ void main() {
         );
         expect(ids, [3, 4, 5, 6, 7, 8]);
 
-        await qEqual(
-          isar.implicitFinalIdModels.where().idProperty(),
-          [1, 2, 3, 4, 5, 6, 7, 8],
-        );
+        await qEqual(isar.implicitFinalIdModels.where().idProperty(), [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+        ]);
       });
     });
 
@@ -207,10 +222,17 @@ void main() {
         );
         expect(ids, [4, 5, 6, 7, 8, 9]);
 
-        await qEqual(
-          isar.explicitIdModels.where().idProperty(),
-          [1, 2, 3, 4, 5, 6, 7, 8, 9],
-        );
+        await qEqual(isar.explicitIdModels.where().idProperty(), [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+        ]);
       });
     });
   });

@@ -53,34 +53,43 @@ void main() {
       await qEqual(col.filter().fieldEqualTo(2.3, epsilon: 0.2), [obj2]);
       await qEqual(col.filter().fieldEqualTo(null), [objNull]);
       await qEqual(col.filter().fieldEqualTo(double.infinity), [objInf]);
-      await qEqual(
-        col.filter().fieldEqualTo(double.negativeInfinity),
-        [objNInf],
-      );
+      await qEqual(col.filter().fieldEqualTo(double.negativeInfinity), [
+        objNInf,
+      ]);
     });
 
     isarTest('.greaterThan()', () async {
-      await qEqual(
-        col.filter().fieldGreaterThan(null),
-        [objInf, obj2, obj1, obj3, objNInf],
-      );
-      await qEqual(
-        col.filter().fieldGreaterThan(null, include: true),
-        [objInf, obj2, obj1, obj3, objNInf, objNull],
-      );
-      await qEqual(
-        col.filter().fieldGreaterThan(double.negativeInfinity),
-        [objInf, obj2, obj1, obj3],
-      );
+      await qEqual(col.filter().fieldGreaterThan(null), [
+        objInf,
+        obj2,
+        obj1,
+        obj3,
+        objNInf,
+      ]);
+      await qEqual(col.filter().fieldGreaterThan(null, include: true), [
+        objInf,
+        obj2,
+        obj1,
+        obj3,
+        objNInf,
+        objNull,
+      ]);
+      await qEqual(col.filter().fieldGreaterThan(double.negativeInfinity), [
+        objInf,
+        obj2,
+        obj1,
+        obj3,
+      ]);
       await qEqual(
         col.filter().fieldGreaterThan(double.negativeInfinity, include: true),
         [objInf, obj2, obj1, obj3, objNInf],
       );
       await qEqual(col.filter().fieldGreaterThan(2.2), [objInf, obj3]);
-      await qEqual(
-        col.filter().fieldGreaterThan(2.2, include: true),
-        [objInf, obj2, obj3],
-      );
+      await qEqual(col.filter().fieldGreaterThan(2.2, include: true), [
+        objInf,
+        obj2,
+        obj3,
+      ]);
       await qEqual(
         col.filter().fieldGreaterThan(2.3, epsilon: 0.2, include: true),
         [objInf, obj2, obj3],
@@ -90,50 +99,55 @@ void main() {
     isarTest('.lessThan()', () async {
       await qEqual(col.filter().fieldLessThan(null), []);
       await qEqual(col.filter().fieldLessThan(null, include: true), [objNull]);
-      await qEqual(
-        col.filter().fieldLessThan(double.negativeInfinity),
-        [objNull],
-      );
+      await qEqual(col.filter().fieldLessThan(double.negativeInfinity), [
+        objNull,
+      ]);
       await qEqual(
         col.filter().fieldLessThan(double.negativeInfinity, include: true),
         [objNInf, objNull],
       );
       await qEqual(col.filter().fieldLessThan(1.1), [objNInf, objNull]);
-      await qEqual(
-        col.filter().fieldLessThan(1.1, include: true),
-        [obj1, objNInf, objNull],
-      );
-      await qEqual(
-        col.filter().fieldLessThan(1.2, epsilon: 0.2),
-        [objNInf, objNull],
-      );
-      await qEqual(
-        col.filter().fieldLessThan(1, include: true, epsilon: 0.2),
-        [obj1, objNInf, objNull],
-      );
+      await qEqual(col.filter().fieldLessThan(1.1, include: true), [
+        obj1,
+        objNInf,
+        objNull,
+      ]);
+      await qEqual(col.filter().fieldLessThan(1.2, epsilon: 0.2), [
+        objNInf,
+        objNull,
+      ]);
+      await qEqual(col.filter().fieldLessThan(1, include: true, epsilon: 0.2), [
+        obj1,
+        objNInf,
+        objNull,
+      ]);
     });
 
     isarTest('.between()', () async {
       await qEqual(col.filter().fieldBetween(null, null), [objNull]);
       await qEqual(col.filter().fieldBetween(1.1, 3.3), [obj2, obj1, obj3]);
+      await qEqual(col.filter().fieldBetween(1.1, 3.3, includeLower: false), [
+        obj2,
+        obj3,
+      ]);
+      await qEqual(col.filter().fieldBetween(1.1, 3.3, includeUpper: false), [
+        obj2,
+        obj1,
+      ]);
       await qEqual(
-        col.filter().fieldBetween(1.1, 3.3, includeLower: false),
-        [obj2, obj3],
-      );
-      await qEqual(
-        col.filter().fieldBetween(1.1, 3.3, includeUpper: false),
-        [obj2, obj1],
-      );
-      await qEqual(
-        col
-            .filter()
-            .fieldBetween(1.1, 3.3, includeLower: false, includeUpper: false),
+        col.filter().fieldBetween(
+          1.1,
+          3.3,
+          includeLower: false,
+          includeUpper: false,
+        ),
         [obj2],
       );
-      await qEqual(
-        col.filter().fieldBetween(1.2, 3.2, epsilon: 0.2),
-        [obj2, obj1, obj3],
-      );
+      await qEqual(col.filter().fieldBetween(1.2, 3.2, epsilon: 0.2), [
+        obj2,
+        obj1,
+        obj3,
+      ]);
     });
 
     isarTest('.isNull()', () async {
@@ -141,10 +155,13 @@ void main() {
     });
 
     isarTest('.isNotNull()', () async {
-      await qEqual(
-        col.filter().fieldIsNotNull(),
-        [objInf, obj2, obj1, obj3, objNInf],
-      );
+      await qEqual(col.filter().fieldIsNotNull(), [
+        objInf,
+        obj2,
+        obj1,
+        obj3,
+        objNInf,
+      ]);
     });
   });
 }

@@ -29,5 +29,5 @@ enum EnumType {
   name,
 
   /// Uses a custom enum value.
-  value
+  value,
 }

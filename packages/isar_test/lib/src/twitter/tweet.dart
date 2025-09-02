@@ -98,20 +98,14 @@ class Tweet {
 
 @embedded
 class CurrentUserRetweet {
-  CurrentUserRetweet({
-    this.idStr,
-  });
+  CurrentUserRetweet({this.idStr});
 
   String? idStr;
 }
 
 @embedded
 class QuotedStatusPermalink {
-  QuotedStatusPermalink({
-    this.url,
-    this.expanded,
-    this.display,
-  });
+  QuotedStatusPermalink({this.url, this.expanded, this.display});
 
   String? url;
 

@@ -52,61 +52,56 @@ void main() {
     });
 
     isarTest('.notEqualTo()', () async {
-      await qEqual(
-        col.where().fieldNotEqualTo(0),
-        [obj1, obj3, obj2, objMax],
-      );
-      await qEqual(
-        col.where().fieldNotEqualTo(1),
-        [objMin, obj2, objMax],
-      );
+      await qEqual(col.where().fieldNotEqualTo(0), [obj1, obj3, obj2, objMax]);
+      await qEqual(col.where().fieldNotEqualTo(1), [objMin, obj2, objMax]);
     });
 
     isarTest('.greaterThan()', () async {
-      await qEqual(
-        col.where().fieldGreaterThan(0),
-        [obj1, obj3, obj2, objMax],
-      );
-      await qEqual(
-        col.where().fieldGreaterThan(0, include: true),
-        [objMin, obj1, obj3, obj2, objMax],
-      );
+      await qEqual(col.where().fieldGreaterThan(0), [obj1, obj3, obj2, objMax]);
+      await qEqual(col.where().fieldGreaterThan(0, include: true), [
+        objMin,
+        obj1,
+        obj3,
+        obj2,
+        objMax,
+      ]);
       await qEqual(col.where().fieldGreaterThan(255), []);
-      await qEqual(
-        col.where().fieldGreaterThan(255, include: true),
-        [objMax],
-      );
+      await qEqual(col.where().fieldGreaterThan(255, include: true), [objMax]);
     });
 
     isarTest('.lessThan()', () async {
-      await qEqual(
-        col.where().fieldLessThan(255),
-        [objMin, obj1, obj3, obj2],
-      );
-      await qEqual(
-        col.where().fieldLessThan(255, include: true),
-        [objMin, obj1, obj3, obj2, objMax],
-      );
+      await qEqual(col.where().fieldLessThan(255), [objMin, obj1, obj3, obj2]);
+      await qEqual(col.where().fieldLessThan(255, include: true), [
+        objMin,
+        obj1,
+        obj3,
+        obj2,
+        objMax,
+      ]);
       await qEqual(col.where().fieldLessThan(0), []);
-      await qEqual(
-        col.where().fieldLessThan(0, include: true),
-        [objMin],
-      );
+      await qEqual(col.where().fieldLessThan(0, include: true), [objMin]);
     });
 
     isarTest('.between()', () async {
-      await qEqual(
-        col.where().fieldBetween(0, 255),
-        [objMin, obj1, obj3, obj2, objMax],
-      );
-      await qEqual(
-        col.where().fieldBetween(0, 255, includeLower: false),
-        [obj1, obj3, obj2, objMax],
-      );
-      await qEqual(
-        col.where().fieldBetween(0, 255, includeUpper: false),
-        [objMin, obj1, obj3, obj2],
-      );
+      await qEqual(col.where().fieldBetween(0, 255), [
+        objMin,
+        obj1,
+        obj3,
+        obj2,
+        objMax,
+      ]);
+      await qEqual(col.where().fieldBetween(0, 255, includeLower: false), [
+        obj1,
+        obj3,
+        obj2,
+        objMax,
+      ]);
+      await qEqual(col.where().fieldBetween(0, 255, includeUpper: false), [
+        objMin,
+        obj1,
+        obj3,
+        obj2,
+      ]);
       await qEqual(col.where().fieldBetween(255, 0), []);
       await qEqual(col.where().fieldBetween(100, 110), []);
     });

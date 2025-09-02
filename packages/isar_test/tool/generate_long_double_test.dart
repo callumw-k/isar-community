@@ -36,10 +36,11 @@ void main() {
       .replaceAll('float', 'double')
       .replaceAll('filter_float_test', 'filter_double_test')
       .replaceAll('floatModels', 'doubleModels');
-  File('test/filter/filter_double_list_test.dart')
-      .writeAsStringSync(doubleListTest);
+  File(
+    'test/filter/filter_double_list_test.dart',
+  ).writeAsStringSync(doubleListTest);
 
-// where clauses
+  // where clauses
   final whereIntTestFile = File('test/index/where_int_test.dart');
   final whereIntTest = whereIntTestFile.readAsStringSync();
   final whereLongTest = whereIntTest
@@ -75,6 +76,7 @@ void main() {
       .replaceAll('float', 'double')
       .replaceAll('where_float_test', 'where_double_test')
       .replaceAll('floatModels', 'doubleModels');
-  File('test/index/where_double_list_test.dart')
-      .writeAsStringSync(whereDoubleListTest);
+  File(
+    'test/index/where_double_list_test.dart',
+  ).writeAsStringSync(whereDoubleListTest);
 }

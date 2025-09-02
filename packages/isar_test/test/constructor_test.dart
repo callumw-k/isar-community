@@ -125,10 +125,7 @@ void main() {
         await isar.emptyConstructorModels.tPutAll([obj1, obj2]);
       });
 
-      await qEqual(
-        isar.emptyConstructorModels.where(),
-        [obj1, obj2],
-      );
+      await qEqual(isar.emptyConstructorModels.where(), [obj1, obj2]);
     });
 
     isarTest('NamedConstructorModel', () async {
@@ -138,10 +135,7 @@ void main() {
         await isar.namedConstructorModels.tPutAll([obj1, obj2]);
       });
 
-      await qEqual(
-        isar.namedConstructorModels.where(),
-        [obj1, obj2],
-      );
+      await qEqual(isar.namedConstructorModels.where(), [obj1, obj2]);
     });
 
     isarTest('PositionalConstructorModel', () async {
@@ -152,10 +146,11 @@ void main() {
         await isar.positionalConstructorModels.tPutAll([obj1, obj2, obj3]);
       });
 
-      await qEqual(
-        isar.positionalConstructorModels.where(),
-        [obj1, obj2, obj3],
-      );
+      await qEqual(isar.positionalConstructorModels.where(), [
+        obj1,
+        obj2,
+        obj3,
+      ]);
     });
 
     isarTest('OptionalConstructorModel', () async {
@@ -167,10 +162,11 @@ void main() {
         await isar.optionalConstructorModels.tPutAll([obj1, obj2, obj3]);
       });
 
-      await qEqual(
-        isar.optionalConstructorModels.where(),
-        [obj1WithId, obj2, obj3],
-      );
+      await qEqual(isar.optionalConstructorModels.where(), [
+        obj1WithId,
+        obj2,
+        obj3,
+      ]);
     });
 
     isarTest('PositionalNamedConstructorModel', () async {
@@ -180,10 +176,7 @@ void main() {
         await isar.positionalNamedConstructorModels.tPutAll([obj1, obj2]);
       });
 
-      await qEqual(
-        isar.positionalNamedConstructorModels.where(),
-        [obj1, obj2],
-      );
+      await qEqual(isar.positionalNamedConstructorModels.where(), [obj1, obj2]);
     });
   });
 }

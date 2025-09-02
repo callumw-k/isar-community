@@ -59,11 +59,7 @@ class Index {
 /// Another property that is part of the composite index.
 class CompositeIndex {
   /// Another property that is part of the composite index.
-  const CompositeIndex(
-    this.property, {
-    this.type,
-    this.caseSensitive,
-  });
+  const CompositeIndex(this.property, {this.type, this.caseSensitive});
 
   /// Dart name of the property.
   final String property;

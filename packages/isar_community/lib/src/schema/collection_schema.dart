@@ -42,13 +42,15 @@ class CollectionSchema<OBJ> extends Schema<OBJ> {
       },
       links: {
         for (final link in json['links'] as List<dynamic>)
-          (link as Map<String, dynamic>)['name'] as String:
-              LinkSchema.fromJson(link),
+          (link as Map<String, dynamic>)['name'] as String: LinkSchema.fromJson(
+            link,
+          ),
       },
       embeddedSchemas: {
         for (final schema in json['embeddedSchemas'] as List<dynamic>)
-          (schema as Map<String, dynamic>)['name'] as String:
-              Schema.fromJson(schema),
+          (schema as Map<String, dynamic>)['name'] as String: Schema.fromJson(
+            schema,
+          ),
       },
       estimateSize: (_, __, ___) => throw UnimplementedError(),
       serialize: (_, __, ___, ____) => throw UnimplementedError(),
@@ -120,12 +122,8 @@ class CollectionSchema<OBJ> extends Schema<OBJ> {
     final json = {
       ...super.toJson(),
       'idName': idName,
-      'indexes': [
-        for (final index in indexes.values) index.toJson(),
-      ],
-      'links': [
-        for (final link in links.values) link.toJson(),
-      ],
+      'indexes': [for (final index in indexes.values) index.toJson()],
+      'links': [for (final link in links.values) link.toJson()],
     };
 
     assert(() {

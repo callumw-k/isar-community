@@ -52,18 +52,15 @@ void main() {
     });
 
     isarTest('.greaterThan()', () async {
-      await qEqual(
-        col.where().fieldGreaterThan(null),
-        [obj0, obj1, obj2, obj3, objInf],
-      );
-      await qEqual(
-        col.where().fieldGreaterThan(2.2),
-        [obj3, objInf],
-      );
-      await qEqual(
-        col.where().fieldGreaterThan(double.infinity),
-        [],
-      );
+      await qEqual(col.where().fieldGreaterThan(null), [
+        obj0,
+        obj1,
+        obj2,
+        obj3,
+        objInf,
+      ]);
+      await qEqual(col.where().fieldGreaterThan(2.2), [obj3, objInf]);
+      await qEqual(col.where().fieldGreaterThan(double.infinity), []);
     });
 
     isarTest('.lessThan()', () async {
@@ -72,10 +69,7 @@ void main() {
     });
 
     isarTest('.between()', () async {
-      await qEqual(
-        col.where().fieldBetween(1, 3.5),
-        [obj1, obj2, obj3],
-      );
+      await qEqual(col.where().fieldBetween(1, 3.5), [obj1, obj2, obj3]);
       await qEqual(col.where().fieldBetween(5, 6), []);
     });
 

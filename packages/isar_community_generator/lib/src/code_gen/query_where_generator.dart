@@ -79,8 +79,10 @@ class WhereGenerator {
     }
 
     var name = '';
-    final eqProperties =
-        index.properties.sublist(0, propertyCount - (method != null ? 1 : 0));
+    final eqProperties = index.properties.sublist(
+      0,
+      propertyCount - (method != null ? 1 : 0),
+    );
     if (eqProperties.isNotEmpty) {
       name += eqProperties.map(propertyName).join();
       name += 'EqualTo';

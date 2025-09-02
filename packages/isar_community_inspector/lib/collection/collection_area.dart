@@ -235,21 +235,14 @@ class _CollectionAreaState extends State<CollectionArea> {
   Future<void> _onCreate() async {
     final idName = widget.collectionSchema.idName;
     final randomId = Random().nextInt(100000000);
-    await widget.client.importJson(
-      widget.instance,
-      widget.collection,
-      [
-        {idName: randomId},
-      ],
-    );
+    await widget.client.importJson(widget.instance, widget.collection, [
+      {idName: randomId},
+    ]);
     if (!mounted) return;
 
     setState(() {
       filter = FilterGroup.and([
-        FilterCondition.equalTo(
-          property: idName,
-          value: randomId,
-        ),
+        FilterCondition.equalTo(property: idName, value: randomId),
       ]);
     });
     await _runQuery();

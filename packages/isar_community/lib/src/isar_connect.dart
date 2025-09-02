@@ -38,8 +38,10 @@ abstract class _IsarConnect {
     });
 
     for (final handler in _handlers.entries) {
-      registerExtension(handler.key.method,
-          (String method, Map<String, String> parameters) async {
+      registerExtension(handler.key.method, (
+        String method,
+        Map<String, String> parameters,
+      ) async {
         try {
           final args = parameters.containsKey('args')
               ? jsonDecode(parameters['args']!) as Map<String, dynamic>
@@ -203,10 +205,7 @@ abstract class _IsarConnect {
       }
     }
 
-    return {
-      'objects': objects,
-      'count': await countQuery.count(),
-    };
+    return {'objects': objects, 'count': await countQuery.count()};
   }
 
   static Future<bool> _removeQuery(Map<String, dynamic> params) async {
@@ -217,8 +216,9 @@ abstract class _IsarConnect {
 
   static Future<void> _importJson(Map<String, dynamic> params) async {
     final instance = Isar.getInstance(params['instance'] as String)!;
-    final collection =
-        instance.getCollectionByNameInternal(params['collection'] as String)!;
+    final collection = instance.getCollectionByNameInternal(
+      params['collection'] as String,
+    )!;
     final objects = (params['objects'] as List).cast<Map<String, dynamic>>();
     await instance.writeTxn(() async {
       await collection.importJson(objects);

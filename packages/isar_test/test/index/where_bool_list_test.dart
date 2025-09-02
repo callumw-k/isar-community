@@ -53,22 +53,17 @@ void main() {
     });
 
     isarTest('.elementEqualTo()', () async {
-      await qEqualSet(
-        col.where().listElementEqualTo(true),
-        [obj1, obj3],
-      );
+      await qEqualSet(col.where().listElementEqualTo(true), [obj1, obj3]);
       await qEqualSet(col.where().listElementEqualTo(null), [obj2]);
     });
 
     isarTest('.elementNotEqualTo()', () async {
-      await qEqualSet(
-        col.where().listElementNotEqualTo(true),
-        [obj2, obj3],
-      );
-      await qEqualSet(
-        col.where().listElementNotEqualTo(null),
-        [obj1, obj2, obj3],
-      );
+      await qEqualSet(col.where().listElementNotEqualTo(true), [obj2, obj3]);
+      await qEqualSet(col.where().listElementNotEqualTo(null), [
+        obj1,
+        obj2,
+        obj3,
+      ]);
     });
 
     isarTest('.elementIsNull()', () async {
@@ -76,30 +71,28 @@ void main() {
     });
 
     isarTest('.elementIsNotNull()', () async {
-      await qEqualSet(
-        col.where().listElementIsNotNull(),
-        [obj1, obj2, obj3],
-      );
+      await qEqualSet(col.where().listElementIsNotNull(), [obj1, obj2, obj3]);
     });
 
     isarTest('.equalTo()', () async {
       await qEqualSet(col.where().hashListEqualTo(null), [objNull]);
       await qEqualSet(col.where().hashListEqualTo([]), [objEmpty]);
-      await qEqualSet(
-        col.where().hashListEqualTo([null, false]),
-        [obj2],
-      );
+      await qEqualSet(col.where().hashListEqualTo([null, false]), [obj2]);
     });
 
     isarTest('.notEqualTo()', () async {
-      await qEqualSet(
-        col.where().hashListNotEqualTo([]),
-        [objNull, obj1, obj2, obj3],
-      );
-      await qEqualSet(
-        col.where().hashListNotEqualTo([true, false, true]),
-        [objEmpty, obj1, obj2, objNull],
-      );
+      await qEqualSet(col.where().hashListNotEqualTo([]), [
+        objNull,
+        obj1,
+        obj2,
+        obj3,
+      ]);
+      await qEqualSet(col.where().hashListNotEqualTo([true, false, true]), [
+        objEmpty,
+        obj1,
+        obj2,
+        objNull,
+      ]);
     });
 
     isarTest('.isNull()', () async {
@@ -107,10 +100,12 @@ void main() {
     });
 
     isarTest('.isNotNull()', () async {
-      await qEqualSet(
-        col.where().hashListIsNotNull(),
-        [objEmpty, obj1, obj2, obj3],
-      );
+      await qEqualSet(col.where().hashListIsNotNull(), [
+        objEmpty,
+        obj1,
+        obj2,
+        obj3,
+      ]);
     });
   });
 }

@@ -46,12 +46,7 @@ class ObjectInfo {
       '_${dartName.decapitalize()}DeserializeProp';
 }
 
-enum PropertyDeser {
-  none,
-  assign,
-  positionalParam,
-  namedParam,
-}
+enum PropertyDeser { none, assign, positionalParam, namedParam }
 
 class ObjectProperty {
   ObjectProperty({

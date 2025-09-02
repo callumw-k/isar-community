@@ -65,39 +65,50 @@ void main() {
 
     isarTest('.greaterThan()', () async {
       await qEqual(col.filter().fieldGreaterThan(local(2010)), [obj2, obj4]);
-      await qEqual(
-        col.filter().fieldGreaterThan(local(2010), include: true),
-        [obj1, obj2, obj3, obj4],
-      );
-      await qEqual(
-        col.filter().fieldGreaterThan(null),
-        [obj1, obj2, obj3, obj4],
-      );
-      await qEqual(
-        col.filter().fieldGreaterThan(null, include: true),
-        [obj1, obj2, obj3, obj4, objNull],
-      );
+      await qEqual(col.filter().fieldGreaterThan(local(2010), include: true), [
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+      ]);
+      await qEqual(col.filter().fieldGreaterThan(null), [
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+      ]);
+      await qEqual(col.filter().fieldGreaterThan(null, include: true), [
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        objNull,
+      ]);
       await qEqual(col.filter().fieldGreaterThan(local(2050)), []);
     });
 
     isarTest('.lessThan()', () async {
-      await qEqual(
-        col.filter().fieldLessThan(local(2020)),
-        [obj1, obj3, objNull],
-      );
-      await qEqual(
-        col.filter().fieldLessThan(local(2020), include: true),
-        [obj1, obj2, obj3, objNull],
-      );
+      await qEqual(col.filter().fieldLessThan(local(2020)), [
+        obj1,
+        obj3,
+        objNull,
+      ]);
+      await qEqual(col.filter().fieldLessThan(local(2020), include: true), [
+        obj1,
+        obj2,
+        obj3,
+        objNull,
+      ]);
       await qEqual(col.filter().fieldLessThan(null), []);
       await qEqual(col.filter().fieldLessThan(null, include: true), [objNull]);
     });
 
     isarTest('.between()', () async {
-      await qEqual(
-        col.filter().fieldBetween(null, local(2010)),
-        [obj1, obj3, objNull],
-      );
+      await qEqual(col.filter().fieldBetween(null, local(2010)), [
+        obj1,
+        obj3,
+        objNull,
+      ]);
       await qEqual(
         col.filter().fieldBetween(null, local(2020), includeLower: false),
         [obj1, obj2, obj3],

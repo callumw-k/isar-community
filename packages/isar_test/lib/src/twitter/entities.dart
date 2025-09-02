@@ -30,10 +30,7 @@ class Entities {
 
 @embedded
 class Hashtag {
-  Hashtag({
-    this.indices,
-    this.text,
-  });
+  Hashtag({this.indices, this.text});
 
   List<int>? indices;
 
@@ -42,11 +39,7 @@ class Hashtag {
 
 @embedded
 class Poll {
-  Poll({
-    this.options,
-    this.endDatetime,
-    this.durationMinutes,
-  });
+  Poll({this.options, this.endDatetime, this.durationMinutes});
 
   List<Option>? options;
 
@@ -57,10 +50,7 @@ class Poll {
 
 @embedded
 class Option {
-  Option({
-    this.position,
-    this.text,
-  });
+  Option({this.position, this.text});
 
   int? position;
 
@@ -69,10 +59,7 @@ class Option {
 
 @embedded
 class Symbol {
-  Symbol({
-    this.indices,
-    this.text,
-  });
+  Symbol({this.indices, this.text});
 
   List<int>? indices;
 
@@ -81,12 +68,7 @@ class Symbol {
 
 @embedded
 class Url {
-  Url({
-    this.displayUrl,
-    this.expandedUrl,
-    this.indices,
-    this.url,
-  });
+  Url({this.displayUrl, this.expandedUrl, this.indices, this.url});
 
   String? displayUrl;
 
@@ -99,12 +81,7 @@ class Url {
 
 @embedded
 class UserMention {
-  UserMention({
-    this.idStr,
-    this.indices,
-    this.name,
-    this.screenName,
-  });
+  UserMention({this.idStr, this.indices, this.name, this.screenName});
 
   String? idStr;
 

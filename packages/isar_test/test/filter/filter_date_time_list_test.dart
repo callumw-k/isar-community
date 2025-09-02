@@ -60,22 +60,25 @@ void main() {
 
     group('DateTime list filter', () {
       isarTest('.elementGreaterThan()', () async {
-        await qEqual(
-          col.filter().listElementGreaterThan(local(2020)),
-          [obj2, obj4],
-        );
+        await qEqual(col.filter().listElementGreaterThan(local(2020)), [
+          obj2,
+          obj4,
+        ]);
         await qEqual(
           col.filter().listElementGreaterThan(utc(2020), include: true),
           [obj2, obj4, obj3],
         );
-        await qEqual(
-          col.filter().listElementGreaterThan(null),
-          [obj2, obj4, obj3],
-        );
-        await qEqual(
-          col.filter().listElementGreaterThan(null, include: true),
-          [obj2, obj4, obj3, obj1],
-        );
+        await qEqual(col.filter().listElementGreaterThan(null), [
+          obj2,
+          obj4,
+          obj3,
+        ]);
+        await qEqual(col.filter().listElementGreaterThan(null, include: true), [
+          obj2,
+          obj4,
+          obj3,
+          obj1,
+        ]);
       });
 
       isarTest('.elementLessThan()', () async {
@@ -85,43 +88,34 @@ void main() {
           [obj2, obj3, obj1],
         );
         await qEqual(col.filter().listElementLessThan(null), []);
-        await qEqual(
-          col.filter().listElementLessThan(null, include: true),
-          [obj1],
-        );
+        await qEqual(col.filter().listElementLessThan(null, include: true), [
+          obj1,
+        ]);
       });
 
       isarTest('.elementBetween()', () async {
-        await qEqual(
-          col.filter().listElementBetween(utc(2010), utc(2020)),
-          [obj2, obj3],
-        );
+        await qEqual(col.filter().listElementBetween(utc(2010), utc(2020)), [
+          obj2,
+          obj3,
+        ]);
         await qEqual(
           col.filter().listElementBetween(
-                utc(2010),
-                utc(2020),
-                includeUpper: false,
-              ),
+            utc(2010),
+            utc(2020),
+            includeUpper: false,
+          ),
+          [obj3],
+        );
+        await qEqual(col.filter().listElementBetween(null, utc(2010)), [
+          obj3,
+          obj1,
+        ]);
+        await qEqual(
+          col.filter().listElementBetween(null, utc(2010), includeLower: false),
           [obj3],
         );
         await qEqual(
-          col.filter().listElementBetween(null, utc(2010)),
-          [obj3, obj1],
-        );
-        await qEqual(
-          col.filter().listElementBetween(
-                null,
-                utc(2010),
-                includeLower: false,
-              ),
-          [obj3],
-        );
-        await qEqual(
-          col.filter().listElementBetween(
-                null,
-                utc(2010),
-                includeUpper: false,
-              ),
+          col.filter().listElementBetween(null, utc(2010), includeUpper: false),
           [obj1],
         );
       });
@@ -139,10 +133,13 @@ void main() {
       });
 
       isarTest('.isNotNull()', () async {
-        await qEqual(
-          col.filter().listIsNotNull(),
-          [obj2, obj4, obj3, objEmpty, obj1],
-        );
+        await qEqual(col.filter().listIsNotNull(), [
+          obj2,
+          obj4,
+          obj3,
+          objEmpty,
+          obj1,
+        ]);
       });
     });
   });

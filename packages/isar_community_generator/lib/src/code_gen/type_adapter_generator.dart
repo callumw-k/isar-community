@@ -90,14 +90,10 @@ String generateEstimateSerialize(ObjectInfo object) {
         break;
 
       case IsarType.object:
-        code += _prepareSerialize(
-          property.nullable,
-          value,
-          (value) {
-            return '3 + ${property.targetSchema}.estimateSize($value, '
-                'allOffsets[${property.scalarDartType}]!, allOffsets)';
-          },
-        );
+        code += _prepareSerialize(property.nullable, value, (value) {
+          return '3 + ${property.targetSchema}.estimateSize($value, '
+              'allOffsets[${property.scalarDartType}]!, allOffsets)';
+        });
         break;
 
       case IsarType.objectList:
@@ -251,11 +247,13 @@ String generateDeserialize(ObjectInfo object) {
     ) {
       final object = ${object.dartName}(''';
 
-  final propertiesByMode =
-      object.properties.groupBy((ObjectProperty p) => p.deserialize);
+  final propertiesByMode = object.properties.groupBy(
+    (ObjectProperty p) => p.deserialize,
+  );
   final positional = propertiesByMode[PropertyDeser.positionalParam] ?? [];
-  final sortedPositional =
-      positional.sortedBy((ObjectProperty p) => p.constructorPosition!);
+  final sortedPositional = positional.sortedBy(
+    (ObjectProperty p) => p.constructorPosition!,
+  );
   for (final p in sortedPositional) {
     final index = object.objectProperties.indexOf(p);
     final deser = _deserializeProperty(object, p, 'offsets[$index]');

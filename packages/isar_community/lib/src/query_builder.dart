@@ -3,7 +3,9 @@ part of isar;
 /// @nodoc
 @protected
 typedef FilterQuery<OBJ> = QueryBuilder<OBJ, OBJ, QAfterFilterCondition>
-    Function(QueryBuilder<OBJ, OBJ, QFilterCondition> q);
+    Function(
+  QueryBuilder<OBJ, OBJ, QFilterCondition> q,
+);
 
 /// Query builders are used to create queries in a safe way.
 ///
@@ -107,10 +109,7 @@ class QueryBuilderInternal<OBJ> {
         ],
       );
     } else {
-      filterGroup = FilterGroup(
-        type: filterGroupType,
-        filters: [filter, cond],
-      );
+      filterGroup = FilterGroup(type: filterGroupType, filters: [filter, cond]);
     }
 
     return copyWith(
@@ -160,10 +159,7 @@ class QueryBuilderInternal<OBJ> {
   }
 
   /// @nodoc
-  QueryBuilderInternal<OBJ> object<E>(
-    FilterQuery<E> q,
-    String property,
-  ) {
+  QueryBuilderInternal<OBJ> object<E>(FilterQuery<E> q, String property) {
     // ignore: prefer_const_constructors
     final qb = q(QueryBuilder(QueryBuilderInternal()));
     return addFilterCondition(
@@ -172,10 +168,7 @@ class QueryBuilderInternal<OBJ> {
   }
 
   /// @nodoc
-  QueryBuilderInternal<OBJ> link<E>(
-    FilterQuery<E> q,
-    String linkName,
-  ) {
+  QueryBuilderInternal<OBJ> link<E>(FilterQuery<E> q, String linkName) {
     // ignore: prefer_const_constructors
     final qb = q(QueryBuilder(QueryBuilderInternal()));
     return addFilterCondition(
@@ -202,11 +195,7 @@ class QueryBuilderInternal<OBJ> {
       }
     }
     return addFilterCondition(
-      LinkFilter.length(
-        lower: lower,
-        upper: upper,
-        linkName: linkName,
-      ),
+      LinkFilter.length(lower: lower, upper: upper, linkName: linkName),
     );
   }
 
@@ -228,10 +217,7 @@ class QueryBuilderInternal<OBJ> {
     return copyWith(
       distinctByProperties: [
         ...distinctByProperties,
-        DistinctProperty(
-          property: propertyName,
-          caseSensitive: caseSensitive,
-        ),
+        DistinctProperty(property: propertyName, caseSensitive: caseSensitive),
       ],
     );
   }

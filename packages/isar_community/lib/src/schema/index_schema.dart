@@ -48,9 +48,7 @@ class IndexSchema {
       'name': name,
       'unique': unique,
       'replace': replace,
-      'properties': [
-        for (final property in properties) property.toJson(),
-      ],
+      'properties': [for (final property in properties) property.toJson()],
     };
 
     return json;

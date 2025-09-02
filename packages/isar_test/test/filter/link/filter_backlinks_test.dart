@@ -158,9 +158,9 @@ void main() {
       );
 
       await qEqualSet(
-        isar.targetModels
-            .filter()
-            .backlinks((q) => q.nameEqualTo('non existing')),
+        isar.targetModels.filter().backlinks(
+          (q) => q.nameEqualTo('non existing'),
+        ),
         [],
       );
 
@@ -182,35 +182,27 @@ void main() {
         throwsAssertionError,
       );
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthEqualTo(0),
-        [target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthEqualTo(0), [
+        target5,
+        target6,
+      ]);
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthEqualTo(1),
-        [target3, target4],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthEqualTo(1), [
+        target3,
+        target4,
+      ]);
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthEqualTo(2),
-        [target2],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthEqualTo(2), [
+        target2,
+      ]);
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthEqualTo(3),
-        [target1],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthEqualTo(3), [
+        target1,
+      ]);
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthEqualTo(4),
-        [],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthEqualTo(4), []);
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthEqualTo(5),
-        [],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthEqualTo(5), []);
     });
 
     isarTest('.backlinksLengthGreaterThan()', () async {
@@ -266,28 +258,33 @@ void main() {
         [target5, target6],
       );
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthLessThan(1),
-        [target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthLessThan(1), [
+        target5,
+        target6,
+      ]);
       await qEqualSet(
         isar.targetModels.filter().backlinksLengthLessThan(1, include: true),
         [target3, target4, target5, target6],
       );
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthLessThan(2),
-        [target3, target4, target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthLessThan(2), [
+        target3,
+        target4,
+        target5,
+        target6,
+      ]);
       await qEqualSet(
         isar.targetModels.filter().backlinksLengthLessThan(2, include: true),
         [target2, target3, target4, target5, target6],
       );
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthLessThan(3),
-        [target2, target3, target4, target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthLessThan(3), [
+        target2,
+        target3,
+        target4,
+        target5,
+        target6,
+      ]);
       await qEqualSet(
         isar.targetModels.filter().backlinksLengthLessThan(3, include: true),
         [target1, target2, target3, target4, target5, target6],
@@ -295,39 +292,48 @@ void main() {
     });
 
     isarTest('.backlinksLengthBetween()', () async {
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthBetween(0, 3),
-        [target1, target2, target3, target4, target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthBetween(0, 3), [
+        target1,
+        target2,
+        target3,
+        target4,
+        target5,
+        target6,
+      ]);
 
       await qEqualSet(
-        isar.targetModels
-            .filter()
-            .backlinksLengthBetween(0, 3, includeLower: false),
+        isar.targetModels.filter().backlinksLengthBetween(
+          0,
+          3,
+          includeLower: false,
+        ),
         [target1, target2, target3, target4],
       );
 
       await qEqualSet(
-        isar.targetModels
-            .filter()
-            .backlinksLengthBetween(0, 3, includeUpper: false),
+        isar.targetModels.filter().backlinksLengthBetween(
+          0,
+          3,
+          includeUpper: false,
+        ),
         [target2, target3, target4, target5, target6],
       );
 
       await qEqualSet(
         isar.targetModels.filter().backlinksLengthBetween(
-              0,
-              3,
-              includeLower: false,
-              includeUpper: false,
-            ),
+          0,
+          3,
+          includeLower: false,
+          includeUpper: false,
+        ),
         [target2, target3, target4],
       );
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksLengthBetween(1, 2),
-        [target2, target3, target4],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksLengthBetween(1, 2), [
+        target2,
+        target3,
+        target4,
+      ]);
 
       await qEqualSet(
         isar.targetModels.filter().backlinksLengthBetween(3, 42),
@@ -336,24 +342,29 @@ void main() {
     });
 
     isarTest('.backlinksIsEmpty()', () async {
-      await qEqualSet(
-        isar.targetModels.filter().backlinksIsEmpty(),
-        [target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksIsEmpty(), [
+        target5,
+        target6,
+      ]);
 
       await isar.tWriteTxn(() => target1.backlinks.tReset());
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksIsEmpty(),
-        [target1, target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksIsEmpty(), [
+        target1,
+        target5,
+        target6,
+      ]);
 
       await isar.tWriteTxn(() => isar.sourceModels.where().tDeleteAll());
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinksIsEmpty(),
-        [target1, target2, target3, target4, target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinksIsEmpty(), [
+        target1,
+        target2,
+        target3,
+        target4,
+        target5,
+        target6,
+      ]);
     });
   });
 }

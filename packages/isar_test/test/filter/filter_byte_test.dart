@@ -51,44 +51,56 @@ void main() {
     });
 
     isarTest('.greaterThan()', () async {
-      await qEqual(
-        col.filter().fieldGreaterThan(0),
-        [obj1, obj2, obj3, objMax],
-      );
-      await qEqual(
-        col.filter().fieldGreaterThan(0, include: true),
-        [objMin, obj1, obj2, obj3, objMax],
-      );
+      await qEqual(col.filter().fieldGreaterThan(0), [
+        obj1,
+        obj2,
+        obj3,
+        objMax,
+      ]);
+      await qEqual(col.filter().fieldGreaterThan(0, include: true), [
+        objMin,
+        obj1,
+        obj2,
+        obj3,
+        objMax,
+      ]);
       await qEqual(col.filter().fieldGreaterThan(255), []);
-      await qEqual(
-        col.filter().fieldGreaterThan(255, include: true),
-        [objMax],
-      );
+      await qEqual(col.filter().fieldGreaterThan(255, include: true), [objMax]);
     });
 
     isarTest('.lessThan()', () async {
       await qEqual(col.filter().fieldLessThan(255), [objMin, obj1, obj2, obj3]);
-      await qEqual(
-        col.filter().fieldLessThan(255, include: true),
-        [objMin, obj1, obj2, obj3, objMax],
-      );
+      await qEqual(col.filter().fieldLessThan(255, include: true), [
+        objMin,
+        obj1,
+        obj2,
+        obj3,
+        objMax,
+      ]);
       await qEqual(col.filter().fieldLessThan(0), []);
       await qEqual(col.filter().fieldLessThan(0, include: true), [objMin]);
     });
 
     isarTest('.between()', () async {
-      await qEqual(
-        col.filter().fieldBetween(0, 255),
-        [objMin, obj1, obj2, obj3, objMax],
-      );
-      await qEqual(
-        col.filter().fieldBetween(0, 255, includeLower: false),
-        [obj1, obj2, obj3, objMax],
-      );
-      await qEqual(
-        col.filter().fieldBetween(0, 255, includeUpper: false),
-        [objMin, obj1, obj2, obj3],
-      );
+      await qEqual(col.filter().fieldBetween(0, 255), [
+        objMin,
+        obj1,
+        obj2,
+        obj3,
+        objMax,
+      ]);
+      await qEqual(col.filter().fieldBetween(0, 255, includeLower: false), [
+        obj1,
+        obj2,
+        obj3,
+        objMax,
+      ]);
+      await qEqual(col.filter().fieldBetween(0, 255, includeUpper: false), [
+        objMin,
+        obj1,
+        obj2,
+        obj3,
+      ]);
       await qEqual(col.filter().fieldBetween(255, 0), []);
       await qEqual(col.filter().fieldBetween(100, 110), []);
     });

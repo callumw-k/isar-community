@@ -46,9 +46,7 @@ abstract class IsarCommon extends Isar {
 
       final txn = await beginTxn(write, silent);
 
-      final zone = Zone.current.fork(
-        zoneValues: {_zoneTxn: txn},
-      );
+      final zone = Zone.current.fork(zoneValues: {_zoneTxn: txn});
 
       T result;
       try {
@@ -88,15 +86,21 @@ abstract class IsarCommon extends Isar {
     final currentTxn = Zone.current[_zoneTxn] as T?;
     if (currentTxn != null) {
       if (!currentTxn.active) {
-        throw IsarError('Transaction is not active anymore. Make sure to await '
-            'all your asynchronous code within transactions to prevent it from '
-            'being closed prematurely.');
+        throw IsarError(
+          'Transaction is not active anymore. Make sure to await '
+          'all your asynchronous code within transactions to prevent it from '
+          'being closed prematurely.',
+        );
       } else if (write && !currentTxn.write) {
-        throw IsarError('Operation cannot be performed within a read '
-            'transaction. Use isar.writeTxn() instead.');
+        throw IsarError(
+          'Operation cannot be performed within a read '
+          'transaction. Use isar.writeTxn() instead.',
+        );
       } else if (currentTxn.isar != this) {
-        throw IsarError('Transaction does not match Isar instance. '
-            'Make sure to use transactions from the same Isar instance.');
+        throw IsarError(
+          'Transaction does not match Isar instance. '
+          'Make sure to use transactions from the same Isar instance.',
+        );
       }
       return callback(currentTxn);
     } else if (!write) {
@@ -104,8 +108,10 @@ abstract class IsarCommon extends Isar {
         return callback(Zone.current[_zoneTxn] as T);
       });
     } else {
-      throw IsarError('Write operations require an explicit transaction. '
-          'Wrap your code in isar.writeTxn()');
+      throw IsarError(
+        'Write operations require an explicit transaction. '
+        'Wrap your code in isar.writeTxn()',
+      );
     }
   }
 
@@ -169,8 +175,10 @@ abstract class IsarCommon extends Isar {
     } else if (!write) {
       return _beginTxnSync(false, false, () => callback(_currentTxnSync! as T));
     } else {
-      throw IsarError('Write operations require an explicit transaction. '
-          'Wrap your code in isar.writeTxnSync()');
+      throw IsarError(
+        'Write operations require an explicit transaction. '
+        'Wrap your code in isar.writeTxnSync()',
+      );
     }
   }
 

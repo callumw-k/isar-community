@@ -34,9 +34,8 @@ class IdWhereClause extends WhereClause {
         super._();
 
   /// Where clause that matches the id value equal to the given [value].
-  const IdWhereClause.equalTo({
-    required Id value,
-  })  : lower = value,
+  const IdWhereClause.equalTo({required Id value})
+      : lower = value,
         upper = value,
         includeLower = true,
         includeUpper = true,
@@ -365,9 +364,8 @@ class FilterCondition extends FilterOperation {
         super._();
 
   /// Filters the results to only include objects where the property is null.
-  const FilterCondition.isNull({
-    required this.property,
-  })  : type = FilterConditionType.isNull,
+  const FilterCondition.isNull({required this.property})
+      : type = FilterConditionType.isNull,
         value1 = null,
         include1 = false,
         value2 = null,
@@ -378,9 +376,8 @@ class FilterCondition extends FilterOperation {
 
   /// Filters the results to only include objects where the property is not
   /// null.
-  const FilterCondition.isNotNull({
-    required this.property,
-  })  : type = FilterConditionType.isNotNull,
+  const FilterCondition.isNotNull({required this.property})
+      : type = FilterConditionType.isNotNull,
         value1 = null,
         include1 = false,
         value2 = null,
@@ -390,9 +387,8 @@ class FilterCondition extends FilterOperation {
         super._();
 
   /// Filters the results to only include lists that contain `null`.
-  const FilterCondition.elementIsNull({
-    required this.property,
-  })  : type = FilterConditionType.elementIsNull,
+  const FilterCondition.elementIsNull({required this.property})
+      : type = FilterConditionType.elementIsNull,
         value1 = null,
         include1 = false,
         value2 = null,
@@ -402,9 +398,8 @@ class FilterCondition extends FilterOperation {
         super._();
 
   /// Filters the results to only include lists that do not contain `null`.
-  const FilterCondition.elementIsNotNull({
-    required this.property,
-  })  : type = FilterConditionType.elementIsNotNull,
+  const FilterCondition.elementIsNotNull({required this.property})
+      : type = FilterConditionType.elementIsNotNull,
         value1 = null,
         include1 = false,
         value2 = null,
@@ -475,10 +470,7 @@ enum FilterGroupType {
 class FilterGroup extends FilterOperation {
   /// @nodoc
   @protected
-  FilterGroup({
-    required this.type,
-    required this.filters,
-  }) : super._();
+  FilterGroup({required this.type, required this.filters}) : super._();
 
   /// Create a logical AND filter group.
   ///
@@ -552,10 +544,8 @@ class DistinctProperty {
 /// Filter condition based on an embedded object.
 class ObjectFilter extends FilterOperation {
   /// Create a filter condition based on an embedded object.
-  const ObjectFilter({
-    required this.property,
-    required this.filter,
-  }) : super._();
+  const ObjectFilter({required this.property, required this.filter})
+      : super._();
 
   /// Property containing the embedded object(s).
   final String property;

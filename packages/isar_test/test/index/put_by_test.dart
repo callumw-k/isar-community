@@ -6,10 +6,7 @@ part 'put_by_test.g.dart';
 
 @collection
 class BoolIndexModel {
-  BoolIndexModel({
-    required this.value,
-    required this.index,
-  });
+  BoolIndexModel({required this.value, required this.index});
 
   Id id = Isar.autoIncrement;
 
@@ -36,10 +33,7 @@ class BoolIndexModel {
 
 @collection
 class IntIndexModel {
-  IntIndexModel({
-    required this.value,
-    required this.index,
-  });
+  IntIndexModel({required this.value, required this.index});
 
   Id id = Isar.autoIncrement;
 
@@ -66,10 +60,7 @@ class IntIndexModel {
 
 @collection
 class DoubleIndexModel {
-  DoubleIndexModel({
-    required this.value,
-    required this.index,
-  });
+  DoubleIndexModel({required this.value, required this.index});
 
   Id id = Isar.autoIncrement;
 
@@ -96,10 +87,7 @@ class DoubleIndexModel {
 
 @collection
 class StringValueIndexModel {
-  StringValueIndexModel({
-    required this.value,
-    required this.index,
-  });
+  StringValueIndexModel({required this.value, required this.index});
 
   Id id = Isar.autoIncrement;
 
@@ -126,10 +114,7 @@ class StringValueIndexModel {
 
 @collection
 class StringHashIndexModel {
-  StringHashIndexModel({
-    required this.value,
-    required this.index,
-  });
+  StringHashIndexModel({required this.value, required this.index});
 
   Id id = Isar.autoIncrement;
 
@@ -156,10 +141,7 @@ class StringHashIndexModel {
 
 @collection
 class StringInsensitiveIndexModel {
-  StringInsensitiveIndexModel({
-    required this.value,
-    required this.index,
-  });
+  StringInsensitiveIndexModel({required this.value, required this.index});
 
   Id id = Isar.autoIncrement;
 
@@ -289,9 +271,7 @@ void main() {
       expect(obj0.id, obj4.id);
       expect(obj1.id, obj3.id);
 
-      await isar.tWriteTxn(
-        () => isar.stringHashIndexModels.tPutByValue(obj0),
-      );
+      await isar.tWriteTxn(() => isar.stringHashIndexModels.tPutByValue(obj0));
       await qEqual(isar.stringHashIndexModels.where(), [obj0, obj3, obj2]);
       expect(obj0.id, obj4.id);
     });
@@ -305,39 +285,52 @@ void main() {
       final obj5 = StringInsensitiveIndexModel(value: 'Bar', index: 5);
 
       await isar.tWriteTxn(
-        () => isar.stringInsensitiveIndexModels
-            .tPutAllByValue([obj0, obj1, obj3]),
+        () => isar.stringInsensitiveIndexModels.tPutAllByValue([
+          obj0,
+          obj1,
+          obj3,
+        ]),
       );
-      await qEqual(
-        isar.stringInsensitiveIndexModels.where(),
-        [obj0, obj1, obj3],
-      );
+      await qEqual(isar.stringInsensitiveIndexModels.where(), [
+        obj0,
+        obj1,
+        obj3,
+      ]);
 
       await isar.tWriteTxn(
-        () => isar.stringInsensitiveIndexModels
-            .tPutAllByValue([obj0, obj3, obj5]),
+        () => isar.stringInsensitiveIndexModels.tPutAllByValue([
+          obj0,
+          obj3,
+          obj5,
+        ]),
       );
-      await qEqual(
-        isar.stringInsensitiveIndexModels.where(),
-        [obj0, obj5, obj3],
-      );
+      await qEqual(isar.stringInsensitiveIndexModels.where(), [
+        obj0,
+        obj5,
+        obj3,
+      ]);
 
       await isar.tWriteTxn(
-        () => isar.stringInsensitiveIndexModels
-            .tPutAllByValue([obj2, obj4, obj5]),
+        () => isar.stringInsensitiveIndexModels.tPutAllByValue([
+          obj2,
+          obj4,
+          obj5,
+        ]),
       );
-      await qEqual(
-        isar.stringInsensitiveIndexModels.where(),
-        [obj4, obj5, obj3],
-      );
+      await qEqual(isar.stringInsensitiveIndexModels.where(), [
+        obj4,
+        obj5,
+        obj3,
+      ]);
 
       await isar.tWriteTxn(
         () => isar.stringInsensitiveIndexModels.tPutByValue(obj1),
       );
-      await qEqual(
-        isar.stringInsensitiveIndexModels.where(),
-        [obj4, obj1, obj3],
-      );
+      await qEqual(isar.stringInsensitiveIndexModels.where(), [
+        obj4,
+        obj1,
+        obj3,
+      ]);
     });
 
     isarTest('Put all by without items', () async {

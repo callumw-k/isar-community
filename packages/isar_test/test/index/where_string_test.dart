@@ -67,87 +67,99 @@ void main() {
     });
 
     isarTest('.equalTo()', () async {
-      await qEqual(
-        isar.stringModels.where().valueEqualTo('string 2'),
-        [obj2],
-      );
-      await qEqual(
-        isar.stringModels.where().valueEqualTo(null),
-        [objNull],
-      );
-      await qEqual(
-        isar.stringModels.where().valueEqualTo('string 6'),
-        [],
-      );
-      await qEqual(
-        isar.stringModels.where().valueEqualTo(''),
-        [objEmpty],
-      );
-      await qEqual(
-        isar.stringModels.where().valueEqualTo('non existing'),
-        [],
-      );
+      await qEqual(isar.stringModels.where().valueEqualTo('string 2'), [obj2]);
+      await qEqual(isar.stringModels.where().valueEqualTo(null), [objNull]);
+      await qEqual(isar.stringModels.where().valueEqualTo('string 6'), []);
+      await qEqual(isar.stringModels.where().valueEqualTo(''), [objEmpty]);
+      await qEqual(isar.stringModels.where().valueEqualTo('non existing'), []);
 
-      await qEqual(
-        isar.stringModels.where().hashEqualTo('string 2'),
-        [obj2],
-      );
-      await qEqual(
-        isar.stringModels.where().hashEqualTo(null),
-        [objNull],
-      );
-      await qEqual(
-        isar.stringModels.where().hashEqualTo('string 6'),
-        [],
-      );
-      await qEqual(
-        isar.stringModels.where().hashEqualTo(''),
-        [objEmpty],
-      );
-      await qEqual(
-        isar.stringModels.where().hashEqualTo('non existing'),
-        [],
-      );
+      await qEqual(isar.stringModels.where().hashEqualTo('string 2'), [obj2]);
+      await qEqual(isar.stringModels.where().hashEqualTo(null), [objNull]);
+      await qEqual(isar.stringModels.where().hashEqualTo('string 6'), []);
+      await qEqual(isar.stringModels.where().hashEqualTo(''), [objEmpty]);
+      await qEqual(isar.stringModels.where().hashEqualTo('non existing'), []);
     });
 
     isarTest('.notEqualTo()', () async {
-      await qEqualSet(
-        isar.stringModels.where().valueNotEqualTo('string 2'),
-        [objEmpty, obj1, obj3, obj4, obj5, obj6, objNull],
-      );
-      await qEqualSet(
-        isar.stringModels.where().valueNotEqualTo(null),
-        [objEmpty, obj1, obj2, obj3, obj4, obj5, obj6],
-      );
-      await qEqualSet(
-        isar.stringModels.where().valueNotEqualTo('string 6'),
-        [objEmpty, obj1, obj2, obj3, obj4, obj5, obj6, objNull],
-      );
-      await qEqualSet(
-        isar.stringModels.where().valueNotEqualTo(''),
-        [obj1, obj2, obj3, obj4, obj5, obj6, objNull],
-      );
+      await qEqualSet(isar.stringModels.where().valueNotEqualTo('string 2'), [
+        objEmpty,
+        obj1,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+        objNull,
+      ]);
+      await qEqualSet(isar.stringModels.where().valueNotEqualTo(null), [
+        objEmpty,
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+      ]);
+      await qEqualSet(isar.stringModels.where().valueNotEqualTo('string 6'), [
+        objEmpty,
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+        objNull,
+      ]);
+      await qEqualSet(isar.stringModels.where().valueNotEqualTo(''), [
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+        objNull,
+      ]);
       await qEqualSet(
         isar.stringModels.where().valueNotEqualTo('non existing'),
         [objEmpty, obj1, obj2, obj3, obj4, obj5, obj6, objNull],
       );
 
-      await qEqualSet(
-        isar.stringModels.where().hashNotEqualTo('string 2'),
-        [objEmpty, obj1, obj3, obj4, obj5, obj6, objNull],
-      );
-      await qEqualSet(
-        isar.stringModels.where().hashNotEqualTo(null),
-        [objEmpty, obj1, obj2, obj3, obj4, obj5, obj6],
-      );
-      await qEqualSet(
-        isar.stringModels.where().hashNotEqualTo('string 6'),
-        [objEmpty, obj1, obj2, obj3, obj4, obj5, obj6, objNull],
-      );
-      await qEqualSet(
-        isar.stringModels.where().hashNotEqualTo(''),
-        [obj1, obj2, obj3, obj4, obj5, obj6, objNull],
-      );
+      await qEqualSet(isar.stringModels.where().hashNotEqualTo('string 2'), [
+        objEmpty,
+        obj1,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+        objNull,
+      ]);
+      await qEqualSet(isar.stringModels.where().hashNotEqualTo(null), [
+        objEmpty,
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+      ]);
+      await qEqualSet(isar.stringModels.where().hashNotEqualTo('string 6'), [
+        objEmpty,
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+        objNull,
+      ]);
+      await qEqualSet(isar.stringModels.where().hashNotEqualTo(''), [
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+        objNull,
+      ]);
       await qEqualSet(
         isar.stringModels.where().hashNotEqualTo('non existing'),
         [objEmpty, obj1, obj2, obj3, obj4, obj5, obj6, objNull],
@@ -155,54 +167,67 @@ void main() {
     });
 
     isarTest('.isNull()', () async {
-      await qEqual(
-        isar.stringModels.where().valueIsNull(),
-        [objNull],
-      );
+      await qEqual(isar.stringModels.where().valueIsNull(), [objNull]);
 
-      await qEqual(
-        isar.stringModels.where().hashIsNull(),
-        [objNull],
-      );
+      await qEqual(isar.stringModels.where().hashIsNull(), [objNull]);
     });
 
     isarTest('.startsWith()', () async {
-      await qEqualSet(
-        isar.stringModels.where().valueStartsWith('string'),
-        [obj1, obj2, obj3, obj4, obj5, obj6],
-      );
-      await qEqualSet(
-        isar.stringModels.where().valueStartsWith(''),
-        [objEmpty, obj1, obj2, obj3, obj4, obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.where().valueStartsWith('string'), [
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+      ]);
+      await qEqualSet(isar.stringModels.where().valueStartsWith(''), [
+        objEmpty,
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+      ]);
       await qEqualSet(isar.stringModels.where().valueStartsWith('S'), {});
     });
 
     isarTest('.greaterThan()', () async {
-      await qEqualSet(
-        isar.stringModels.where().valueGreaterThan('string 0'),
-        [obj1, obj2, obj3, obj4, obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.where().valueGreaterThan('string 0'), [
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.where().valueGreaterThan('string 1'),
-        [obj2, obj3, obj4, obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.where().valueGreaterThan('string 1'), [
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.where().valueGreaterThan('string 2'),
-        [obj3, obj4, obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.where().valueGreaterThan('string 2'), [
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.where().valueGreaterThan('string 3'),
-        [obj4, obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.where().valueGreaterThan('string 3'), [
+        obj4,
+        obj5,
+        obj6,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.where().valueGreaterThan('string 4'),
-        [obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.where().valueGreaterThan('string 4'), [
+        obj5,
+        obj6,
+      ]);
 
       await qEqualSet(
         isar.stringModels.where().valueGreaterThan('string 5'),
@@ -211,40 +236,56 @@ void main() {
     });
 
     isarTest('.lessThan()', () async {
-      await qEqualSet(
-        isar.stringModels.where().valueLessThan('string 0'),
-        [objEmpty, objNull],
-      );
+      await qEqualSet(isar.stringModels.where().valueLessThan('string 0'), [
+        objEmpty,
+        objNull,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.where().valueLessThan('string 1'),
-        [objEmpty, objNull],
-      );
+      await qEqualSet(isar.stringModels.where().valueLessThan('string 1'), [
+        objEmpty,
+        objNull,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.where().valueLessThan('string 2'),
-        [objEmpty, objNull, obj1],
-      );
+      await qEqualSet(isar.stringModels.where().valueLessThan('string 2'), [
+        objEmpty,
+        objNull,
+        obj1,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.where().valueLessThan('string 3'),
-        [objEmpty, objNull, obj1, obj2],
-      );
+      await qEqualSet(isar.stringModels.where().valueLessThan('string 3'), [
+        objEmpty,
+        objNull,
+        obj1,
+        obj2,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.where().valueLessThan('string 4'),
-        [objEmpty, objNull, obj1, obj2, obj3],
-      );
+      await qEqualSet(isar.stringModels.where().valueLessThan('string 4'), [
+        objEmpty,
+        objNull,
+        obj1,
+        obj2,
+        obj3,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.where().valueLessThan('string 5'),
-        [objEmpty, objNull, obj1, obj2, obj3, obj4],
-      );
+      await qEqualSet(isar.stringModels.where().valueLessThan('string 5'), [
+        objEmpty,
+        objNull,
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+      ]);
 
-      await qEqualSet(
-        isar.stringModels.where().valueLessThan('string 6'),
-        [objEmpty, objNull, obj1, obj2, obj3, obj4, obj5, obj6],
-      );
+      await qEqualSet(isar.stringModels.where().valueLessThan('string 6'), [
+        objEmpty,
+        objNull,
+        obj1,
+        obj2,
+        obj3,
+        obj4,
+        obj5,
+        obj6,
+      ]);
     });
 
     isarTest('.between()', () async {
@@ -253,27 +294,25 @@ void main() {
         [obj2, obj3, obj4],
       );
 
-      await qEqualSet(
-        isar.stringModels.where().valueBetween('', 'string 2'),
-        [objEmpty, obj1, obj2],
-      );
+      await qEqualSet(isar.stringModels.where().valueBetween('', 'string 2'), [
+        objEmpty,
+        obj1,
+        obj2,
+      ]);
 
       await qEqualSet(
         isar.stringModels.where().valueBetween(
-              '',
-              'string 2',
-              includeLower: false,
-              includeUpper: false,
-            ),
+          '',
+          'string 2',
+          includeLower: false,
+          includeUpper: false,
+        ),
         [obj1],
       );
     });
 
     isarTest('.isEmpty()', () async {
-      await qEqualSet(
-        isar.stringModels.where().valueIsEmpty(),
-        [objEmpty],
-      );
+      await qEqualSet(isar.stringModels.where().valueIsEmpty(), [objEmpty]);
     });
 
     isarTest('.isNotEmpty()', () async {

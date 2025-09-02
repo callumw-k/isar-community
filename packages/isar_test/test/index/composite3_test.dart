@@ -10,10 +10,7 @@ class Model {
   Id? id;
 
   @Index(
-    composite: [
-      CompositeIndex('value2'),
-      CompositeIndex('value3'),
-    ],
+    composite: [CompositeIndex('value2'), CompositeIndex('value3')],
     unique: true,
   )
   int? value1;
@@ -74,42 +71,34 @@ void main() {
       obj9 = Model(300, 20, 1);
 
       await isar.writeTxn(() async {
-        await col.putAll(
-          [
-            obj7, objNull3, obj4, obj1, objNull1, obj9, //
-            obj3, obj5, objNull2, obj2, obj8, obj6, //
-          ],
-        );
+        await col.putAll([
+          obj7, objNull3, obj4, obj1, objNull1, obj9, //
+          obj3, obj5, objNull2, obj2, obj8, obj6, //
+        ]);
       });
     });
 
     isarTest('.anyValue1Value2Value3', () async {
-      await qEqual(
-        isar.models.where().anyValue1Value2Value3(),
-        [
-          objNull1, objNull2, objNull3, obj1, obj2, //
-          obj3, obj4, obj5, obj6, obj7, obj8, obj9, //
-        ],
-      );
-      await qEqual(
-        isar.models.where(sort: Sort.desc).anyValue1Value2Value3(),
-        [
-          obj9, obj8, obj7, obj6, obj5, obj4, obj3, //
-          obj2, obj1, objNull3, objNull2, objNull1, //
-        ],
-      );
+      await qEqual(isar.models.where().anyValue1Value2Value3(), [
+        objNull1, objNull2, objNull3, obj1, obj2, //
+        obj3, obj4, obj5, obj6, obj7, obj8, obj9, //
+      ]);
+      await qEqual(isar.models.where(sort: Sort.desc).anyValue1Value2Value3(), [
+        obj9, obj8, obj7, obj6, obj5, obj4, obj3, //
+        obj2, obj1, objNull3, objNull2, objNull1, //
+      ]);
     });
 
     group('value1', () {
       isarTest('.equalTo()', () async {
-        await qEqual(
-          isar.models.where().value1EqualToAnyValue2Value3(null),
-          [objNull1],
-        );
-        await qEqual(
-          isar.models.where().value1EqualToAnyValue2Value3(200),
-          [obj4, obj5, obj6],
-        );
+        await qEqual(isar.models.where().value1EqualToAnyValue2Value3(null), [
+          objNull1,
+        ]);
+        await qEqual(isar.models.where().value1EqualToAnyValue2Value3(200), [
+          obj4,
+          obj5,
+          obj6,
+        ]);
       });
 
       isarTest('.notEqualTo()', () async {
@@ -120,13 +109,10 @@ void main() {
             obj3, obj4, obj5, obj6, obj7, obj8, obj9, //
           ],
         );
-        await qEqual(
-          isar.models.where().value1NotEqualToAnyValue2Value3(200),
-          [
-            objNull1, objNull2, objNull3, obj1, //
-            obj2, obj3, obj7, obj8, obj9, //
-          ],
-        );
+        await qEqual(isar.models.where().value1NotEqualToAnyValue2Value3(200), [
+          objNull1, objNull2, objNull3, obj1, //
+          obj2, obj3, obj7, obj8, obj9, //
+        ]);
         await qEqual(
           isar.models
               .where(sort: Sort.desc)
@@ -151,9 +137,10 @@ void main() {
           [obj7, obj8, obj9],
         );
         await qEqual(
-          isar.models
-              .where()
-              .value1GreaterThanAnyValue2Value3(200, include: true),
+          isar.models.where().value1GreaterThanAnyValue2Value3(
+            200,
+            include: true,
+          ),
           [obj4, obj5, obj6, obj7, obj8, obj9],
         );
       });
@@ -164,15 +151,15 @@ void main() {
           [],
         );
         await qEqual(
-          isar.models
-              .where()
-              .value1LessThanAnyValue2Value3(null, include: true),
+          isar.models.where().value1LessThanAnyValue2Value3(
+            null,
+            include: true,
+          ),
           [objNull1],
         );
-        await qEqual(
-          isar.models.where().value1LessThanAnyValue2Value3(10),
-          [objNull1],
-        );
+        await qEqual(isar.models.where().value1LessThanAnyValue2Value3(10), [
+          objNull1,
+        ]);
         await qEqual(
           isar.models.where().value1LessThanAnyValue2Value3(10, include: true),
           [objNull1, objNull2, objNull3],
@@ -185,43 +172,43 @@ void main() {
           [objNull1, objNull2, objNull3, obj1, obj2, obj3],
         );
         await qEqual(
-          isar.models
-              .where()
-              .value1BetweenAnyValue2Value3(null, 100, includeLower: false),
+          isar.models.where().value1BetweenAnyValue2Value3(
+            null,
+            100,
+            includeLower: false,
+          ),
           [objNull2, objNull3, obj1, obj2, obj3],
         );
         await qEqual(
-          isar.models
-              .where()
-              .value1BetweenAnyValue2Value3(null, 100, includeUpper: false),
+          isar.models.where().value1BetweenAnyValue2Value3(
+            null,
+            100,
+            includeUpper: false,
+          ),
           [objNull1, objNull2, objNull3],
         );
         await qEqual(
           isar.models.where().value1BetweenAnyValue2Value3(
-                null,
-                100,
-                includeLower: false,
-                includeUpper: false,
-              ),
+            null,
+            100,
+            includeLower: false,
+            includeUpper: false,
+          ),
           [objNull2, objNull3],
         );
       });
 
       isarTest('.isNull()', () async {
-        await qEqual(
-          isar.models.where().value1IsNullAnyValue2Value3(),
-          [objNull1],
-        );
+        await qEqual(isar.models.where().value1IsNullAnyValue2Value3(), [
+          objNull1,
+        ]);
       });
 
       isarTest('.isNotNull()', () async {
-        await qEqual(
-          isar.models.where().value1IsNotNullAnyValue2Value3(),
-          [
-            objNull2, objNull3, obj1, obj2, //
-            obj3, obj4, obj5, obj6, obj7, obj8, obj9, //
-          ],
-        );
+        await qEqual(isar.models.where().value1IsNotNullAnyValue2Value3(), [
+          objNull2, objNull3, obj1, obj2, //
+          obj3, obj4, obj5, obj6, obj7, obj8, obj9, //
+        ]);
       });
     });
 
@@ -256,9 +243,10 @@ void main() {
 
       isarTest('.greaterThan()', () async {
         await qEqual(
-          isar.models
-              .where()
-              .value1EqualToValue2GreaterThanAnyValue3(100, null),
+          isar.models.where().value1EqualToValue2GreaterThanAnyValue3(
+            100,
+            null,
+          ),
           [obj1, obj2, obj3],
         );
         await qEqual(
@@ -266,9 +254,11 @@ void main() {
           [obj3],
         );
         await qEqual(
-          isar.models
-              .where()
-              .value1EqualToValue2GreaterThanAnyValue3(100, 10, include: true),
+          isar.models.where().value1EqualToValue2GreaterThanAnyValue3(
+            100,
+            10,
+            include: true,
+          ),
           [obj1, obj2, obj3],
         );
         await qEqual(
@@ -287,18 +277,22 @@ void main() {
           [],
         );
         await qEqual(
-          isar.models
-              .where()
-              .value1EqualToValue2LessThanAnyValue3(300, 10, include: true),
+          isar.models.where().value1EqualToValue2LessThanAnyValue3(
+            300,
+            10,
+            include: true,
+          ),
           [obj7, obj8],
         );
       });
 
       isarTest('.between()', () async {
         await qEqual(
-          isar.models
-              .where()
-              .value1EqualToValue2BetweenAnyValue3(200, null, 100),
+          isar.models.where().value1EqualToValue2BetweenAnyValue3(
+            200,
+            null,
+            100,
+          ),
           [obj4, obj5, obj6],
         );
         await qEqual(
@@ -307,20 +301,20 @@ void main() {
         );
         await qEqual(
           isar.models.where().value1EqualToValue2BetweenAnyValue3(
-                200,
-                10,
-                20,
-                includeLower: false,
-              ),
+            200,
+            10,
+            20,
+            includeLower: false,
+          ),
           [obj6],
         );
         await qEqual(
           isar.models.where().value1EqualToValue2BetweenAnyValue3(
-                200,
-                10,
-                20,
-                includeUpper: false,
-              ),
+            200,
+            10,
+            20,
+            includeUpper: false,
+          ),
           [obj4, obj5],
         );
       });
@@ -371,9 +365,11 @@ void main() {
 
       isarTest('.greaterThan()', () async {
         await qEqual(
-          isar.models
-              .where()
-              .value1Value2EqualToValue3GreaterThan(300, 10, null),
+          isar.models.where().value1Value2EqualToValue3GreaterThan(
+            300,
+            10,
+            null,
+          ),
           [obj7, obj8],
         );
         await qEqual(
@@ -381,9 +377,12 @@ void main() {
           [],
         );
         await qEqual(
-          isar.models
-              .where()
-              .value1Value2EqualToValue3GreaterThan(300, 10, 2, include: true),
+          isar.models.where().value1Value2EqualToValue3GreaterThan(
+            300,
+            10,
+            2,
+            include: true,
+          ),
           [obj8],
         );
       });
@@ -398,49 +397,55 @@ void main() {
           [],
         );
         await qEqual(
-          isar.models
-              .where()
-              .value1Value2EqualToValue3LessThan(300, 10, 1, include: true),
+          isar.models.where().value1Value2EqualToValue3LessThan(
+            300,
+            10,
+            1,
+            include: true,
+          ),
           [obj7],
         );
       });
 
       isarTest('.between()', () async {
         await qEqual(
-          isar.models
-              .where()
-              .value1Value2EqualToValue3Between(200, 10, null, 5),
+          isar.models.where().value1Value2EqualToValue3Between(
+            200,
+            10,
+            null,
+            5,
+          ),
           [obj4, obj5],
         );
         await qEqual(
           isar.models.where().value1Value2EqualToValue3Between(
-                200,
-                10,
-                1,
-                2,
-                includeLower: false,
-              ),
+            200,
+            10,
+            1,
+            2,
+            includeLower: false,
+          ),
           [obj5],
         );
         await qEqual(
           isar.models.where().value1Value2EqualToValue3Between(
-                200,
-                10,
-                1,
-                2,
-                includeUpper: false,
-              ),
+            200,
+            10,
+            1,
+            2,
+            includeUpper: false,
+          ),
           [obj4],
         );
         await qEqual(
           isar.models.where().value1Value2EqualToValue3Between(
-                200,
-                10,
-                1,
-                2,
-                includeLower: false,
-                includeUpper: false,
-              ),
+            200,
+            10,
+            1,
+            2,
+            includeLower: false,
+            includeUpper: false,
+          ),
           [],
         );
       });

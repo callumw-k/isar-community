@@ -112,8 +112,9 @@ class QueryImpl<T> extends Query<T> implements Finalizable {
 
   @override
   Stream<List<T>> watch({bool fireImmediately = false}) {
-    return watchLazy(fireImmediately: fireImmediately)
-        .asyncMap((event) => findAll());
+    return watchLazy(
+      fireImmediately: fireImmediately,
+    ).asyncMap((event) => findAll());
   }
 
   @override

@@ -99,23 +99,12 @@ class SchemaTestModel {
   @Index(name: 'stringListFieldCaseInsensitive', caseSensitive: false)
   late List<String> stringListField;
 
-  @Index(
-    name: 'compositeField1',
-    composite: [
-      CompositeIndex('boolField'),
-    ],
-  )
+  @Index(name: 'compositeField1', composite: [CompositeIndex('boolField')])
   @Index(
     name: 'compositeField2',
-    composite: [
-      CompositeIndex('boolField'),
-      CompositeIndex('intField'),
-    ],
+    composite: [CompositeIndex('boolField'), CompositeIndex('intField')],
   )
-  @Index(
-    name: 'compositeFieldCSCS',
-    composite: [CompositeIndex('stringField')],
-  )
+  @Index(name: 'compositeFieldCSCS', composite: [CompositeIndex('stringField')])
   @Index(
     name: 'compositeFieldCICS',
     caseSensitive: false,
@@ -123,16 +112,12 @@ class SchemaTestModel {
   )
   @Index(
     name: 'compositeFieldCSCI',
-    composite: [
-      CompositeIndex('stringField', caseSensitive: false),
-    ],
+    composite: [CompositeIndex('stringField', caseSensitive: false)],
   )
   @Index(
     name: 'compositeFieldCICI',
     caseSensitive: false,
-    composite: [
-      CompositeIndex('stringField', caseSensitive: false),
-    ],
+    composite: [CompositeIndex('stringField', caseSensitive: false)],
   )
   @Index(
     name: 'compositeFieldHashed',
@@ -144,18 +129,10 @@ class SchemaTestModel {
   )
   late String compositeField;
 
-  @Index(
-    name: 'compositeGetter1',
-    composite: [
-      CompositeIndex('boolGetter'),
-    ],
-  )
+  @Index(name: 'compositeGetter1', composite: [CompositeIndex('boolGetter')])
   @Index(
     name: 'compositeGetter2',
-    composite: [
-      CompositeIndex('boolGetter'),
-      CompositeIndex('intGetter'),
-    ],
+    composite: [CompositeIndex('boolGetter'), CompositeIndex('intGetter')],
   )
   @Index(
     name: 'compositeGetterCSCS',
@@ -168,16 +145,12 @@ class SchemaTestModel {
   )
   @Index(
     name: 'compositeGetterCSCI',
-    composite: [
-      CompositeIndex('stringGetter', caseSensitive: false),
-    ],
+    composite: [CompositeIndex('stringGetter', caseSensitive: false)],
   )
   @Index(
     name: 'compositeGetterCICI',
     caseSensitive: false,
-    composite: [
-      CompositeIndex('stringGetter', caseSensitive: false),
-    ],
+    composite: [CompositeIndex('stringGetter', caseSensitive: false)],
   )
   @Index(
     name: 'compositeGetterHashed',
@@ -185,9 +158,7 @@ class SchemaTestModel {
   )
   @Index(
     name: 'compositeGetterValue',
-    composite: [
-      CompositeIndex('stringGetter', type: IndexType.value),
-    ],
+    composite: [CompositeIndex('stringGetter', type: IndexType.value)],
   )
   String get compositeGetter => '';
 

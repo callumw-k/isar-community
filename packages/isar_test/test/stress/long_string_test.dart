@@ -8,10 +8,7 @@ part 'long_string_test.g.dart';
 
 @collection
 class StringModel {
-  StringModel({
-    this.string,
-    this.stringList,
-  });
+  StringModel({this.string, this.stringList});
 
   Id? id = Isar.autoIncrement;
 
@@ -47,9 +44,7 @@ void main() {
     isarTest('Single', () async {
       final models = <StringModel>[
         for (var i = 0; i < 100; i++)
-          StringModel(
-            string: '${_randomStr(50000)}test$i${_randomStr(50000)}',
-          ),
+          StringModel(string: '${_randomStr(50000)}test$i${_randomStr(50000)}'),
       ];
       await isar.tWriteTxn(() async {
         await isar.stringModels.tPutAll(models);
@@ -57,14 +52,12 @@ void main() {
 
       await qEqual(isar.stringModels.where(), models);
 
-      await qEqual(
-        isar.stringModels.filter().stringContains('test75'),
-        [models[75]],
-      );
-      await qEqual(
-        isar.stringModels.filter().stringMatches('*test66*'),
-        [models[66]],
-      );
+      await qEqual(isar.stringModels.filter().stringContains('test75'), [
+        models[75],
+      ]);
+      await qEqual(isar.stringModels.filter().stringMatches('*test66*'), [
+        models[66],
+      ]);
     });
 
     isarTest('List', () async {

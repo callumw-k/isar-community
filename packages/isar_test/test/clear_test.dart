@@ -36,9 +36,7 @@ void main() {
       await isar.modelAs.verify(modelAs);
       await isar.modelBs.verify(modelBs);
 
-      await isar.tWriteTxn(
-        () => isar.modelAs.tClear(),
-      );
+      await isar.tWriteTxn(() => isar.modelAs.tClear());
 
       await isar.modelAs.verify([]);
       await isar.modelBs.verify(modelBs);

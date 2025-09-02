@@ -117,58 +117,58 @@ void main() {
 
     isarTest('Nested .selfLinks()', () async {
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLinks((q) => q.selfLinks((q) => q.nameStartsWith('obj'))),
+        isar.models.filter().selfLinks(
+          (q) => q.selfLinks((q) => q.nameStartsWith('obj')),
+        ),
         [obj1, obj2, obj3, obj4, obj5, obj6],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLinks((q) => q.selfLinks((q) => q.nameEqualTo('obj 1'))),
+        isar.models.filter().selfLinks(
+          (q) => q.selfLinks((q) => q.nameEqualTo('obj 1')),
+        ),
         [obj1, obj2, obj3, obj4, obj6],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLinks((q) => q.selfLinks((q) => q.nameEqualTo('obj 2'))),
+        isar.models.filter().selfLinks(
+          (q) => q.selfLinks((q) => q.nameEqualTo('obj 2')),
+        ),
         [obj2, obj3, obj5, obj6],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLinks((q) => q.selfLinks((q) => q.nameEqualTo('obj 3'))),
+        isar.models.filter().selfLinks(
+          (q) => q.selfLinks((q) => q.nameEqualTo('obj 3')),
+        ),
         [obj3],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLinks((q) => q.selfLinks((q) => q.nameEqualTo('obj 4'))),
+        isar.models.filter().selfLinks(
+          (q) => q.selfLinks((q) => q.nameEqualTo('obj 4')),
+        ),
         [obj4],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLinks((q) => q.selfLinks((q) => q.nameEqualTo('obj 5'))),
+        isar.models.filter().selfLinks(
+          (q) => q.selfLinks((q) => q.nameEqualTo('obj 5')),
+        ),
         [obj4],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLinks((q) => q.selfLinks((q) => q.nameEqualTo('obj 6'))),
+        isar.models.filter().selfLinks(
+          (q) => q.selfLinks((q) => q.nameEqualTo('obj 6')),
+        ),
         [obj4, obj5, obj6],
       );
 
       await qEqualSet(
         isar.models.filter().selfLinks(
-              (q) => q.selfLinks((q) => q.nameEqualTo('non existing')),
-            ),
+          (q) => q.selfLinks((q) => q.nameEqualTo('non existing')),
+        ),
         [],
       );
     });

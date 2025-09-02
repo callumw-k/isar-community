@@ -117,58 +117,58 @@ void main() {
 
     isarTest('Nested .selfLink()', () async {
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLink((q) => q.selfLink((q) => q.nameStartsWith('obj'))),
+        isar.models.filter().selfLink(
+          (q) => q.selfLink((q) => q.nameStartsWith('obj')),
+        ),
         [obj1, obj2, obj3, obj4, obj5, obj6],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLink((q) => q.selfLink((q) => q.nameStartsWith('obj 1'))),
+        isar.models.filter().selfLink(
+          (q) => q.selfLink((q) => q.nameStartsWith('obj 1')),
+        ),
         [obj4],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLink((q) => q.selfLink((q) => q.nameStartsWith('obj 2'))),
+        isar.models.filter().selfLink(
+          (q) => q.selfLink((q) => q.nameStartsWith('obj 2')),
+        ),
         [obj5],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLink((q) => q.selfLink((q) => q.nameStartsWith('obj 3'))),
+        isar.models.filter().selfLink(
+          (q) => q.selfLink((q) => q.nameStartsWith('obj 3')),
+        ),
         [obj1],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLink((q) => q.selfLink((q) => q.nameStartsWith('obj 4'))),
+        isar.models.filter().selfLink(
+          (q) => q.selfLink((q) => q.nameStartsWith('obj 4')),
+        ),
         [obj2],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLink((q) => q.selfLink((q) => q.nameStartsWith('obj 5'))),
+        isar.models.filter().selfLink(
+          (q) => q.selfLink((q) => q.nameStartsWith('obj 5')),
+        ),
         [obj3],
       );
 
       await qEqualSet(
-        isar.models
-            .filter()
-            .selfLink((q) => q.selfLink((q) => q.nameStartsWith('obj 6'))),
+        isar.models.filter().selfLink(
+          (q) => q.selfLink((q) => q.nameStartsWith('obj 6')),
+        ),
         [obj6],
       );
 
       await qEqualSet(
         isar.models.filter().selfLink(
-              (q) => q.selfLink((q) => q.nameStartsWith('non existing')),
-            ),
+          (q) => q.selfLink((q) => q.nameStartsWith('non existing')),
+        ),
         [],
       );
     });

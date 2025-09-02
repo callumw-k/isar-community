@@ -128,8 +128,9 @@ class QueryImpl<T> extends Query<T> {
       findAll().then(controller.add);
     }
 
-    final Null Function(List<dynamic> results) callback =
-        allowInterop((List<dynamic> results) {
+    final Null Function(List<dynamic> results) callback = allowInterop((
+      List<dynamic> results,
+    ) {
       controller.add(results.map((e) => deserialize(e as Object)).toList());
     });
     stop = col.native.watchQuery(queryJs, callback);

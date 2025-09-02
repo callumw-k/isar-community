@@ -22,10 +22,7 @@ class LinkPropertyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (link.single) {
-      final child = object.getNested(
-        link.name,
-        linkCollection: link.target,
-      );
+      final child = object.getNested(link.name, linkCollection: link.target);
       return PropertyBuilder(
         property: link.name,
         type: 'IsarLink<${link.target}>',

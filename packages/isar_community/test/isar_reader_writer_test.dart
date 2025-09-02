@@ -1,7 +1,5 @@
 @TestOn('vm')
-
 // ignore_for_file: constant_identifier_names
-
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -14,8 +12,9 @@ import 'package:test/test.dart';
 
 void main() {
   group('Golden Binary', () {
-    late final json =
-        File('../isar_core/tests/binary_golden.json').readAsStringSync();
+    late final json = File(
+      '../isar_core/tests/binary_golden.json',
+    ).readAsStringSync();
     late final tests = (jsonDecode(json) as List<dynamic>)
         .map((e) => BinaryTest.fromJson(e as Map<String, dynamic>))
         .toList();

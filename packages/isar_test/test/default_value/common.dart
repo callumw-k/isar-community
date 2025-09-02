@@ -2,11 +2,7 @@ import 'package:isar_community/isar.dart';
 
 part 'common.g.dart';
 
-enum MyEnum {
-  value1,
-  value2,
-  value3;
-}
+enum MyEnum { value1, value2, value3 }
 
 @embedded
 class MyEmbedded {

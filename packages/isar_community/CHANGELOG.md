@@ -1,3 +1,12 @@
+## 3.3.0-dev.1
+
+### Updates  
+- Compatibility with Flutter `3.35.0`
+- Updated `libmdbx` to `0.13.8`. Fixes compatibility with older Android devices (kernel < 4)
+
+### Fixes
+- Address an issue preventing successful Windows builds
+
 ## 3.2.0-dev.2
 
 ### Fixes

@@ -72,10 +72,8 @@ class QueryGroup extends StatelessWidget {
                             QueryFilter(
                               collection: collection,
                               condition: filter as FilterCondition,
-                              onChanged: (updated) => _performUpdate(
-                                add: updated,
-                                remove: filter,
-                              ),
+                              onChanged: (updated) =>
+                                  _performUpdate(add: updated, remove: filter),
                             ),
                             const SizedBox(width: 5),
                             IconButton(
@@ -114,12 +112,7 @@ class QueryGroup extends StatelessWidget {
     } else if (add != null) {
       newFilters.add(add);
     }
-    onChanged(
-      FilterGroup(
-        type: group.type,
-        filters: newFilters,
-      ),
-    );
+    onChanged(FilterGroup(type: group.type, filters: newFilters));
   }
 }
 
@@ -174,14 +167,9 @@ class _Guideline extends StatelessWidget {
               final newType = group.type == FilterGroupType.and
                   ? FilterGroupType.or
                   : group.type == FilterGroupType.or
-                      ? FilterGroupType.xor
-                      : FilterGroupType.and;
-              onChanged(
-                FilterGroup(
-                  type: newType,
-                  filters: group.filters,
-                ),
-              );
+                  ? FilterGroupType.xor
+                  : FilterGroupType.and;
+              onChanged(FilterGroup(type: newType, filters: group.filters));
             },
             side: BorderSide.none,
             shape: RoundedRectangleBorder(
@@ -228,25 +216,16 @@ class GroupFilterButton extends StatelessWidget {
         ElevatedButton.icon(
           icon: const Icon(Icons.workspaces_rounded),
           label: const Text('Add Group'),
-          style: ButtonStyle(
-            elevation: WidgetStateProperty.all(level + 1),
-          ),
+          style: ButtonStyle(elevation: WidgetStateProperty.all(level + 1)),
           onPressed: () {
-            onAdd(
-              FilterGroup(
-                type: FilterGroupType.and,
-                filters: [],
-              ),
-            );
+            onAdd(FilterGroup(type: FilterGroupType.and, filters: []));
           },
         ),
         const SizedBox(width: 20),
         ElevatedButton.icon(
           icon: const Icon(Icons.filter_alt_rounded),
           label: const Text('Add Filter'),
-          style: ButtonStyle(
-            elevation: WidgetStateProperty.all(level + 1),
-          ),
+          style: ButtonStyle(elevation: WidgetStateProperty.all(level + 1)),
           onPressed: () {
             onAdd(
               FilterCondition.greaterThan(
@@ -266,12 +245,12 @@ extension on FilterGroupType {
   String get name => this == FilterGroupType.and
       ? 'AND'
       : this == FilterGroupType.or
-          ? 'OR'
-          : 'XOR';
+      ? 'OR'
+      : 'XOR';
 
   Color get color => this == FilterGroupType.and
       ? Colors.blue
       : this == FilterGroupType.or
-          ? Colors.orange
-          : Colors.green;
+      ? Colors.orange
+      : Colors.green;
 }

@@ -216,8 +216,11 @@ abstract class IsarLinksCommon<OBJ> extends IsarLinkBaseImpl<OBJ>
 
   @override
   String toString() {
-    final content =
-        IterableBase.iterableToFullString(_objects.values, '{', '}');
+    final content = IterableBase.iterableToFullString(
+      _objects.values,
+      '{',
+      '}',
+    );
     return 'IsarLinks($content)';
   }
 }

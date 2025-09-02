@@ -68,10 +68,7 @@ void main() {
             .ageEqualTo(30)
             .and()
             .nameEqualTo('Emma'),
-        [
-          UserModel.fill('David', 20, false),
-          UserModel.fill('Emma', 30, true),
-        ],
+        [UserModel.fill('David', 20, false), UserModel.fill('Emma', 30, true)],
       );
     });
 
@@ -100,10 +97,7 @@ void main() {
             .ageEqualTo(20)
             .or()
             .group((q) => q.ageEqualTo(30).and().nameEqualTo('Emma')),
-        [
-          UserModel.fill('David', 20, false),
-          UserModel.fill('Emma', 30, true),
-        ],
+        [UserModel.fill('David', 20, false), UserModel.fill('Emma', 30, true)],
       );
     });
 
@@ -122,11 +116,11 @@ void main() {
     isarTest('Nested groups', () async {
       await qEqualSet(
         users.where().filter().group(
-              (QueryBuilder<UserModel, UserModel, QFilterCondition> q) => q
-                  .nameEqualTo('Simon')
-                  .or()
-                  .group((q) => q.ageEqualTo(30).or().ageEqualTo(20)),
-            ),
+          (QueryBuilder<UserModel, UserModel, QFilterCondition> q) => q
+              .nameEqualTo('Simon')
+              .or()
+              .group((q) => q.ageEqualTo(30).or().ageEqualTo(20)),
+        ),
         [
           UserModel.fill('Simon', 30, false),
           UserModel.fill('David', 20, false),

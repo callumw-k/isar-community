@@ -93,10 +93,7 @@ class Schema<OBJ> {
 /// @nodoc
 @protected
 typedef EstimateSize<T> = int Function(
-  T object,
-  List<int> offsets,
-  Map<Type, List<int>> allOffsets,
-);
+    T object, List<int> offsets, Map<Type, List<int>> allOffsets);
 
 /// @nodoc
 @protected

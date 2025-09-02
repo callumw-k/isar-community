@@ -169,9 +169,9 @@ void main() {
       );
 
       await qEqualSet(
-        isar.sourceModels
-            .filter()
-            .link((q) => q.nameEqualTo('target 3').and().nameContains('3')),
+        isar.sourceModels.filter().link(
+          (q) => q.nameEqualTo('target 3').and().nameContains('3'),
+        ),
         [source3],
       );
 
@@ -185,32 +185,37 @@ void main() {
     });
 
     isarTest('.isNull()', () async {
-      await qEqualSet(
-        isar.sourceModels.filter().linkIsNull(),
-        [source5, source6],
-      );
+      await qEqualSet(isar.sourceModels.filter().linkIsNull(), [
+        source5,
+        source6,
+      ]);
 
       await isar.tWriteTxn(() => source1.link.tReset());
 
-      await qEqualSet(
-        isar.sourceModels.filter().linkIsNull(),
-        [source1, source5, source6],
-      );
+      await qEqualSet(isar.sourceModels.filter().linkIsNull(), [
+        source1,
+        source5,
+        source6,
+      ]);
 
       source6.link.value = target6;
       await isar.tWriteTxn(() => source6.link.tSave());
 
-      await qEqualSet(
-        isar.sourceModels.filter().linkIsNull(),
-        [source1, source5],
-      );
+      await qEqualSet(isar.sourceModels.filter().linkIsNull(), [
+        source1,
+        source5,
+      ]);
 
       await isar.tWriteTxn(() => isar.targetModels.where().tDeleteAll());
 
-      await qEqualSet(
-        isar.sourceModels.filter().linkIsNull(),
-        [source1, source2, source3, source4, source5, source6],
-      );
+      await qEqualSet(isar.sourceModels.filter().linkIsNull(), [
+        source1,
+        source2,
+        source3,
+        source4,
+        source5,
+        source6,
+      ]);
     });
   });
 }

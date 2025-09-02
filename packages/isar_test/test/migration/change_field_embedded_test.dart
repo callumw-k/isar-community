@@ -64,19 +64,13 @@ void main() {
     expect(await isar1.close(), true);
 
     final isar2 = await openTempIsar([Model2Schema], name: isar1.name);
-    await qEqual(isar2.model2s.where(), [
-      Model2(1, null),
-      Model2(2, null),
-    ]);
+    await qEqual(isar2.model2s.where(), [Model2(1, null), Model2(2, null)]);
     await isar2.tWriteTxn(() {
       return isar2.model2s.tPut(Model2(1, Embedded2('abc')));
     });
     expect(await isar2.close(), true);
 
     final isar3 = await openTempIsar([Model1Schema], name: isar1.name);
-    await qEqual(isar3.model1s.where(), [
-      Model1(1, null),
-      Model1(2, null),
-    ]);
+    await qEqual(isar3.model1s.where(), [Model1(1, null), Model1(2, null)]);
   });
 }

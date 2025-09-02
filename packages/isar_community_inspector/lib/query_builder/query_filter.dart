@@ -67,10 +67,7 @@ class QueryFilter extends StatelessWidget {
                 isDense: true,
                 items: [
                   for (final type in property.supportedFilters)
-                    DropdownMenuItem(
-                      value: type,
-                      child: Text(type.niceName),
-                    ),
+                    DropdownMenuItem(value: type, child: Text(type.niceName)),
                 ],
                 value: condition.type,
                 onChanged: (value) {

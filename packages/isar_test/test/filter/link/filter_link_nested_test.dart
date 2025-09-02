@@ -225,9 +225,9 @@ void main() {
         );
 
         await qEqualSet(
-          isar.sourceModels
-              .filter()
-              .links((q) => q.nameEqualTo('non existing')),
+          isar.sourceModels.filter().links(
+            (q) => q.nameEqualTo('non existing'),
+          ),
           [],
         );
       });
@@ -235,94 +235,94 @@ void main() {
       isarTest('.links() with .nestedLinks()', () async {
         await qEqualSet(
           isar.sourceModels.filter().links(
-                (q) => q.nestedLinks((q) => q.nameStartsWith('nested target')),
-              ),
+            (q) => q.nestedLinks((q) => q.nameStartsWith('nested target')),
+          ),
           [source1, source2, source3, source4],
         );
 
         await qEqualSet(
           isar.sourceModels.filter().links(
-                (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 1')),
-              ),
+            (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 1')),
+          ),
           [source1, source2, source3, source4],
         );
 
         await qEqualSet(
           isar.sourceModels.filter().links(
-                (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 2')),
-              ),
+            (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 2')),
+          ),
           [source2, source3, source4],
         );
 
         await qEqualSet(
           isar.sourceModels.filter().links(
-                (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 3')),
-              ),
+            (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 3')),
+          ),
           [source3, source4],
         );
 
         await qEqualSet(
           isar.sourceModels.filter().links(
-                (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 4')),
-              ),
+            (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 4')),
+          ),
           [source4],
         );
 
         await qEqualSet(
           isar.sourceModels.filter().links(
-                (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 5')),
-              ),
+            (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 5')),
+          ),
           [source4],
         );
 
         await qEqualSet(
           isar.sourceModels.filter().links(
-                (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 6')),
-              ),
+            (q) => q.nestedLinks((q) => q.nameEqualTo('nested target 6')),
+          ),
           [],
         );
 
         await qEqualSet(
           isar.sourceModels.filter().links(
-                (q) => q.nestedLinks((q) => q.nameEqualTo('non existing')),
-              ),
+            (q) => q.nestedLinks((q) => q.nameEqualTo('non existing')),
+          ),
           [],
         );
       });
 
       isarTest('.links() with .nestedLinksLengthEqualTo()', () async {
         await qEqualSet(
-          isar.sourceModels
-              .filter()
-              .links((q) => q.nestedLinksLengthEqualTo(0)),
+          isar.sourceModels.filter().links(
+            (q) => q.nestedLinksLengthEqualTo(0),
+          ),
           [source5],
         );
 
         await qEqualSet(
-          isar.sourceModels
-              .filter()
-              .links((q) => q.nestedLinksLengthEqualTo(1)),
+          isar.sourceModels.filter().links(
+            (q) => q.nestedLinksLengthEqualTo(1),
+          ),
           [source1, source2, source3],
         );
 
         await qEqualSet(
-          isar.sourceModels
-              .filter()
-              .links((q) => q.nestedLinksLengthEqualTo(2)),
+          isar.sourceModels.filter().links(
+            (q) => q.nestedLinksLengthEqualTo(2),
+          ),
           [source2, source3],
         );
 
         await qEqualSet(
-          isar.sourceModels
-              .filter()
-              .links((q) => q.nestedLinksLengthEqualTo(3)),
+          isar.sourceModels.filter().links(
+            (q) => q.nestedLinksLengthEqualTo(3),
+          ),
           [source3, source4],
         );
 
         await qEqualSet(
-          isar.sourceModels
-              .filter()
-              .links((q) => q.nestedLinksLengthEqualTo(4)),
+          isar.sourceModels.filter().links(
+            (q) => q.nestedLinksLengthEqualTo(4),
+          ),
           [],
         );
       });
@@ -354,9 +354,9 @@ void main() {
     group('Backlinks', () {
       isarTest('.nestedLinksBacklinks()', () async {
         await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.nameStartsWith('target')),
+          isar.nestedTargetModels.filter().nestedLinksBacklinks(
+            (q) => q.nameStartsWith('target'),
+          ),
           [
             nestedTarget1,
             nestedTarget2,
@@ -367,51 +367,51 @@ void main() {
         );
 
         await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.nameStartsWith('target 1')),
+          isar.nestedTargetModels.filter().nestedLinksBacklinks(
+            (q) => q.nameStartsWith('target 1'),
+          ),
           [nestedTarget1],
         );
 
         await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.nameStartsWith('target 2')),
+          isar.nestedTargetModels.filter().nestedLinksBacklinks(
+            (q) => q.nameStartsWith('target 2'),
+          ),
           [nestedTarget1, nestedTarget2],
         );
 
         await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.nameStartsWith('target 3')),
+          isar.nestedTargetModels.filter().nestedLinksBacklinks(
+            (q) => q.nameStartsWith('target 3'),
+          ),
           [nestedTarget1, nestedTarget2, nestedTarget3],
         );
 
         await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.nameStartsWith('target 4')),
+          isar.nestedTargetModels.filter().nestedLinksBacklinks(
+            (q) => q.nameStartsWith('target 4'),
+          ),
           [nestedTarget3, nestedTarget4, nestedTarget5],
         );
 
         await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.nameStartsWith('target 5')),
+          isar.nestedTargetModels.filter().nestedLinksBacklinks(
+            (q) => q.nameStartsWith('target 5'),
+          ),
           [],
         );
 
         await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.nameStartsWith('target 6')),
+          isar.nestedTargetModels.filter().nestedLinksBacklinks(
+            (q) => q.nameStartsWith('target 6'),
+          ),
           [nestedTarget5],
         );
 
         await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.nameStartsWith('non existing')),
+          isar.nestedTargetModels.filter().nestedLinksBacklinks(
+            (q) => q.nameStartsWith('non existing'),
+          ),
           [],
         );
       });
@@ -419,8 +419,8 @@ void main() {
       isarTest('.nestedLinksBackLinks', () async {
         await qEqualSet(
           isar.nestedTargetModels.filter().nestedLinksBacklinks(
-                (q) => q.linksBacklinks((q) => q.nameStartsWith('source')),
-              ),
+            (q) => q.linksBacklinks((q) => q.nameStartsWith('source')),
+          ),
           [
             nestedTarget1,
             nestedTarget2,
@@ -432,29 +432,29 @@ void main() {
 
         await qEqualSet(
           isar.nestedTargetModels.filter().nestedLinksBacklinks(
-                (q) => q.linksBacklinks((q) => q.nameEqualTo('source 1')),
-              ),
+            (q) => q.linksBacklinks((q) => q.nameEqualTo('source 1')),
+          ),
           [nestedTarget1],
         );
 
         await qEqualSet(
           isar.nestedTargetModels.filter().nestedLinksBacklinks(
-                (q) => q.linksBacklinks((q) => q.nameEqualTo('source 2')),
-              ),
+            (q) => q.linksBacklinks((q) => q.nameEqualTo('source 2')),
+          ),
           [nestedTarget1, nestedTarget2],
         );
 
         await qEqualSet(
           isar.nestedTargetModels.filter().nestedLinksBacklinks(
-                (q) => q.linksBacklinks((q) => q.nameEqualTo('source 3')),
-              ),
+            (q) => q.linksBacklinks((q) => q.nameEqualTo('source 3')),
+          ),
           [nestedTarget1, nestedTarget2, nestedTarget3],
         );
 
         await qEqualSet(
           isar.nestedTargetModels.filter().nestedLinksBacklinks(
-                (q) => q.linksBacklinks((q) => q.nameEqualTo('source 4')),
-              ),
+            (q) => q.linksBacklinks((q) => q.nameEqualTo('source 4')),
+          ),
           [
             nestedTarget1,
             nestedTarget2,
@@ -466,22 +466,22 @@ void main() {
 
         await qEqualSet(
           isar.nestedTargetModels.filter().nestedLinksBacklinks(
-                (q) => q.linksBacklinks((q) => q.nameEqualTo('source 5')),
-              ),
+            (q) => q.linksBacklinks((q) => q.nameEqualTo('source 5')),
+          ),
           [],
         );
 
         await qEqualSet(
           isar.nestedTargetModels.filter().nestedLinksBacklinks(
-                (q) => q.linksBacklinks((q) => q.nameEqualTo('source 6')),
-              ),
+            (q) => q.linksBacklinks((q) => q.nameEqualTo('source 6')),
+          ),
           [],
         );
 
         await qEqualSet(
           isar.nestedTargetModels.filter().nestedLinksBacklinks(
-                (q) => q.linksBacklinks((q) => q.nameEqualTo('non existing')),
-              ),
+            (q) => q.linksBacklinks((q) => q.nameEqualTo('non existing')),
+          ),
           [],
         );
       });
@@ -490,91 +490,88 @@ void main() {
         '.nestedLinksBacklinks() with .linksBacklinksLengthEqualTo()',
         () async {
           await qEqualSet(
-            isar.nestedTargetModels
-                .filter()
-                .nestedLinksBacklinks((q) => q.linksBacklinksLengthEqualTo(0)),
+            isar.nestedTargetModels.filter().nestedLinksBacklinks(
+              (q) => q.linksBacklinksLengthEqualTo(0),
+            ),
             [nestedTarget5],
           );
 
           await qEqualSet(
-            isar.nestedTargetModels
-                .filter()
-                .nestedLinksBacklinks((q) => q.linksBacklinksLengthEqualTo(1)),
+            isar.nestedTargetModels.filter().nestedLinksBacklinks(
+              (q) => q.linksBacklinksLengthEqualTo(1),
+            ),
             [nestedTarget3, nestedTarget4, nestedTarget5],
           );
 
           await qEqualSet(
-            isar.nestedTargetModels
-                .filter()
-                .nestedLinksBacklinks((q) => q.linksBacklinksLengthEqualTo(2)),
+            isar.nestedTargetModels.filter().nestedLinksBacklinks(
+              (q) => q.linksBacklinksLengthEqualTo(2),
+            ),
             [nestedTarget1, nestedTarget2, nestedTarget3],
           );
 
           await qEqualSet(
-            isar.nestedTargetModels
-                .filter()
-                .nestedLinksBacklinks((q) => q.linksBacklinksLengthEqualTo(3)),
+            isar.nestedTargetModels.filter().nestedLinksBacklinks(
+              (q) => q.linksBacklinksLengthEqualTo(3),
+            ),
             [nestedTarget1],
           );
 
           await qEqualSet(
-            isar.nestedTargetModels
-                .filter()
-                .nestedLinksBacklinks((q) => q.linksBacklinksLengthEqualTo(4)),
+            isar.nestedTargetModels.filter().nestedLinksBacklinks(
+              (q) => q.linksBacklinksLengthEqualTo(4),
+            ),
             [],
           );
 
           await qEqualSet(
-            isar.nestedTargetModels
-                .filter()
-                .nestedLinksBacklinks((q) => q.linksBacklinksLengthEqualTo(5)),
+            isar.nestedTargetModels.filter().nestedLinksBacklinks(
+              (q) => q.linksBacklinksLengthEqualTo(5),
+            ),
             [],
           );
 
           await qEqualSet(
-            isar.nestedTargetModels
-                .filter()
-                .nestedLinksBacklinks((q) => q.linksBacklinksLengthEqualTo(6)),
+            isar.nestedTargetModels.filter().nestedLinksBacklinks(
+              (q) => q.linksBacklinksLengthEqualTo(6),
+            ),
             [],
           );
         },
       );
     });
 
-    isarTest(
-      '.nestedLinksBacklinks() with .linksBacklinksIsEmpty()',
-      () async {
-        await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.linksBacklinksIsEmpty()),
-          [nestedTarget5],
-        );
+    isarTest('.nestedLinksBacklinks() with .linksBacklinksIsEmpty()', () async {
+      await qEqualSet(
+        isar.nestedTargetModels.filter().nestedLinksBacklinks(
+          (q) => q.linksBacklinksIsEmpty(),
+        ),
+        [nestedTarget5],
+      );
 
-        await isar.tWriteTxn(() => target1.linksBacklinks.tReset());
+      await isar.tWriteTxn(() => target1.linksBacklinks.tReset());
 
-        await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.linksBacklinksIsEmpty()),
-          [nestedTarget1, nestedTarget5],
-        );
+      await qEqualSet(
+        isar.nestedTargetModels.filter().nestedLinksBacklinks(
+          (q) => q.linksBacklinksIsEmpty(),
+        ),
+        [nestedTarget1, nestedTarget5],
+      );
 
-        await isar.tWriteTxn(() => isar.sourceModels.where().tDeleteAll());
+      await isar.tWriteTxn(() => isar.sourceModels.where().tDeleteAll());
 
-        await qEqualSet(
-          isar.nestedTargetModels
-              .filter()
-              .nestedLinksBacklinks((q) => q.linksBacklinksIsEmpty()),
-          [
-            nestedTarget1,
-            nestedTarget2,
-            nestedTarget3,
-            nestedTarget4,
-            nestedTarget5,
-          ],
-        );
-      },
-    );
+      await qEqualSet(
+        isar.nestedTargetModels.filter().nestedLinksBacklinks(
+          (q) => q.linksBacklinksIsEmpty(),
+        ),
+        [
+          nestedTarget1,
+          nestedTarget2,
+          nestedTarget3,
+          nestedTarget4,
+          nestedTarget5,
+        ],
+      );
+    });
   });
 }

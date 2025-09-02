@@ -53,43 +53,31 @@ void main() {
 
     isarTest('.notEqualTo()', () async {
       await qEqual(col.where().idNotEqualTo(2), [obj0, obj1, obj3]);
-      await qEqual(
-        col.where().idNotEqualTo(5),
-        [obj0, obj1, obj2, obj3],
-      );
+      await qEqual(col.where().idNotEqualTo(5), [obj0, obj1, obj2, obj3]);
     });
 
     isarTest('.greaterThan()', () async {
       await qEqual(col.where().idGreaterThan(2), [obj3]);
-      await qEqual(
-        col.where().idGreaterThan(2, include: true),
-        [obj2, obj3],
-      );
+      await qEqual(col.where().idGreaterThan(2, include: true), [obj2, obj3]);
       await qEqual(col.where().idGreaterThan(3), []);
     });
 
     isarTest('.lessThan()', () async {
       await qEqual(col.where().idLessThan(1), [obj0]);
-      await qEqual(
-        col.where().idLessThan(1, include: true),
-        [obj0, obj1],
-      );
+      await qEqual(col.where().idLessThan(1, include: true), [obj0, obj1]);
       await qEqual(col.where().idLessThan(-1), []);
     });
 
     isarTest('.between()', () async {
-      await qEqual(
-        col.where().idBetween(1, 3),
-        [obj1, obj2, obj3],
-      );
-      await qEqual(
-        col.where().idBetween(1, 3, includeLower: false),
-        [obj2, obj3],
-      );
-      await qEqual(
-        col.where().idBetween(1, 3, includeUpper: false),
-        [obj1, obj2],
-      );
+      await qEqual(col.where().idBetween(1, 3), [obj1, obj2, obj3]);
+      await qEqual(col.where().idBetween(1, 3, includeLower: false), [
+        obj2,
+        obj3,
+      ]);
+      await qEqual(col.where().idBetween(1, 3, includeUpper: false), [
+        obj1,
+        obj2,
+      ]);
       await qEqual(
         col.where().idBetween(1, 3, includeLower: false, includeUpper: false),
         [obj2],

@@ -63,10 +63,11 @@ void main() {
     });
 
     isarTest('getAllBy', () async {
-      expect(
-        await col.getAllByGuid([obj3.guid, 'SOMETHING', obj1.guid]),
-        [obj3, null, obj1],
-      );
+      expect(await col.getAllByGuid([obj3.guid, 'SOMETHING', obj1.guid]), [
+        obj3,
+        null,
+        obj1,
+      ]);
 
       expect(
         await col.getAllByContentGuid(

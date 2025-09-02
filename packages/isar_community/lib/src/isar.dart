@@ -18,7 +18,7 @@ abstract class Isar {
   }
 
   /// The version of the Isar library.
-  static const version = '3.2.0-dev.2';
+  static const version = '3.3.0-dev.1';
 
   /// Smallest valid id.
   static const Id minId = isarMinId;
@@ -307,10 +307,7 @@ abstract class Isar {
     Map<IsarAbi, String> libraries = const {},
     bool download = false,
   }) async {
-    await initializeCoreBinary(
-      libraries: libraries,
-      download: download,
-    );
+    await initializeCoreBinary(libraries: libraries, download: download);
   }
 
   /// Split a String into words according to Unicode Annex #29. Only words
@@ -326,11 +323,8 @@ abstract class Isar {
 /// should only be used if absolutely necessary.
 class CompactCondition {
   /// Compaction will happen if all of the specified conditions are true.
-  const CompactCondition({
-    this.minFileSize,
-    this.minBytes,
-    this.minRatio,
-  }) : assert(
+  const CompactCondition({this.minFileSize, this.minBytes, this.minRatio})
+      : assert(
           minFileSize != null || minBytes != null || minRatio != null,
           'At least one condition needs to be specified.',
         );

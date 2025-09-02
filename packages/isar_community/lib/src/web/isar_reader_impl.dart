@@ -262,8 +262,10 @@ class IsarReaderImpl implements IsarReader {
         ? value
             .map(
               (e) => e is int && e != nullNumber
-                  ? DateTime.fromMillisecondsSinceEpoch(e, isUtc: true)
-                      .toLocal()
+                  ? DateTime.fromMillisecondsSinceEpoch(
+                      e,
+                      isUtc: true,
+                    ).toLocal()
                   : nullDate,
             )
             .toList()
@@ -278,8 +280,10 @@ class IsarReaderImpl implements IsarReader {
         ? value
             .map(
               (e) => e is int && e != nullNumber
-                  ? DateTime.fromMillisecondsSinceEpoch(e, isUtc: true)
-                      .toLocal()
+                  ? DateTime.fromMillisecondsSinceEpoch(
+                      e,
+                      isUtc: true,
+                    ).toLocal()
                   : null,
             )
             .toList()

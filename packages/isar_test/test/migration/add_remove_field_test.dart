@@ -82,16 +82,10 @@ void main() {
     expect(await isar1.close(), true);
 
     final isar2 = await openTempIsar([Col1Schema], name: isar1.name);
-    await qEqual(isar2.col1s.where(), [
-      Col1(1, 'value1'),
-      Col1(2, 'value2'),
-    ]);
+    await qEqual(isar2.col1s.where(), [Col1(1, 'value1'), Col1(2, 'value2')]);
     await isar2.writeTxn(() {
       return isar2.col1s.put(Col1(1, 'value3'));
     });
-    await qEqual(isar2.col1s.where(), [
-      Col1(1, 'value3'),
-      Col1(2, 'value2'),
-    ]);
+    await qEqual(isar2.col1s.where(), [Col1(1, 'value3'), Col1(2, 'value2')]);
   });
 }

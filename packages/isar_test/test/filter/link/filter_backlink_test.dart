@@ -153,9 +153,9 @@ void main() {
       );
 
       await qEqualSet(
-        isar.targetModels
-            .filter()
-            .backlink((q) => q.nameEqualTo('non existing')),
+        isar.targetModels.filter().backlink(
+          (q) => q.nameEqualTo('non existing'),
+        ),
         [],
       );
 
@@ -170,32 +170,37 @@ void main() {
     });
 
     isarTest('.backlinkIsNull()', () async {
-      await qEqualSet(
-        isar.targetModels.filter().backlinkIsNull(),
-        [target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinkIsNull(), [
+        target5,
+        target6,
+      ]);
 
       await isar.tWriteTxn(() => target1.backlink.tReset());
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinkIsNull(),
-        [target1, target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinkIsNull(), [
+        target1,
+        target5,
+        target6,
+      ]);
 
       source6.link.value = target6;
       await isar.tWriteTxn(() => source6.link.tSave());
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinkIsNull(),
-        [target1, target5],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinkIsNull(), [
+        target1,
+        target5,
+      ]);
 
       await isar.tWriteTxn(() => isar.sourceModels.where().tDeleteAll());
 
-      await qEqualSet(
-        isar.targetModels.filter().backlinkIsNull(),
-        [target1, target2, target3, target4, target5, target6],
-      );
+      await qEqualSet(isar.targetModels.filter().backlinkIsNull(), [
+        target1,
+        target2,
+        target3,
+        target4,
+        target5,
+        target6,
+      ]);
     });
   });
 }

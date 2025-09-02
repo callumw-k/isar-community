@@ -150,12 +150,7 @@ KeyRange? _buildKeyRange(
         }
       }
 
-      return KeyRange.bound(
-        lower,
-        upper,
-        !includeLower,
-        !includeUpper,
-      );
+      return KeyRange.bound(lower, upper, !includeLower, !includeUpper);
     } else {
       return KeyRange.lowerBound(lower, !includeLower);
     }

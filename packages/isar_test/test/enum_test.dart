@@ -9,12 +9,7 @@ enum TestEnum {
   option2(2, 2, 2, 'test2'),
   option3(3, 3, 3, 'test3');
 
-  const TestEnum(
-    this.byteVal,
-    this.shortVal,
-    this.intVal,
-    this.stringVal,
-  );
+  const TestEnum(this.byteVal, this.shortVal, this.intVal, this.stringVal);
 
   final byte byteVal;
   final short shortVal;
@@ -35,13 +30,13 @@ class EnumModel {
   );
 
   EnumModel.test(TestEnum value)
-      : id = Isar.autoIncrement,
-        ordinalEnum = value,
-        nameEnum = value,
-        byteEnum = value,
-        shortEnum = value,
-        intEnum = value,
-        stringEnum = value;
+    : id = Isar.autoIncrement,
+      ordinalEnum = value,
+      nameEnum = value,
+      byteEnum = value,
+      shortEnum = value,
+      intEnum = value,
+      stringEnum = value;
 
   static final model1 = EnumModel.test(TestEnum.option1);
   static final model2 = EnumModel.test(TestEnum.option2);
@@ -91,14 +86,18 @@ void main() {
     isarTest('.get() / .put()', () async {
       final isar = await openTempIsar([EnumModelSchema]);
       await isar.tWriteTxn(() async {
-        await isar.enumModels
-            .tPutAll([EnumModel.model1, EnumModel.model2, EnumModel.model3]);
+        await isar.enumModels.tPutAll([
+          EnumModel.model1,
+          EnumModel.model2,
+          EnumModel.model3,
+        ]);
       });
 
-      await qEqual(
-        isar.enumModels.where(),
-        [EnumModel.model1, EnumModel.model2, EnumModel.model3],
-      );
+      await qEqual(isar.enumModels.where(), [
+        EnumModel.model1,
+        EnumModel.model2,
+        EnumModel.model3,
+      ]);
     });
 
     isarTest('DateTime Enum', () {});

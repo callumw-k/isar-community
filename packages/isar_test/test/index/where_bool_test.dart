@@ -46,26 +46,22 @@ void main() {
 
     isarTest('.equalTo()', () async {
       await qEqual(col.where().fieldEqualTo(true), [objTrue]);
-      await qEqual(
-        col.where().fieldEqualTo(false),
-        [objFalse, objFalse2],
-      );
+      await qEqual(col.where().fieldEqualTo(false), [objFalse, objFalse2]);
       await qEqual(col.where().fieldEqualTo(null), [objNull]);
     });
 
     isarTest('.notEqualTo()', () async {
-      await qEqual(
-        col.where().fieldNotEqualTo(true),
-        [objNull, objFalse, objFalse2],
-      );
-      await qEqual(
-        col.where().fieldNotEqualTo(false),
-        [objNull, objTrue],
-      );
-      await qEqual(
-        col.where().fieldNotEqualTo(null),
-        [objFalse, objFalse2, objTrue],
-      );
+      await qEqual(col.where().fieldNotEqualTo(true), [
+        objNull,
+        objFalse,
+        objFalse2,
+      ]);
+      await qEqual(col.where().fieldNotEqualTo(false), [objNull, objTrue]);
+      await qEqual(col.where().fieldNotEqualTo(null), [
+        objFalse,
+        objFalse2,
+        objTrue,
+      ]);
     });
 
     isarTest('.isNull()', () async {
@@ -73,10 +69,11 @@ void main() {
     });
 
     isarTest('.isNotNull()', () async {
-      await qEqual(
-        col.where().fieldIsNotNull(),
-        [objFalse, objFalse2, objTrue],
-      );
+      await qEqual(col.where().fieldIsNotNull(), [
+        objFalse,
+        objFalse2,
+        objTrue,
+      ]);
     });
   });
 }

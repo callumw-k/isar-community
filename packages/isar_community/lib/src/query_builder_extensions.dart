@@ -11,7 +11,10 @@ extension QueryWhereOr<OBJ, R> on QueryBuilder<OBJ, R, QWhereOr> {
 /// @nodoc
 @protected
 typedef WhereRepeatModifier<OBJ, R, E> = QueryBuilder<OBJ, R, QAfterWhereClause>
-    Function(QueryBuilder<OBJ, R, QWhereClause> q, E element);
+    Function(
+  QueryBuilder<OBJ, R, QWhereClause> q,
+  E element,
+);
 
 /// Extension for QueryBuilders.
 extension QueryWhere<OBJ, R> on QueryBuilder<OBJ, R, QWhereClause> {
@@ -79,10 +82,7 @@ extension QueryFilterAndOr<OBJ, R> on QueryBuilder<OBJ, R, QFilterOperator> {
 extension QueryFilterNot<OBJ, R> on QueryBuilder<OBJ, R, QFilterCondition> {
   /// Complement the next filter condition or group.
   QueryBuilder<OBJ, R, QFilterCondition> not() {
-    return QueryBuilder.apply(
-      this,
-      (q) => q.copyWith(filterNot: !q.filterNot),
-    );
+    return QueryBuilder.apply(this, (q) => q.copyWith(filterNot: !q.filterNot));
   }
 
   /// Joins the results of the [modifier] for each item in [items] using logical
@@ -170,8 +170,7 @@ extension QueryLimit<OBJ, R> on QueryBuilder<OBJ, R, QLimit> {
 /// @nodoc
 @protected
 typedef QueryOption<OBJ, S, RS> = QueryBuilder<OBJ, OBJ, RS> Function(
-  QueryBuilder<OBJ, OBJ, S> q,
-);
+    QueryBuilder<OBJ, OBJ, S> q);
 
 /// Extension for QueryBuilders.
 extension QueryModifier<OBJ, S> on QueryBuilder<OBJ, OBJ, S> {
