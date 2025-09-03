@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:build/build.dart';
 import 'package:build_test/build_test.dart';
 import 'package:isar_community_generator/isar_generator.dart';
+import 'package:logging/logging.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -17,10 +18,20 @@ void main() {
 
         var error = '';
         try {
+          final readerWriter = TestReaderWriter(
+            rootPackage: 'isar_community_generator',
+          );
+          await readerWriter.testing.loadIsolateSources();
+
           await testBuilder(
             getIsarGenerator(BuilderOptions.empty),
             {'a|${file.path}': content.join('\n')},
-            reader: await PackageAssetReader.currentIsolate(),
+            readerWriter: readerWriter,
+            onLog: (record) {
+              if (record.level >= Level.SEVERE) {
+                error = record.message;
+              }
+            },
           );
         } on Exception catch (e) {
           error = e.toString();
