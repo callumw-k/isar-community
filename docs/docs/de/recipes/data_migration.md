@@ -43,7 +43,7 @@ class User {
 Das Problem ist, dass vorhandene Benutzermodelle ein leeres `birthYear`-Feld haben werden, weil es in Version 1 nicht existiert hat. Wir müssen die Daten migrieren, um das `birthYear`-Feld zu setzen.
 
 ```dart
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
