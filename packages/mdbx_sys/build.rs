@@ -82,14 +82,13 @@ fn ensure_libmdbx(out_dir: &Path) -> PathBuf {
 }
 
 fn parse_semver_from_tag(tag: &str) -> (u32, u32, u32, u32, &'static str) {
-    // Expect formats like v0.13.7 or 0.13.7
     let t = tag.trim_start_matches('v');
     let mut parts = t.split('.');
     let major = parts.next().unwrap_or("0").parse().unwrap_or(0);
     let minor = parts.next().unwrap_or("0").parse().unwrap_or(0);
     let patch = parts.next().unwrap_or("0").parse().unwrap_or(0);
     let tweak = 0u32;
-    let prerelease: &'static str = ""; // keep empty like Vorot's release builds
+    let prerelease: &'static str = "";
     (major, minor, patch, tweak, prerelease)
 }
 
@@ -167,28 +166,22 @@ fn main() {
         cc_builder.pic(true);
     }
 
-    // Define MDBX_BUILD_FLAGS for parity with Vorot
-    let flags = format!(
-        "\"-NDEBUG={} {}\"",
-        u8::from(!cfg!(debug_assertions)),
-        cc_builder
-            .get_compiler()
-            .cflags_env()
-            .to_str()
-            .unwrap_or("")
-            .trim()
-    );
+    if cfg!(debug_assertions) {
+        cc_builder.define("MDBX_FORCE_ASSERTIONS", "1");
+    } else {
+        cc_builder.define("NDEBUG", "1");
+    }
 
-    cc_builder
-        .define("MDBX_BUILD_FLAGS", flags.as_str())
-        .define("MDBX_TXN_CHECKOWNER", "0");
+    cc_builder.define("MDBX_TXN_CHECKOWNER", "0");
 
-    // Disable builtin CPU supports probing on musl
+    let cflags = cc_builder.get_compiler().cflags_env();
+    cc_builder.define("MDBX_BUILD_FLAGS", format!("{:?}", cflags).as_str());
+
+    // __cpu_model is not available in musl
     if target.ends_with("-musl") {
         cc_builder.define("MDBX_HAVE_BUILTIN_CPU_SUPPORTS", "0");
     }
 
-    // Android specific tweaks
     if target_os == "android" {
         cc_builder.define("MDBX_HAVE_BUILTIN_CPU_SUPPORTS", "0");
         cc_builder.define("MDBX_ENV_CHECKPID", "0");
