@@ -2,7 +2,7 @@ use bindgen::{Formatter, callbacks::{IntKind, ParseCallbacks}};
 use std::{env, fs, path::{Path, PathBuf}, process::Command};
 
 const LIBMDBX_REPO: &str = "https://github.com/isar-community/libmdbx.git";
-const LIBMDBX_TAG: &str = "v0.13.8";
+const LIBMDBX_TAG: &str = "v0.13.8-temp-upstream-fix";
 
 #[derive(Debug)]
 struct Callbacks;
