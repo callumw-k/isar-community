@@ -1,3 +1,9 @@
+## 3.3.0-dev.3
+
+### Updates  
+- Potentialy fix some MdbxError and other `libmdbx` errors
+- Forces `libmdbx` flag to release mode (NDEBUG)
+
 ## 3.3.0-dev.2
 
 ### Updates  
