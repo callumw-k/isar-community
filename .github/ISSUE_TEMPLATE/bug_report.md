@@ -26,6 +26,7 @@ Provide a few simple lines of code to show your problem.
 ### Details
 
  - Platform: iPhone 13 Pro, Galaxy S7, x86 Android Emulator on Windows etc.
+ - Kernel version if Android: [e.g. 4.x]
  - Flutter version: [e.g. 3.0.0]
  - Isar version: [e.g. 2.5.0]
 
