@@ -1,3 +1,15 @@
+## 3.3.0-dev.3
+
+### Updates  
+- Potentialy fix some MdbxError and other `libmdbx` errors
+- Forces `libmdbx` flag to release mode (NDEBUG)
+
+## 3.3.0-dev.2
+
+### Updates  
+- Updated `source_gen` to `^3.0.0`
+- Updated `build` to `^3.0.0`
+
 ## 3.3.0-dev.1
 
 ### Updates  

@@ -1,0 +1,79 @@
+Isar Database
+
+Copyright 2023 Simon Choi
+
+This product includes software developed by the Isar project contributors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+---
+
+Third-Party Components
+
+libmdbx
+
+This product includes libmdbx:
+
+libmdbx (aka MDBX) is an extremely fast, compact, powerful, embeddedable,
+transactional key-value storage engine with open-source code. MDBX has a
+specific set of properties and capabilities, focused on creating unique
+lightweight solutions.
+
+Please visit https://libmdbx.dqdkfa.ru for more information, changelog,
+documentation, C++ API description and links to the original git repo
+with the source code. Questions, feedback and suggestions are welcome
+to the Telegram' group https://t.me/libmdbx.
+
+Donations are welcome to the Ethereum/ERC-20 `0xD104d8f8B2dC312aaD74899F83EBf3EEBDC1EA3A`.
+
+Всё будет хорошо!
+
+Copyright: 2015-2025 Леонид Юрьев aka Leonid Yuriev <leo@yuriev.ru>  
+License: Apache-2.0 (SPDX-License-Identifier: Apache-2.0)
+
+For notes about the license change, credits and acknowledgments,
+please refer to the COPYRIGHT file within libmdbx source.
+
+Important Notice Regarding Github Repository
+
+On 2022-04-15, without any warnings or following explanations, the
+Github administration deleted libmdbx, my account and all other
+projects (status 404). A few months later, without any involvement or
+notification from/to me, the projects were restored/opened in the "public
+read-only archive" status from some kind of incomplete backup. I regard
+these actions of Github as malicious sabotage, and I consider the Github
+service itself to have lost trust forever.
+
+As a result of what has happened, I will never, under any circumstances,
+post the primary sources (aka origins) of my projects on Github, or rely
+in any way on the Github infrastructure.
+
+Nevertheless, realizing that it is more convenient for users of
+libmdbx and other my projects to access ones on Github, I do not want
+to restrict their freedom or create inconvenience, and therefore I place
+mirrors (aka mirrors) of such repositories on Github since 2025. At the
+same time, I would like to emphasize once again that these are only
+mirrors that can be frozen, blocked or deleted at any time, as was the
+case in 2022.
+
+---
+
+For Application Developers
+
+If you are using Isar in your application, you can include relevant portions
+of this NOTICE file in your own application's legal documentation (excluding
+the Github repository story section above). 
+
+Recommendation: Provide a link to this NOTICE file in your application's 
+description and/or in the "About" window/menu item to properly attribute 
+the open-source components used by Isar.
