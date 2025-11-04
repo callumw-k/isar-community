@@ -291,8 +291,9 @@ class IsarAnalyzer {
       err('Bytes must not be nullable.', property);
     }
 
-    final constructorParameter = constructor.formalParameters
-        .firstOrNullWhere((p) => p.name3 == property.name3);
+    final constructorParameter = constructor.formalParameters.firstOrNullWhere(
+      (p) => p.name3 == property.name3,
+    );
 
     int? constructorPosition;
     late PropertyDeser deserialize;
@@ -306,8 +307,9 @@ class IsarAnalyzer {
       deserialize = constructorParameter.isNamed
           ? PropertyDeser.namedParam
           : PropertyDeser.positionalParam;
-      constructorPosition =
-          constructor.formalParameters.indexOf(constructorParameter);
+      constructorPosition = constructor.formalParameters.indexOf(
+        constructorParameter,
+      );
     } else {
       deserialize =
           property.setter2 == null ? PropertyDeser.none : PropertyDeser.assign;
@@ -386,8 +388,9 @@ class IsarAnalyzer {
     List<ObjectProperty> properties,
     PropertyInducingElement2 element,
   ) sync* {
-    final property =
-        properties.firstOrNullWhere((it) => it.dartName == element.name3);
+    final property = properties.firstOrNullWhere(
+      (it) => it.dartName == element.name3,
+    );
     if (property == null || property.isId) {
       return;
     }
