@@ -306,8 +306,9 @@ class IsarAnalyzer {
       deserialize = constructorParameter.isNamed
           ? PropertyDeser.namedParam
           : PropertyDeser.positionalParam;
-      constructorPosition =
-          constructor.formalParameters.indexOf(constructorParameter);
+      constructorPosition = constructor.formalParameters.indexOf(
+        constructorParameter,
+      );
     } else {
       deserialize =
           property.setter == null ? PropertyDeser.none : PropertyDeser.assign;

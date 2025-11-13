@@ -31,8 +31,10 @@ extension ClassElementX on ClassElement {
       if (collectionAnnotation?.inheritance ?? embeddedAnnotation!.inheritance)
         for (final InterfaceType supertype in allSupertypes) ...[
           if (!supertype.isDartCoreObject)
-            ...[...supertype.getters, ...supertype.setters]
-                .mapNotNull((e) => e.variable),
+            ...[
+              ...supertype.getters,
+              ...supertype.setters,
+            ].mapNotNull((e) => e.variable),
         ],
     ]
         .where(
